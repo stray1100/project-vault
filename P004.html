@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="1815288662"/>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>医学题库解析兼职渠道指南 · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
+<link rel="apple-touch-icon" href="icons/icon-180.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+  <span class="badge">P004</span>
+  <h1>医学题库解析兼职渠道指南</h1>
+  <p class="summary">医学题库解析类兼职的渠道分层、时薪测算与风险信号，单文件 HTML，手机可直接阅读。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P004</td></tr><tr><td class="k">类型</td><td class="v">文档</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML / 内联 CSS / 移动端表格横滑</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://tiku-2026.netlify.app" target="_blank" rel="noopener" style="color:var(--accent)">https://tiku-2026.netlify.app</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-18 20:34</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://tiku-2026.netlify.app" target="_blank" rel="noopener">https://tiku-2026.netlify.app</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">Netlify · 部署于 2026-10-18。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本项目已单独部署为独立站点，打开该网址即进入项目首页，不再是档案馆站点下的子页面；同样可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">本项目已独立部署；完整项目索引见项目档案馆：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>医学题库解析类兼职的渠道分层、时薪测算与风险信号，单文件 HTML，手机可直接阅读。</p>
+    <p class="para">面向内科方向规培医师的兼职渠道筛选与投递路线图，按「渠道分层 → 时薪测算 → 投递节奏 → 风险红线」组织。</p><p class="para">核心判断：真正值钱的是医学编辑 / 兼职教研岗，不是平台上的录题兼职。录题是敲门砖，编辑教研才是收入来源。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">核心结论</td><td>先给判断：录题 4–6 元/题、时薪常 30–50 元；机构编辑/教研 80–150 元/时且可转讲师。</td></tr><tr><td class="fname">渠道第一层</td><td>医疗垂直招聘站：康强医疗人才网 kq36、医直聘 yzp、各医学院校就业信息网，岗位少但精准、可见联系人。</td></tr><tr><td class="fname">渠道第二层</td><td>医考机构直投：丁香园、蓝基因、博傲、阿虎、医考帮、申庭、欣师网校，逐家列岗位、形式与门槛。</td></tr><tr><td class="fname">渠道第三层</td><td>AI 数据与医学评测：大模型评测出题、题目标注审校（如澳鹏）、医疗 AI 的 QA 与评测集构建，单价高于传统解析。</td></tr><tr><td class="fname">渠道第四层</td><td>平台型录题：单价 4–15 元/题、门槛、设备隐性成本（电脑+手写板）、结算方式与价值判断。</td></tr><tr><td class="fname">时薪测算表</td><td>录题视频、文字解析、远程兼职编辑、兼职教研四类的名义单价、实际耗时与粗算时薪对比。</td></tr><tr><td class="fname">投递组合与话术</td><td>今天/本周/两周/一个月的时间线；简历首行写法、邮件标题格式、附 3 道真题解析样本。</td></tr><tr><td class="fname">风险红线</td><td>收报名费培训费押金、扣押证件原件、先买课再上岗、承诺保底高薪，四条立即远离。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>先看「核心结论」与「时薪测算表」，把预期定在时薪 60 元以上。</li><li>今天：注册康强、医直聘，用「医学编辑 / 题目解析 / 兼职教研」搜索，记录所有标注远程的岗位。</li><li>本周：挑 3 道执业医师内科真题，各写 300 字解析，结构固定为考点定位 → 机制解释 → 选项逐项排除 → 易错陷阱，做投递样本。</li><li>本周：投 5 个目标——丁香园（若仍有岗）、蓝基因、博傲、1 家 AI 评测类、1 家录题平台保底。</li><li>两周内：先跑通一个远程单，坐班类推掉，摸清交付与结算流程。</li><li>一个月后：复盘真实时薪；低于 60 元且无署名无沉淀，立即转教研/编辑岗。</li><li>投递时：简历首行写清学历+规培身份+执医情况；邮件标题「兼职题目解析/教研+姓名+院校+执医分数」；附样本而非只附简历。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\workspace\conv_4c291fcb719f42d581427ecd12222309\output\医学题库解析兼职渠道指南.html</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>机构岗位、单价、门槛为整理时点信息，招满停招需以官网或 HR 答复为准。</li><li>不构成录用承诺，也不替代劳动合同与竞业条款审查。</li><li>时薪为粗算模型（含准备、上传、返工），个体熟练度差异大。</li><li>不得占用单位上班时间，不得使用科室病历、内部题库、内部课件等资料。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">还没通过执医能投吗？</p><p class="a">平台录题部分接受 985/211 在读或持资格证者；机构编辑岗多要求已过执医或考研高分，先看岗位标注。</p></div><div class="qa"><p class="q">为什么说录题不划算？</p><p class="a">名义 5 元/题，含准备上传返工 4–6 分钟，时薪约 40–70 元，且无署名、无作品沉淀。</p></div><div class="qa"><p class="q">远程岗怎么找？</p><p class="a">在招聘站搜「医学编辑 / 题目解析 / 兼职教研」，只看标注远程或线上的岗位。</p></div><div class="qa"><p class="q">坐班岗能去吗？</p><p class="a">规培期间坐班与临床排班冲突，一律优先推掉；假期整段时间可另议。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">机构名单来自公开招聘页面抓取，部分为往年信息，投递前需到官网确认是否仍在招。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>单文件 HTML，样式与脚本内联，无外部依赖，手机浏览器可直接打开。</li><li>内容为四层渠道 + 时薪表 + 投递组合 + 风险信号的结构化整理，含多张可横滑表格。</li><li>整理日期 2026-10-18，机构名单与单价已按当时公开招聘信息核对。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-18</span> 登记入库</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P004.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://tiku-2026.netlify.app</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-18 20:34</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'index.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

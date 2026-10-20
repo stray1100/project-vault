@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="1815288662"/>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>项目档案馆（Project Vault） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
+<link rel="apple-touch-icon" href="icons/icon-180.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+  <span class="badge">P001</span>
+  <h1>项目档案馆（Project Vault）</h1>
+  <p class="summary">把本 APP 内创作的所有项目登记成册，按序号调阅，每个项目配一份 HTML 使用说明。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P001</td></tr><tr><td class="k">类型</td><td class="v">技能</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">SKILL.md 技能指令 / Python 数据脚本 / 自包含 HTML</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-19 08:48</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 构建于 2026-10-20，地址待回填。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">档案馆清单页本身，集中展示全部公开项目的说明入口。</p>
+    
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>把本 APP 内创作的所有项目登记成册，按序号调阅，每个项目配一份 HTML 使用说明。</p>
+    <p class="para">跨会话的「作品登记簿」：把每次做出来的东西按编号存档，附一份手机能直接打开的说明书，避免下次只会说「之前好像做过」却不记得在哪。</p><p class="para">projects.json 是唯一事实来源，说明书页全部由它渲染，不手写 HTML；登记新项目或修正路径后重建即可。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">登记 add</td><td>写入名称、类型、摘要、关键技术、产物绝对路径、使用方式与注意事项，自动分配编号并生成说明页。</td></tr><tr><td class="fname">清单 index</td><td>重建 guides/INDEX.html 总览页，按编号列出全部项目、类型、产物数量与说明页路径。</td></tr><tr><td class="fname">调阅 show</td><td>报编号即输出该项目的完整说明书内容，省去翻记录。</td></tr><tr><td class="fname">更新 update</td><td>修正路径、补充使用方式或追加版本记录后自动重新渲染对应说明页。</td></tr><tr><td class="fname">渲染 render</td><td>生成自包含单文件 HTML：内联 CSS、viewport 适配、深浅色自动切换、无外链，手机离线可看。</td></tr><tr><td class="fname">回溯补录</td><td>项目未及时登记时，可从历史会话产物路径反查后补录，不靠记忆编造。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>首次使用：确认 skill 目录下存在 projects.json 与 guides/ 目录。</li><li>登记项目：提供名称、类型、摘要、产物绝对路径；写明使用方式与注意事项。</li><li>生成说明：执行 render 重建对应 P00x.html，再执行 index 重建总览页。</li><li>忘记编号：先 list 看清单，再按编号 show 调阅。</li><li>路径变动：update 修正后重建，避免说明书指向失效路径。</li><li>手机查看：直接把 guides/P00x.html 或 INDEX.html 传到手机打开，无需联网。</li><li>线上查看：手机浏览器打开站点网址，即为最新版说明书，可「添加到主屏幕」当 App 用。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\SKILL.md</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\projects.json</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\scripts\vault.py</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\guides\SKILL-GUIDE.html</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>说明页由 projects.json 驱动，直接手改 HTML 会在下次重建时被覆盖。</li><li>只登记路径与用法，不保存产物文件本体，原文件被移动或删除需同步 update。</li><li>新增说明页后需重建 INDEX，否则总览看不到新条目。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">换电脑后还能用吗？</p><p class="a">把整个 project-vault 目录（含 projects.json 与 guides）复制到新机器同一位置即可，路径迁移后需 update 修正。</p></div><div class="qa"><p class="q">怎么新增一个项目？</p><p class="a">提供名称、类型、摘要、产物绝对路径三项核心信息即可登记，其余字段可后补。</p></div><div class="qa"><p class="q">说明书为什么不是手写 HTML？</p><p class="a">手写会与登记信息脱节；统一由模板渲染，改一次数据所有页面同步。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">项目库位于技能目录内，跨会话长期有效；更新说明书时旧版自动保留为 .bak-时间戳.html。序号随清单顺序变化，请以回复中显示的序号为准。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>list / index / show 三个子命令已实测通过。</li><li>当前库内 6 个项目，均已生成独立说明页，INDEX.html 含 6 条。</li><li>说明页为单文件自包含，无外链资源，移动端可直接打开。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-18</span> 登记入库：建立技能框架、项目库与说明书生成脚本</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 新增：说明书展示线上访问地址、INDEX 标注已上线项目、各页顶部增加返回目录按钮</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P001.html</li><li><span class="t">2026-10-18</span> 独立部署：线上地址改为独立站点（Netlify，已于 2026-10-19 迁移至 Cloudflare）</li><li><span class="t">2026-10-20</span> 部署迁移：档案馆主站由 Netlify 迁至 GitHub Pages，地址见页首（部署后回填）</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-19 08:48</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'index.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

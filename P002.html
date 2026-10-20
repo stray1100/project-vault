@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="1815288662"/>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>川麻助手（离线 PWA 算番） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
+<link rel="apple-touch-icon" href="icons/icon-180.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+  <span class="badge">P002</span>
+  <h1>川麻助手（离线 PWA 算番）</h1>
+  <p class="summary">四川麻将血战到底拍照算番，单文件 PWA，装到 iPhone 主屏后可完全离线使用。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P002</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">HTML/CSS/JS 单文件 / PWA（manifest + Service Worker） / localStorage</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://chuanma.netlify.app" target="_blank" rel="noopener" style="color:var(--accent)">https://chuanma.netlify.app</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-18 20:34</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://chuanma.netlify.app" target="_blank" rel="noopener">https://chuanma.netlify.app</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">Netlify · 部署于 2026-10-18。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本项目已单独部署为独立站点，打开该网址即进入项目首页，不再是档案馆站点下的子页面；同样可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">本项目已独立部署；完整项目索引见项目档案馆：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>四川麻将血战到底拍照算番，单文件 PWA，装到 iPhone 主屏后可完全离线使用。</p>
+    <p class="para">川麻「血战到底」的拍照算番辅助工具，单文件 PWA：手机浏览器打开即用，装到主屏后可离线，数据只存本机。</p><p class="para">解决两件事：开局（骰子定开牌方位、留墩、换三张方向）与和牌后算番（点选牌张得番数、倍数、得分）。照片只作对照底图，识别靠人工点选，不做图像识别。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">牌面拍照</td><td>打开摄像头、拍照、从相册选、重拍、关闭。照片仅作对照，算番以点选录入为准。</td></tr><tr><td class="fname">牌面录入</td><td>分「手牌」「副露」「和牌张」三类计数；碰、明杠、暗杠、撤销、清空；点已录牌面可删除。</td></tr><tr><td class="fname">和牌情形</td><td>自摸、杠上花、杠上炮、天和、地和；封顶可选 4 番（8 倍）/5 番（16 倍）/6 番（32 倍）/不封顶；另设底分与未胡人数（3/2/1 人）。</td></tr><tr><td class="fname">算番结果</td><td>给出番数、倍数、得分与拆牌明细，可一键复制结果发群里。</td></tr><tr><td class="fname">开局定方位</td><td>录入两颗骰子实际点数与庄家座位（自己/下家/对家/上家），给出开牌方位、留墩与摸牌顺序。</td></tr><tr><td class="fname">换三张</td><td>选 3 张同一花色手牌，按骰子和值或顺/逆时针、换对家三种方向交换，并提示定缺。</td></tr><tr><td class="fname">规则页</td><td>规则口径、番型表（基本番取最大不重复）、另加番（每项 +1 番可叠加）、计分方式、规则来源与适用边界。</td></tr><tr><td class="fname">主题与本机记录</td><td>深浅主题切换；开局录入与主题存 localStorage（cm_open_d1、cm_open_d2、cm_open_dealer、cm-theme）。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>打开：双击 index.html（仅查看可用），或部署后用 https 地址访问。</li><li>装到主屏：iOS 用 Safari 打开 → 分享 → 添加到主屏幕；Android 用 Chrome → 安装应用。</li><li>首次联网打开一次，等 Service Worker（cm-pwa-v1.0.0）缓存完成，之后断网也能用。</li><li>开局：切到「开局」页，点骰面或 ± 录入两颗骰子的实际点数，选庄家座位，读取开牌方位与留墩。</li><li>换三张：选 3 张同花色手牌，按提示方向交换，交换后记得定缺（缺门内不能打、不能碰杠）。</li><li>算番：回「算番」页，先拍照或从相册导入作对照底图。</li><li>逐张点选录入手牌，再录副露（碰/明杠/暗杠）与和牌张；录错点牌面删除或按撤销。</li><li>选和牌情形、封顶档位、底分、未胡人数，点「算番」看番数与得分。</li><li>需要留证或发群：点「复制结果」，粘贴到聊天或备忘。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\workspace\conv_05be6bba0c66481bac5cc2d8cff1b906\output\川麻助手_完全离线PWA包\index.html</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\workspace\conv_05be6bba0c66481bac5cc2d8cff1b906\output\川麻助手_完全离线PWA包\manifest.json</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\workspace\conv_05be6bba0c66481bac5cc2d8cff1b906\output\川麻助手_完全离线PWA包\sw.js</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>直接双击以 file:// 打开时，浏览器通常禁用摄像头，需改用「相册选」导入照片，或用 http/https、localhost 访问。</li><li>不做自动识别：牌张必须人工点选，照片只是对照。</li><li>按内置规则口径计算，地方性加番与彩头约定可能未覆盖，牌桌实际以规则页口径为准。</li><li>无账号、无云同步，清站点数据即丢失本机记录。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">摄像头打不开怎么办？</p><p class="a">多为 file:// 安全限制。改用「拍照 / 从相册选」，或用本地服务器 http://localhost、https 打开。</p></div><div class="qa"><p class="q">算番和牌桌算法不一致？</p><p class="a">先核对规则页口径：封顶档位、底分、未胡人数是否选对；地方加番本工具未必收录。</p></div><div class="qa"><p class="q">更新后手机仍是旧界面？</p><p class="a">Service Worker 有缓存，需递增 sw.js 的 CACHE_VERSION 后重新部署；也可删掉主屏图标重加。</p></div><div class="qa"><p class="q">电脑上能用吗？</p><p class="a">可以，鼠标点选即可；竖屏布局在手机上更顺手。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">改动页面后必须先把 sw.js 的 CACHE_VERSION 递增再重新部署，否则 iPhone 仍读旧缓存；图标或内容未刷新时，删除主屏图标后用 Safari 重新打开并再次添加。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>单文件自包含、无外链依赖；manifest 为 standalone、portrait，start_url/scope/id 均为 ./。</li><li>Service Worker 版本 cm-pwa-v1.0.0，实测激活成功，离线重新加载正常。</li><li>算番核对：123 万 + 456 万 + 789 万 + 123 筒，和牌张五筒 → 平胡 1 番 1 倍，点炮 1 分。</li><li>390×844 竖屏下四段主流程可见、无横向溢出。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-18</span> 登记入库</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P002.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://chuanma.netlify.app</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-18 20:34</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'index.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>

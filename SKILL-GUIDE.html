@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="1815288662"/>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>项目档案馆 · 使用说明</title>
+<style>
+  :root{--bg:#f5f7fb;--card:#ffffff;--ink:#111621;--sub:#5b6472;--line:#e3e8f0;--accent:#2563eb;--accent2:#0ea5a5;--warn:#b45309;--warnbg:#fff8ed;--code:#eef2f9;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:18px 14px 44px;background:var(--bg);color:var(--ink);
+       font:15px/1.75 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:780px;margin:0 auto;}
+  header{background:linear-gradient(135deg,#2563eb,#0ea5a5);color:#fff;border-radius:16px;padding:20px 18px;margin-bottom:16px;}
+  header .tag{display:inline-block;font-size:12px;background:rgba(255,255,255,.22);border-radius:999px;padding:2px 10px;letter-spacing:.4px;}
+  header h1{margin:10px 0 6px;font-size:23px;line-height:1.3;}
+  header p{margin:0;font-size:13.5px;opacity:.92;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:15px 16px;margin:0 0 14px;}
+  h2{font-size:15.5px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  h3{font-size:14px;margin:14px 0 6px;color:var(--sub);}
+  p{margin:6px 0;}
+  ul,ol{margin:0;padding-left:20px;}
+  li{margin:6px 0;}
+  code{background:var(--code);border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .say{display:inline-block;background:#eef4ff;color:#1d4ed8;border-radius:6px;padding:1px 7px;font-size:13.5px;white-space:nowrap;}
+  .grid{display:grid;grid-template-columns:1fr;gap:10px;}
+  @media(min-width:640px){.grid{grid-template-columns:1fr 1fr;}}
+  .step{border:1px solid var(--line);border-radius:12px;padding:11px 13px;background:#fbfcff;}
+  .step b{display:block;font-size:14px;margin-bottom:4px;}
+  .step span{color:var(--sub);font-size:13.5px;}
+  .num{display:inline-flex;width:20px;height:20px;border-radius:50%;background:var(--accent,#2563eb);color:#fff;
+       font-size:12px;align-items:center;justify-content:center;margin-right:6px;}
+  .warn{background:var(--warnbg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:9px 12px;font-size:14px;}
+  .muted{color:#98a1b0;font-size:13px;}
+  footer{text-align:center;color:#9aa3b2;font-size:12px;margin-top:18px;}
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;--code:#1e2634;--warnbg:#2a1f13;}
+    .step{background:#141a24;} .say{background:#1b2740;color:#93b4ff;}
+  }
+
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:10px;
+      margin:0 0 12px;padding:8px 10px 8px 13px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line,#dfe4ee);background:var(--accent,#2563eb);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+    border:1px solid var(--line);background:#fff;color:var(--ink);
+    font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;}
+  .back svg{width:13px;height:13px;display:block;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink);border-color:#2b3546;}
+  }
+</style>
+<link rel="manifest" href="manifest.webmanifest"/>
+<meta name="theme-color" content="#2563eb"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
+<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
+<link rel="apple-touch-icon" href="icons/icon-180.png"/>
+<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
+</head>
+<body>
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+  <header>
+    <span class="tag">技能 · 使用说明</span>
+    <h1>项目档案馆 Project Vault</h1>
+    <p>登记你在 Marvis 里做过的每一个项目，按序号随时调阅对应的 HTML 说明书。</p>
+  </header>
+
+  <div class="card">
+    <h2>它能做什么</h2>
+    <ul>
+      <li>把散落在各个会话里的项目，统一登记成一份带编号的清单。</li>
+      <li>每个项目配一份自包含 HTML 使用说明，手机、电脑都能直接看。</li>
+      <li>唤出即出清单，报序号即出说明，不用翻聊天记录。</li>
+      <li>支持从历史会话中扫描已落盘的产物并补录。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>四步上手</h2>
+    <div class="grid">
+      <div class="step"><b><span class="num">1</span>唤出</b><span>说 <span class="say">我的项目</span> 或 <span class="say">项目列表</span>，返回带序号清单。</span></div>
+      <div class="step"><b><span class="num">2</span>选择</b><span>回复 <span class="say">3</span> 或 <span class="say">第 3 个</span>，给出该项目 HTML 说明书。</span></div>
+      <div class="step"><b><span class="num">3</span>登记</b><span>说 <span class="say">记录新项目：名称 + 路径</span>，自动入库并生成说明书。</span></div>
+      <div class="step"><b><span class="num">4</span>补录</b><span>说 <span class="say">扫描历史项目</span>，从旧会话抽取产物补进清单。</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>数据放在哪</h2>
+    <p class="muted">全部位于技能目录内，换会话不丢，可整体备份。</p>
+    <ul>
+      <li>项目库：<code>skills\custom\project-vault\projects.json</code></li>
+      <li>说明书：<code>skills\custom\project-vault\guides\P001.html</code> …</li>
+      <li>数据脚本：<code>skills\custom\project-vault\scripts\vault.py</code></li>
+      <li>技能说明：<code>skills\custom\project-vault\SKILL.md</code></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>线上站点与部署</h2>
+    <ul>
+      <li><b>每个项目都是自己的独立站点</b>：下面 6 条公开地址各指向一个单独部署的站点，打开即该项目首页，不存在「统一站点 + 子页面」的关系。</li>
+      <li><b>各项目独立网址</b>（推荐直接把这些地址发给手机，打开即落地该项目）：
+        <ul>
+          <li>P001 项目档案馆（本档案馆自身）：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a></li>
+          <li>P002 川麻助手（离线 PWA 算番）：<a href="https://chuanma.netlify.app" target="_blank" rel="noopener">https://chuanma.netlify.app</a></li>
+          <li>P003 内科每日学习助手（PWA）：<a href="https://lovely-pixie-06c8d9.netlify.app" target="_blank" rel="noopener">https://lovely-pixie-06c8d9.netlify.app</a></li>
+          <li>P004 医学题库解析兼职渠道指南：<a href="https://tiku-2026.netlify.app" target="_blank" rel="noopener">https://tiku-2026.netlify.app</a></li>
+<li>P006 产出与交付规范（7 条）：<a href="https://guifan.netlify.app" target="_blank" rel="noopener">https://guifan.netlify.app</a></li>
+          <li>本页（技能说明）：<a href="https://stray1100.github.io/project-vault/SKILL-GUIDE.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/SKILL-GUIDE.html</a></li>
+        </ul>
+      </li>
+      <li><b>档案馆本体</b>：主站已迁移至 GitHub Pages：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>。</li>
+      <li>交付任何产物时默认先问一句「是否上传 Netlify」，不擅自上传。</li>
+    </ul>
+      </li>
+      <li>交付任何产物时默认先问一句「是否上传 Netlify」，不擅自上传。</li>
+      <li><b>网址写法规矩</b>：<code>site.url</code> 必须写<b>该项目说明页的直达地址</b>（站点域名 + <code>/P00x.html</code>，文件名与 <code>guides/P00x.html</code> 完全一致）；整站首页只用于清单页页头展示，不要写进项目字段，否则点开一律落到 INDEX 首页。</li>
+      <li>写入 <code>site</code> 字段后重建：说明页出现「线上访问」卡片（直达地址 + 首页链接），清单卡片显示「已上线」，清单页头出现 P001–P006 直达胶囊。</li>
+      <li>每页顶部「目录」按钮即返回清单：统一回 <code>index.html</code>。</li>
+      <li><b>更新机制</b>：每页顶部「更新」按钮会拉取站点根的 <code>version.json</code> 与本页版本指纹比对，落后就清缓存 + 硬重载，已是最新则提示「已是最新」；页面每次打开还会自动检查一次。</li>
+      <li>因此<b>已经把清单加到 iPhone 主屏幕的，重新部署后下次打开会自动变成最新版</b>，不需要删图标再加一遍。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>清单如何分类</h2>
+    <ul>
+      <li>清单页按项目类型分组展示：技能 → Web 应用 → 小程序 → 工具 → 脚本 → 文档包 → 文档 → 素材，未列出的类型排最后一组。</li>
+      <li>每组标题右侧标注该组项目数量与一句类别说明，页头有类别胶囊可一键跳到对应分组。</li>
+      <li>卡片序号仍是全局连续序号，与对话里「第 N 个项目」的编号完全一致，不会因分组改变。</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>说明书里有什么</h2>
+    <ol>
+      <li>基本信息：编号、类型、创建日期、技术栈、最后更新。</li>
+      <li>用途：这个项目解决什么问题。</li>
+      <li>使用方式：逐条可照做的启动步骤。</li>
+      <li>关键路径与产物：真实落盘的位置。</li>
+      <li>注意事项与版本记录。</li>
+    </ol>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="warn">只登记真实存在、可访问的产物路径。仅口头设想、未落盘的内容不进入项目库，避免清单失真。</p>
+    <ul style="margin-top:10px;">
+      <li>序号随清单顺序变化，跨会话后请以最新清单为准；内部编号 P001 才是稳定标识。</li>
+      <li>更新项目会重建说明书，旧版保留为 <code>.bak-时间戳.html</code>，可回溯。</li>
+      <li>删除项目库文件等于清空档案馆，操作前建议先备份。</li>
+    </ul>
+  </div>
+
+  <footer>项目档案馆 · v1.0 · 2026-10-18</footer>
+</div>
+
+<script>
+(function(){
+  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'index.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+<script>
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load', function(){
+    navigator.serviceWorker.register('sw.js').catch(function(){});
+  });
+}
+</script>
+</body>
+</html>
