@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<meta name="pv-build" content="7420428996">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>项目档案馆（Project Vault） · 使用说明</title>
@@ -72,7 +73,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-22 15:33</span>
+  <span class="ver" id="mvVer">构建于 2026-10-22 20:05</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -85,7 +86,7 @@
 
   <div class="card">
     <h2>基本信息</h2>
-    <table><tr><td class="k">项目编号</td><td class="v">P001</td></tr><tr><td class="k">类型</td><td class="v">技能</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">SKILL.md 技能指令 / Python 数据脚本 / 自包含 HTML</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-22 16:40</td></tr></table>
+    <table><tr><td class="k">项目编号</td><td class="v">P001</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">SKILL.md 技能指令 / Python 数据脚本 / 自包含 HTML</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-19 08:48</td></tr></table>
   </div>
   <div class="card">
     <h2>线上访问</h2>
@@ -94,8 +95,8 @@
       <a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>
     </div>
     <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-22。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
-    <p class="muted" style="font-size:13px;margin:8px 0 0;">档案馆清单页本身，集中展示全部公开项目的说明入口。</p>
-    
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">档案馆主站。Public 仓库 stray1100/project-vault，Pages 指向 main/(root)；覆盖 10 个项目中的全部 9 个公开项目，索引页与各项目说明书均已上线。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
   </div>
 
 
@@ -138,15 +139,15 @@
 
   <div class="card">
     <h2>验证状态</h2>
-    <ul><li>list / index / show 三个子命令已实测通过。</li><li>当前库内 10 个项目，9 个公开项目均已生成独立说明页并上线，INDEX.html 含 9 条；P005 为私密项目不展示。</li><li>说明页为单文件自包含，无外链资源，移动端可直接打开。</li></ul>
+    <ul><li>list / index / show 三个子命令已实测通过。</li><li>当前库内 6 个项目，均已生成独立说明页，INDEX.html 含 6 条。</li><li>说明页为单文件自包含，无外链资源，移动端可直接打开。</li></ul>
   </div>
 
   <div class="card">
     <h2>版本记录</h2>
-    <ul><li><span class="t">2026-10-18</span> 登记入库：建立技能框架、项目库与说明书生成脚本</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 新增：说明书展示线上访问地址、INDEX 标注已上线项目、各页顶部增加返回目录按钮</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P001.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://project-vault-2026.netlify.app</li><li><span class="t">2026-10-19</span> 部署迁移：档案馆主站由 Netlify 迁至 Cloudflare Workers（该域名已于 2026-10-22 停用）</li><li><span class="t">2026-10-22</span> 部署回迁：主站迁至 GitHub Pages（仓库 stray1100/project-vault），覆盖至 P010 共 9 个公开项目，P005 私密项目不上线</li></ul>
+    <ul><li><span class="t">2026-10-18</span> 登记入库：建立技能框架、项目库与说明书生成脚本</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 新增：说明书展示线上访问地址、INDEX 标注已上线项目、各页顶部增加返回目录按钮</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P001.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://project-vault-2026.netlify.app</li><li><span class="t">2026-10-19</span> 部署迁移：档案馆主站迁至 GitHub Pages（仓库 stray1100/project-vault，main/root），地址 https://stray1100.github.io/project-vault/</li></ul>
   </div>
 
-  <footer>项目档案馆 · 2026-10-22 16:40</footer>
+  <footer>项目档案馆 · 2026-10-19 08:48</footer>
 </div>
 <script>
 (function(){
@@ -195,7 +196,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669496">）
+  // 读取构建标识（由部署脚本注入到 ）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';

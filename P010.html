@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
+<meta name="pv-build" content="7420428996">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>关键词工程助手（prompt-forge v7） · 使用说明</title>
@@ -72,7 +73,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-22 19:36</span>
+  <span class="ver" id="mvVer">构建于 2026-10-22 20:05</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -85,7 +86,7 @@
 
   <div class="card">
     <h2>基本信息</h2>
-    <table><tr><td class="k">项目编号</td><td class="v">P010</td></tr><tr><td class="k">类型</td><td class="v">工具</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-22</td></tr><tr><td class="k">技术栈</td><td class="v">HTML/CSS/JS 单文件 / 无框架无外链 / 本地词表识别引擎</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/prompt-forge.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-22 19:36</td></tr></table>
+    <table><tr><td class="k">项目编号</td><td class="v">P010</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-22</td></tr><tr><td class="k">技术栈</td><td class="v">HTML/CSS/JS 单文件 / 无框架无外链 / 本地词表识别引擎</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/prompt-forge.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-22 19:36</td></tr></table>
   </div>
   <div class="card">
     <h2>线上访问</h2>
@@ -195,7 +196,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669496">）
+  // 读取构建标识（由部署脚本注入到 ）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';
