@@ -220,7 +220,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669011">）
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669496">）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';

@@ -122,9 +122,9 @@
   </button>
 </div>
   <header>
-    <h1>项目档案馆<span class="cnt">10 个项目 · 5 类</span></h1>
+    <h1>项目档案馆<span class="cnt">10 个项目 · 9 个公开 · 5 类</span></h1>
     <p class="sub">按类别归档，序号即对话中调阅用的编号；点卡片可打开该项目的使用说明。</p>
-    <p class="sitebar">档案馆部署地址：<a href="https://project-vault.3188597493.workers.dev" target="_blank" rel="noopener">project-vault.3188597493.workers.dev</a></p>
+    <p class="sitebar">档案馆部署地址：<a href="https://stray1100.github.io/project-vault/" target="_blank" rel="noopener">stray1100.github.io/project-vault</a></p>
     <p class="sitebar direct">各项目独立网址（点开即该项目首页）：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" title="项目档案馆（Project Vault） · https://stray1100.github.io/project-vault">P001 stray1100</a> · <a href="https://chuanma.netlify.app" target="_blank" rel="noopener" title="川麻助手（离线 PWA 算番） · https://chuanma.netlify.app">P002 chuanma</a> · <a href="https://lovely-pixie-06c8d9.netlify.app" target="_blank" rel="noopener" title="内科每日学习助手（PWA） · https://lovely-pixie-06c8d9.netlify.app">P003 lovely-pixie-06c8d9</a> · <a href="https://tiku-2026.netlify.app" target="_blank" rel="noopener" title="医学题库解析兼职渠道指南 · https://tiku-2026.netlify.app">P004 tiku-2026</a> · <a href="https://guifan.netlify.app" target="_blank" rel="noopener" title="产出与交付规范（7 条） · https://guifan.netlify.app">P006 guifan</a> · <a href="https://stray1100.github.io/physiology-daily/" target="_blank" rel="noopener" title="生理学每日学习助手（PWA） · https://stray1100.github.io/physiology-daily/">P007 stray1100</a> · <a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener" title="关键词工程助手（prompt-forge v7） · https://stray1100.github.io/project-vault/tools/prompt-forge.html">P010 stray1100</a></p>
     <nav class="cats"><a class="chip" href="#cat1">技能<b>2</b></a><a class="chip" href="#cat2">Web 应用<b>3</b></a><a class="chip" href="#cat3">工具<b>1</b></a><a class="chip" href="#cat4">文档包<b>1</b></a><a class="chip" href="#cat5">文档<b>3</b></a></nav>
   </header>
@@ -292,7 +292,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669011">）
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792669496">）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';
