@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-CN" data-theme="dark">
 <head>
+<meta name="pv-build" content="7420428996">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>关键词小助手 · 说人话，出好活</title>
@@ -362,6 +363,7 @@ html[data-theme="light"] .qaChips .chip.on{background:#e2eeff;border-color:var(-
       <div class="sub" id="brandDesc">用一句大白话告诉我你要干什么，我把它变成 AI 能照做的一段话。</div>
     </div>
     <div class="hbtns">
+      <button class="btn sm" id="pvUpd" type="button" aria-label="检查并更新到最新版本" title="检查并更新到最新版本">更新</button>
       <button class="btn sm" id="btnTheme" type="button" aria-label="切换深浅色">浅色</button>
     </div>
   </div>
@@ -2535,5 +2537,28 @@ function renderOut(){
 })();
 
 </script>
+<script>
+/* 「更新」按钮：比对 version.json 的 build，不一致即清缓存+注销 SW+硬重载 */
+(function(){
+  var b=document.getElementById('pvUpd'); if(!b) return;
+  var m=document.querySelector('meta[name="pv-build"]'); var local=m?m.getAttribute('content'):'';
+  var t0=b.textContent;
+  function say(t,ms){ b.textContent=t; setTimeout(function(){ b.textContent=t0; }, ms||1600); }
+  function hard(){
+    try{ if('caches' in window){ caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){}); } }catch(e){}
+    try{ if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){ navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ try{ r.unregister(); }catch(e){} }); }); } }catch(e){}
+    setTimeout(function(){ var u=location.href.split('#')[0]; var sep=u.indexOf('?')>=0?'&':'?'; try{ location.replace(u+sep+'t='+Date.now()); }catch(e){ location.reload(); } },150);
+  }
+  b.addEventListener('click', function(){
+    if(!/^https?:/i.test(location.protocol)){ hard(); return; }
+    var base = location.pathname.indexOf('/tools/') >= 0 ? '../' : '';
+    say('检查中');
+    fetch(base+'version.json?t='+Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+      if(j && j.build && j.build !== local){ say('更新中'); hard(); } else { say('已最新'); }
+    }).catch(function(){ hard(); });
+  });
+})();
+</script>
+
 </body>
 </html>
