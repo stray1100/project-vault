@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>花叔开源 Skill 合集（本地安装） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-22 15:33</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P009</span>
+  <h1>花叔开源 Skill 合集（本地安装）</h1>
+  <p class="summary">把花叔（alchaincyf）的 5 个开源 Skill 装进本机 Marvis 技能池并写入注册表，另补装 huashu-chrome 命令行与 git（含 GitHub 镜像重写），附一份安装使用说明。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P009</td></tr><tr><td class="k">类型</td><td class="v">技能</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-22</td></tr><tr><td class="k">技术栈</td><td class="v">Marvis Skill / Node.js 24.19 / Python 3.11 / npm 11.17 / uv 0.13.5 / Git 2.56.0</td></tr><tr><td class="k">线上地址</td><td class="v">未部署</td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-22 14:26</td></tr></table>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>把花叔（alchaincyf）的 5 个开源 Skill 装进本机 Marvis 技能池并写入注册表，另补装 huashu-chrome 命令行与 git（含 GitHub 镜像重写），附一份安装使用说明。</p>
+    
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <p class="muted">暂无功能模块记录。</p>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>第 1 步 · 让技能进入技能池：右键任务栏右下角托盘里的 Marvis 图标 → 选「退出」（只关闭窗口无效）→ 重新打开 Marvis → 在任意会话发送「我的技能」。预期看到 5 条：huashu-nuwa、darwin-skill、huashu-design、huashu-art-motion、huashu-mac-use。若列表里没有：说明 skills\custom\&lt;名字&gt;\SKILL.md 不在或 data.db 的 skill_index 缺 custom 记录，直接跳到第 8 步排查。</li><li>第 2 步 · 验证「女娲」（把一个人的思维蒸馏成 skill）：发送「女娲，把查理·芒格的思维蒸馏成 skill」。预期按 3 段回显：①调研提纲与信息来源清单 ②心智模型 / 决策规则清单 ③在 skills\custom\munger-thinking\ 下生成 SKILL.md。通过标准是磁盘上真的出现该文件；如果只在对话框里贴了一段文字、没有建目录，说明 skill 没被加载，重发「用 nuwa 技能，把芒格的思维蒸馏成 skill」。</li><li>第 3 步 · 验证「达尔文」（给已有 skill 打分）：发送「达尔文，给 huashu-design 打分」。预期输出三段评分表——结构维度（满分 59）、效果维度（满分 35）、meta 维度（满分 6），外加 top3 改进项与具体改法；改完再跑一次可对比分数前后变化。</li><li>第 4 步 · 验证「Design」（HTML 视觉设计）：发送「用 design 做三个方向的封面初稿，主题：科室质控汇报」。预期先在 temp 目录产出 3 份独立 HTML 初稿，并各配一句话说明风格差异，等你选定方向后再细化，不会直接吐一版终稿。首次运行若报 playwright 找不到浏览器，先按第 6 步装 chromium，然后原话重发。</li><li>第 5 步 · 验证「Art-Motion」（视频分镜 / 动效）：发送「用 art-motion 出 30 秒镜头表，主题：高血压如何伤肾」。预期输出逐镜头表（镜号 / 时长 / 画面 / 字幕 / 音效）并自动调用 storyboard_lint.py 自检，红灯数为 0 才进入下一环节；报 ffmpeg 相关错误时按第 6 步补装。</li><li>第 6 步 · 补运行依赖（只在报错时做）：打开 PowerShell，cd 到 %APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\huashu-design，执行 npx playwright install chromium（约 130 MB；下载超时就先设 $env:PLAYWRIGHT_DOWNLOAD_HOST="https://npmmirror.com/mirrors/playwright" 再重跑）；再执行 winget install --id Gyan.FFmpeg -e 装 ffmpeg，装完新开一个终端用 ffmpeg -version 确认有版本号输出。git 与 uv 已装好，无需再装。</li><li>第 7 步 · 日常怎么用：不需要写全名，说「用 design 画一张…」「用 art-motion 排一段…」「让达尔文评审这个 skill」就会命中；同一会话内可连续调用，跨会话重启后依然可用。想确认当前是否加载：发送「我的技能」看列表即可。</li><li>第 8 步 · 排错：技能不生效按顺序查三处——①目录是否存在：dir skills\custom\&lt;名字&gt;，必须有 SKILL.md；②库内是否有记录：在 PowerShell 里跑 python -c "import sqlite3,os;p=os.path.expandvars(r'%APPDATA%\Tencent\Marvis\User\<用户ID>\data.db');print(sqlite3.connect(p).execute(\"select name,version from skill_index where source='custom'\").fetchall())"，能看到 5 条才对；③改库前必须先把 data.db 复制成 data.db.bak-&lt;时间戳&gt;（已有的备份为 data.db.bak-20261022123819），改完必须重启客户端，运行期不热更新。</li><li>第 9 步 · 更新：cd 进 skills\custom\&lt;名字&gt; 后执行 git pull（git 已配置 gh-proxy.com 镜像重写，直连 GitHub 失败也会自动走镜像），或从 GitHub 下载 archive zip 解压覆盖同名目录；更新后关闭 Marvis 再打开才生效。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_d304927d4cdf4a2db6a979237d82ce6a\output\花叔Skill合集-安装与使用说明.md</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\huashu-nuwa</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\darwin-skill</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\huashu-design</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\huashu-art-motion</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\huashu-mac-use</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li class="muted">暂无记录。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <p class="muted">暂无记录。</p>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">技能目录与 DB 记录需重启客户端才进入技能池，运行期不热更新；改 data.db 前先备份（已有 data.db.bak-20261022123819）。art-motion 依赖 ffmpeg，design 依赖 playwright chromium。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li class="muted">尚未实测。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-22</span> 登记入库</li><li><span class="t">2026-10-22</span> 更新：usage、notes</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-22 14:26</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792657968">）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>

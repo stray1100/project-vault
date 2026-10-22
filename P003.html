@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="1815288662"/>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>内科每日学习助手（PWA） · 使用说明</title>
@@ -65,28 +63,22 @@
     code{background:#1e2634;} .notes{background:#2a1f13;}
   }
 </style>
-<link rel="manifest" href="manifest.webmanifest"/>
-<meta name="theme-color" content="#2563eb"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
-<link rel="apple-touch-icon" href="icons/icon-180.png"/>
-<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
 </head>
 <body>
+<meta name="robots" content="noindex,nofollow,noarchive">
 <div class="wrap">
 <div class="rbar" id="mvBar">
-  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <span class="ver" id="mvVer">构建于 2026-10-22 15:33</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
   </button>
 </div>
+
   <span class="badge">P003</span>
   <h1>内科每日学习助手（PWA）</h1>
   <p class="summary">规培期间按日推送内科学习内容的离线 PWA，可部署为长期站点并添加到手机主屏。</p>
@@ -102,8 +94,7 @@
       <a href="https://lovely-pixie-06c8d9.netlify.app" target="_blank" rel="noopener">https://lovely-pixie-06c8d9.netlify.app</a>
     </div>
     <p class="muted" style="font-size:13px;margin:8px 0 0;">Netlify · 部署于 2026-10-18。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
-    <p class="muted" style="font-size:13px;margin:8px 0 0;">本项目已单独部署为独立站点，打开该网址即进入项目首页，不再是档案馆站点下的子页面；同样可「添加到主屏幕」当 App 使用。</p>
-    <p class="muted" style="font-size:13px;margin:6px 0 0;">该站点当前为 v1.1.0，已含「材料」页签与 25 条呼吸系统精讲（2026-10-16 至 2026-11-14）；顶部更新工具条与 version.json 尚未部署，补部署后即与本页说明一致。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本项目正式网址为现成独立站点，打开即进入项目首页，不再是档案馆站点下的子页面；同样可「添加到主屏幕」当 App 使用。该站点已含 v1.1.0 的 25 条呼吸系统学习材料，更新工具条与 version.json 待补部署。</p>
     <p class="muted" style="font-size:13px;margin:6px 0 0;">本项目已独立部署；完整项目索引见项目档案馆：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault</a></p>
   </div>
 
@@ -127,7 +118,7 @@
 
   <div class="card">
     <h2>关键路径与产物</h2>
-    <ul><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\内科每日学习助手PWA-可部署包.zip</code></li></ul>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\内科每日学习助手PWA-可部署包.zip</code></li></ul>
   </div>
 
   <div class="card">
@@ -152,14 +143,14 @@
 
   <div class="card">
     <h2>版本记录</h2>
-    <ul><li><span class="t">2026-10-18</span> 登记入库</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P003.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://neike.netlify.app</li><li><span class="t">2026-10-19</span> 线上地址改用现成站点 https://lovely-pixie-06c8d9.netlify.app（原 neike 站保留可用）</li></ul>
+    <ul><li><span class="t">2026-10-18</span> 登记入库</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P003.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://neike.netlify.app</li><li><span class="t">2026-10-19</span> 线上地址改用现成站点 https://lovely-pixie-06c8d9.netlify.app（原 neike.netlify.app 保留可用）</li></ul>
   </div>
 
   <footer>项目档案馆 · 2026-10-19 00:02</footer>
 </div>
 <script>
 (function(){
-  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
   var bk = document.getElementById('mvBack');
   if(bk){
     var f = (location.pathname.split('/').pop() || '').toLowerCase();
@@ -168,7 +159,7 @@
     }else if(location.protocol.indexOf('http') === 0){
       bk.setAttribute('href', 'index.html');
     }else{
-      bk.setAttribute('href', 'index.html');
+      bk.setAttribute('href', 'INDEX.html');
     }
   }
 
@@ -204,7 +195,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792657968">）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';
@@ -266,13 +257,6 @@
     });
   }
 })();
-</script>
-<script>
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').catch(function(){});
-  });
-}
 </script>
 </body>
 </html>

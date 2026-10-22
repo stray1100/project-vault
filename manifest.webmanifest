@@ -1,7 +1,7 @@
 {
   "name": "项目档案馆 · 使用说明",
   "short_name": "项目档案馆",
-  "description": "5 个公开项目的使用说明合集，可离线阅读",
+  "description": "9 个公开项目的使用说明合集，可离线阅读",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",

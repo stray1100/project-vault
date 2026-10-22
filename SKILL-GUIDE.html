@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="1815288662"/>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>项目档案馆 · 使用说明</title>
@@ -63,23 +61,15 @@
     .back{background:#1b2230;color:var(--ink);border-color:#2b3546;}
   }
 </style>
-<link rel="manifest" href="manifest.webmanifest"/>
-<meta name="theme-color" content="#2563eb"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
-<link rel="apple-touch-icon" href="icons/icon-180.png"/>
-<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
 </head>
 <body>
 <div class="wrap">
 <div class="rbar" id="mvBar">
-  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <span class="ver" id="mvVer">构建于 2026-10-18 18:14</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -125,25 +115,25 @@
   <div class="card">
     <h2>线上站点与部署</h2>
     <ul>
-      <li><b>每个项目都是自己的独立站点</b>：下面 6 条公开地址各指向一个单独部署的站点，打开即该项目首页，不存在「统一站点 + 子页面」的关系。</li>
+      <li><b>每个项目都是自己的独立站点</b>：下面 7 条地址各指向一个单独部署的站点，打开即该项目首页，不存在「统一站点 + 子页面」的关系。</li>
       <li><b>各项目独立网址</b>（推荐直接把这些地址发给手机，打开即落地该项目）：
         <ul>
           <li>P001 项目档案馆（本档案馆自身）：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a></li>
           <li>P002 川麻助手（离线 PWA 算番）：<a href="https://chuanma.netlify.app" target="_blank" rel="noopener">https://chuanma.netlify.app</a></li>
           <li>P003 内科每日学习助手（PWA）：<a href="https://lovely-pixie-06c8d9.netlify.app" target="_blank" rel="noopener">https://lovely-pixie-06c8d9.netlify.app</a></li>
           <li>P004 医学题库解析兼职渠道指南：<a href="https://tiku-2026.netlify.app" target="_blank" rel="noopener">https://tiku-2026.netlify.app</a></li>
-<li>P006 产出与交付规范（7 条）：<a href="https://guifan.netlify.app" target="_blank" rel="noopener">https://guifan.netlify.app</a></li>
+          <li>P006 产出与交付规范（7 条）：<a href="https://guifan.netlify.app" target="_blank" rel="noopener">https://guifan.netlify.app</a></li>
           <li>本页（技能说明）：<a href="https://stray1100.github.io/project-vault/SKILL-GUIDE.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/SKILL-GUIDE.html</a></li>
         </ul>
       </li>
-      <li><b>档案馆本体</b>：主站已迁移至 GitHub Pages：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>。</li>
+      <li><b>档案馆本体</b>：主站已迁移至 Cloudflare Workers：<a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>。</li>
       <li>交付任何产物时默认先问一句「是否上传 Netlify」，不擅自上传。</li>
     </ul>
       </li>
       <li>交付任何产物时默认先问一句「是否上传 Netlify」，不擅自上传。</li>
       <li><b>网址写法规矩</b>：<code>site.url</code> 必须写<b>该项目说明页的直达地址</b>（站点域名 + <code>/P00x.html</code>，文件名与 <code>guides/P00x.html</code> 完全一致）；整站首页只用于清单页页头展示，不要写进项目字段，否则点开一律落到 INDEX 首页。</li>
       <li>写入 <code>site</code> 字段后重建：说明页出现「线上访问」卡片（直达地址 + 首页链接），清单卡片显示「已上线」，清单页头出现 P001–P006 直达胶囊。</li>
-      <li>每页顶部「目录」按钮即返回清单：统一回 <code>index.html</code>。</li>
+      <li>每页顶部「目录」按钮即返回清单：线上回 <code>index.html</code>，本地打开回 <code>INDEX.html</code>。</li>
       <li><b>更新机制</b>：每页顶部「更新」按钮会拉取站点根的 <code>version.json</code> 与本页版本指纹比对，落后就清缓存 + 硬重载，已是最新则提示「已是最新」；页面每次打开还会自动检查一次。</li>
       <li>因此<b>已经把清单加到 iPhone 主屏幕的，重新部署后下次打开会自动变成最新版</b>，不需要删图标再加一遍。</li>
     </ul>
@@ -184,7 +174,7 @@
 
 <script>
 (function(){
-  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
   var bk = document.getElementById('mvBack');
   if(bk){
     var f = (location.pathname.split('/').pop() || '').toLowerCase();
@@ -193,7 +183,7 @@
     }else if(location.protocol.indexOf('http') === 0){
       bk.setAttribute('href', 'index.html');
     }else{
-      bk.setAttribute('href', 'index.html');
+      bk.setAttribute('href', 'INDEX.html');
     }
   }
 
@@ -229,7 +219,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792657968">）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';
@@ -291,13 +281,6 @@
     });
   }
 })();
-</script>
-<script>
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').catch(function(){});
-  });
-}
 </script>
 </body>
 </html>

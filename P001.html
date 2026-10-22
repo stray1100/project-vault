@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="1815288662"/>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>项目档案馆（Project Vault） · 使用说明</title>
@@ -65,28 +63,22 @@
     code{background:#1e2634;} .notes{background:#2a1f13;}
   }
 </style>
-<link rel="manifest" href="manifest.webmanifest"/>
-<meta name="theme-color" content="#2563eb"/>
-<meta name="apple-mobile-web-app-capable" content="yes"/>
-<meta name="mobile-web-app-capable" content="yes"/>
-<meta name="apple-mobile-web-app-status-bar-style" content="default"/>
-<meta name="apple-mobile-web-app-title" content="项目档案馆"/>
-<link rel="apple-touch-icon" href="icons/icon-180.png"/>
-<link rel="icon" type="image/png" sizes="180x180" href="icons/icon-180.png">
 </head>
 <body>
+<meta name="robots" content="noindex,nofollow,noarchive">
 <div class="wrap">
 <div class="rbar" id="mvBar">
-  <a class="back" id="mvBack" href="index.html" aria-label="返回项目清单">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-20 14:17</span>
+  <span class="ver" id="mvVer">构建于 2026-10-22 15:33</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
   </button>
 </div>
+
   <span class="badge">P001</span>
   <h1>项目档案馆（Project Vault）</h1>
   <p class="summary">把本 APP 内创作的所有项目登记成册，按序号调阅，每个项目配一份 HTML 使用说明。</p>
@@ -101,7 +93,7 @@
       <span class="live">已上线</span>
       <a href="https://stray1100.github.io/project-vault" target="_blank" rel="noopener">https://stray1100.github.io/project-vault</a>
     </div>
-    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 构建于 2026-10-20，地址待回填。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">Cloudflare Workers · 部署于 2026-10-19。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
     <p class="muted" style="font-size:13px;margin:8px 0 0;">档案馆清单页本身，集中展示全部公开项目的说明入口。</p>
     
   </div>
@@ -126,7 +118,7 @@
 
   <div class="card">
     <h2>关键路径与产物</h2>
-    <ul><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\SKILL.md</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\projects.json</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\scripts\vault.py</code></li><li><code>C:\Users\31885\AppData\Roaming\Tencent\Marvis\User\oAN1i2bkHDmuWeF-U5GfCOpPJmo8\skills\custom\project-vault\guides\SKILL-GUIDE.html</code></li></ul>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\project-vault\SKILL.md</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\project-vault\projects.json</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\project-vault\scripts\vault.py</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\skills\custom\project-vault\guides\SKILL-GUIDE.html</code></li></ul>
   </div>
 
   <div class="card">
@@ -151,14 +143,14 @@
 
   <div class="card">
     <h2>版本记录</h2>
-    <ul><li><span class="t">2026-10-18</span> 登记入库：建立技能框架、项目库与说明书生成脚本</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 新增：说明书展示线上访问地址、INDEX 标注已上线项目、各页顶部增加返回目录按钮</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P001.html</li><li><span class="t">2026-10-18</span> 独立部署：线上地址改为独立站点（Netlify，已于 2026-10-19 迁移至 Cloudflare）</li><li><span class="t">2026-10-20</span> 部署迁移：档案馆主站由 Netlify 迁至 GitHub Pages，地址见页首（部署后回填）</li></ul>
+    <ul><li><span class="t">2026-10-18</span> 登记入库：建立技能框架、项目库与说明书生成脚本</li><li><span class="t">2026-10-18</span> 扩充说明书：新增功能模块、边界与限制、常见问题、验证状态，细化使用步骤</li><li><span class="t">2026-10-18</span> 新增：说明书展示线上访问地址、INDEX 标注已上线项目、各页顶部增加返回目录按钮</li><li><span class="t">2026-10-18</span> 修正线上地址：由整站首页改为本项目直达页 P001.html</li><li><span class="t">2026-10-18</span> 独立部署：独立部署，线上地址改为独立站点 https://project-vault-2026.netlify.app</li><li><span class="t">2026-10-19</span> 部署迁移：档案馆主站由 Netlify 迁至静态托管站点，地址改为 https://stray1100.github.io/project-vault</li><li><span class="t">2026-10-22</span> 部署回迁：主站迁至 GitHub Pages（stray1100/project-vault），覆盖至 P010，旧 Cloudflare 站点停用</li></ul>
   </div>
 
   <footer>项目档案馆 · 2026-10-19 08:48</footer>
 </div>
 <script>
 (function(){
-  /* 返回按钮：统一返回 index.html；当前页即清单页时隐藏 */
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
   var bk = document.getElementById('mvBack');
   if(bk){
     var f = (location.pathname.split('/').pop() || '').toLowerCase();
@@ -167,7 +159,7 @@
     }else if(location.protocol.indexOf('http') === 0){
       bk.setAttribute('href', 'index.html');
     }else{
-      bk.setAttribute('href', 'index.html');
+      bk.setAttribute('href', 'INDEX.html');
     }
   }
 
@@ -203,7 +195,7 @@
     catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
   }
 
-  // 读取构建标识（由部署脚本注入到 <meta name="pv-build">）
+  // 读取构建标识（由部署脚本注入到 <meta name="pv-build" content="1792657968">）
   function currentBuild(){
     var m = document.querySelector('meta[name="pv-build"]');
     return m ? (m.getAttribute('content') || '') : '';
@@ -265,13 +257,6 @@
     });
   }
 })();
-</script>
-<script>
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){
-  window.addEventListener('load', function(){
-    navigator.serviceWorker.register('sw.js').catch(function(){});
-  });
-}
 </script>
 </body>
 </html>
