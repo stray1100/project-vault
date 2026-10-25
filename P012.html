@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="3416268791">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>摄影学习助手（甲·学院标准 / 乙·经典强化 / 丙·轻量实用 / 简易·人像与人文街拍） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-26 05:46</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P012</span>
+  <h1>摄影学习助手（甲·学院标准 / 乙·经典强化 / 丙·轻量实用 / 简易·人像与人文街拍）</h1>
+  <p class="summary">四套并行的摄影每日学习系统：同一副骨架（任务卡—交付物—三维评分—间隔复现），按可投入时间分成 105 / 84 / 56 / 28 天四档；可加到 iPhone 主屏断网使用，配套 Python 脚本做当日任务与进度统计。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P012</td></tr><tr><td class="k">类型</td><td class="v">学习系统（单文件 Web + 本地脚本）</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-26</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML 移动端（零外链、无 CDN，断网可跑） / 计划总表 CSV（18 列：日期/单元/题材/教材页码/交付物/三维评分点/复现日） / materials.json（逐知识点精讲与评分要点，按标题哈希 A/B 变体交替防重复） / study_assistant.py + 4 个 bat（今日任务 / 答题自评 / 看卡片 / 查看统计） / localStorage 本地留痕，无服务器、无账号</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/photography-academy-std.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/photography-academy-std.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-26</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://stray1100.github.io/project-vault/tools/photography-academy-std.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/tools/photography-academy-std.html</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-26。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">作为档案馆站内工具页托管，四套页面 + 四个 zip 下载包同站发布；主入口为甲套，其余见 notes。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>四套并行的摄影每日学习系统：同一副骨架（任务卡—交付物—三维评分—间隔复现），按可投入时间分成 105 / 84 / 56 / 28 天四档；可加到 iPhone 主屏断网使用，配套 Python 脚本做当日任务与进度统计。</p>
+    <p class="para">摄影入门的瓶颈通常不是器材，而是练习没有结构：看了一堆教程，手上的变量却同时改三四个，结果既不知道哪一步起了作用，也无法复现。</p><p class="para">这四套系统共用同一副骨架：每天只动一个变量（单变量原则）→ 必须在当天交出可评判的实拍结果（交付物驱动）→ 用技术/构图/表达三维自评定位问题 → 按 D1/D3/D7/D14/D30 间隔复现，把短期记忆压成长期技能。</p><p class="para">四套的差别只在投入强度与教材主轴：天数、每日常识点数、单位时间练习密度不同，骨架不打折。这样你可以按真实可用时间选一套长期跑完，而不是开了四套各跑两周。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">甲·学院标准（105 天 / 90 知识点）</td><td>教材主轴：美国摄影教程（12 版）+ 理解曝光（4 版）+ 用光教程（5 版）+ 摄影师的视界。技术地基最厚，适合想把曝光、用光、视觉语言一次打通的长期路线。</td></tr><tr><td class="fname">乙·经典强化（84 天 / 72 知识点）</td><td>教材主轴：纽约摄影学院教程 + 理解曝光 + 摄影构图学。经典体系 + 强构图训练，天数压缩但对成片质量要求更高。</td></tr><tr><td class="fname">丙·轻量实用（56 天 / 48 知识点）</td><td>教材主轴：新摄影笔记 + 理解曝光 + 摄影师的视界。轻量化、上手快，优先解决「拍得清楚、拍得好看」。</td></tr><tr><td class="fname">简易·人像与人文街拍（28 天 / 24 知识点）</td><td>只覆盖人像 12 点 + 街拍 12 点，C 类实操型、表达权重高，不绑教材。适合先把最常拍的两种题材拍明白。</td></tr><tr><td class="fname">任务卡四段结构</td><td>每天固定输出四段：设定（今天只改哪个变量）、交付（拍多少、交几张）、三维评分（技术/构图/表达各 1–5 分）、失败样本（废片失败原因 + 下次修正参数）。</td></tr><tr><td class="fname">间隔复现排程</td><td>计划总表 18 列里已排好 D1/D3/D7/D14/D30 复现日；复现日不看笔记、凭记忆重述并重拍，错处回原单元。</td></tr><tr><td class="fname">移动端 + 本地脚本双端</td><td>手机用单文件 HTML（可加主屏、断网可跑）；电脑用 study_assistant.py + 4 个 bat 跑今日任务、自评、卡片与统计。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>① 选一套：可用时间 ≥1.5 h/天选甲（105 天 / 90 知识点）；1 h/天选乙（84 天 / 72 点）；40 min/天选丙（56 天 / 48 点）；只想先把人像和街拍拍明白选简易（28 天 / 24 点）。四套不要同时开，单变量推进才有对照。</li><li>② 打开（手机）：Safari 打开本项目 site 字段的线上地址 → 预期：深色学习页，顶部显示「第 N 天 / 总天数」，下面是当日任务卡；四套各有独立入口（见 notes 中的四个链接）。加到主屏：底部「分享」→「添加到主屏幕」→ 断网点开仍可用。若菜单里没有该选项，说明是 file:// 打开的，换 https 地址重开。</li><li>③ 打开（电脑）：解压 downloads 里对应 zip → 双击「1-今日任务.bat」→ 预期：控制台打印当日单元、教材页码、拍摄任务、交付物清单与三维评分点；照做后双击「2-答题自评.bat」录分。</li><li>④ 每日闭环：任务卡四段 ——（a）设定：今天只练一个变量（如仅改快门，光圈 ISO 固定）；（b）交付：实拍 20–30 张，选出 3 张成片；（c）三维评分：技术（曝光/对焦/噪点）、构图（主体/取舍/引导）、表达（是否传达意图），各 1–5 分；（d）失败样本：写下 1 张废片的具体失败原因与下次修正参数。</li><li>⑤ 间隔复现：计划表已排好 D1 / D3 / D7 / D14 / D30 复现日。到复现日只做一件事：不看笔记，凭记忆重述要点 + 重拍一张同题；错的地方回到原单元，不新开知识点。</li><li>⑥ 看卡片 / 查统计：双击「3-看卡片.bat」随机抽当日知识点卡片自测；「4-查看统计.bat」看累计天数、三维均分走势、各题材点数分布。手机端进度存本机 localStorage，换浏览器或清站点数据会丢。</li><li>⑦ 下载完整套件（含 CSV / materials.json / py / bat / 说明）：手机或电脑打开「downloads」目录下对应 zip（见 notes 中四个直链），解压即可用，无需联网。</li><li>⑧ 更新：线上页面右下角「↻」比对 version.json，落后则自动清缓存并硬重载；一致提示「已最新」。加在主屏的图标下次打开自动升级，不用删掉重加。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\摄影学习助手-甲-学院标准</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\摄影学习助手-乙-经典强化</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\摄影学习助手-丙-轻量实用</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\摄影学习助手-简易-人像与人文街拍</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\摄影学习助手-四方案总览.md</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>评分是自评，主观偏差不可避免；同一张成片建议隔 24 h 再评一次，两次差值 &gt;1 分说明标准还没稳定。</li><li>教材页码按所列版次（如美国摄影教程 12 版、理解曝光 4 版）标注，换版次后页码会偏，按章节标题定位。</li><li>精讲为自编要点，只引用教材页码与标题，不含教材原文；不能替代教材本身。</li><li>进度只存本机 localStorage（网页端）或本地文件（脚本端），不做云端同步；换设备需手动迁移。</li><li>四套不含完整的后期调色与商业修图流程，只覆盖拍摄决策与构图表达。</li><li>简易方案不绑教材、点位少，适合快速上手，不构成体系化摄影教育。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">四套要一起练吗？</p><p class="a">不要。单变量原则是效率杠杆：同时开两套等于同时改多个变量，无法归因。按可用时间选一套跑完，再考虑换主干。</p></div><div class="qa"><p class="q">手机上打开是空白或样式错乱？</p><p class="a">多半是 file:// 打开或缓存旧版。改用 https 线上地址，点右下角「↻」强制比对版本；仍异常就清一次站点数据再开。</p></div><div class="qa"><p class="q">进度丢了怎么办？</p><p class="a">网页端进度存 localStorage，清站点数据、换浏览器、无痕模式都会丢；重要进度请用电脑端脚本（进度写在本地文件）或定期导出 CSV。</p></div><div class="qa"><p class="q">必须买教材吗？</p><p class="a">甲/乙/丙按教材页码排程，没有书会失去精确定位，但可按章节标题在图书馆或借阅本对照；简易方案不绑教材，可先用它验证自己能不能坚持。</p></div><div class="qa"><p class="q">为什么每天要写失败样本？</p><p class="a">失败样本是唯一能把「感觉不对」转成「参数不对」的环节；只记成功片会让下次重复同样的错误。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">线上入口（四套）：https://stray1100.github.io/project-vault/tools/photography-academy-std.html（甲）、https://stray1100.github.io/project-vault/tools/photography-classic-plus.html（乙）、https://stray1100.github.io/project-vault/tools/photography-lite-practical.html（丙）、https://stray1100.github.io/project-vault/tools/photography-portrait-street.html（简易）。完整套件下载：https://stray1100.github.io/project-vault/downloads/photography-academy-std.zip、https://stray1100.github.io/project-vault/downloads/photography-classic-plus.zip、https://stray1100.github.io/project-vault/downloads/photography-lite-practical.zip、https://stray1100.github.io/project-vault/downloads/photography-portrait-street.zip 。四套教材主轴不同（甲=美国摄影教程12版+理解曝光4版+用光教程5版+摄影师的视界；乙=纽约摄影学院+理解曝光+摄影构图学；丙=新摄影笔记+理解曝光+摄影师的视界；简易不绑教材，纯人像12点+街拍12点）。精讲为自编，只引用教材页码与章节标题，不含教材原文，规避版权；页面不含个人信息，可直接公开。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>v1（2026-10-26）：四套 make_plan.py 生成计划后经 check_plan.py 校验通过（天数、知识点数、复现日、三维评分点齐全）。</li><li>四套移动版 HTML 均为单文件、脚本扫描零 http(s) 外链，断网可运行。</li><li>Edge 实跑四套页面无 JS 控制台报错；视口 320 / 390 / 430 px 无横向溢出。</li><li>任务卡四段、间隔复现 D1/D3/D7/D14/D30、CSV 18 列在四套中逐套抽查一致。</li><li>本次上线前对四个 HTML 复扫外链（结果 0 处）并核对文件完整性，zip 内含 CSV / materials.json / py / bat / 说明。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li class="muted">首版登记</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-26</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 ）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>
