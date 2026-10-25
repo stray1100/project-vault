@@ -1,7 +1,8 @@
 /* 项目档案馆站点 Service Worker：在线取最新，离线读缓存 */
-const CACHE = 'pv-site-7420428996';
+const CACHE = 'pv-site-3583571883';
 const PRECACHE = [
-  'index.html', 'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'SKILL-GUIDE.html',
+  'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'SKILL-GUIDE.html', 'index.html',
+
   'manifest.webmanifest',
   'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'
 ];
