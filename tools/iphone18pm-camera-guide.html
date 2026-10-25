@@ -1,0 +1,1134 @@
+<!doctype html>
+<!-- mode: Operate · 目标：现场手持速查，暗环境优先，故默认深色 -->
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta name="pv-build" content="3583571883">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>18 Pro Max 拍照助手</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="拍照助手">
+<meta name="format-detection" content="telephone=no">
+<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FBFBFC" media="(prefers-color-scheme: light)">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="icon" href="data:image/png;base64,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">
+<style>
+:root{
+  color-scheme: dark;
+  --c-bg:#0F1115; --c-surface:#16191F; --c-surface-2:#1C2027;
+  --c-border:#2A2F38; --c-border-input:#5E656E;
+  --c-text:#E8EAED; --c-text-2:#A8B0BB; --c-text-3:#8A9099;
+  --c-accent:#8FA8F0; --c-accent-weak:#1B2438; --c-accent-text:#A8BCF5;
+  --c-danger:#E4674F; --c-success:#63C08D; --c-warn:#D8A33C;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --lh-tight:1.2; --lh-snug:1.45; --lh-body:1.65;
+  --shadow-1:0 1px 2px rgba(0,0,0,.5),0 2px 8px rgba(0,0,0,.4);
+  --shadow-2:0 2px 4px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.5);
+  --ease-out:cubic-bezier(.16,1,.3,1); --dur-fast:120ms; --dur:200ms; --dur-slow:320ms;
+  --r-sm:8px; --r-md:12px; --r-lg:14px; --r-pill:999px;
+  --tap-min:44px; --kbH:0px;
+}
+:root[data-theme="light"]{
+  color-scheme: light;
+  --c-bg:#FBFBFC; --c-surface:#FFFFFF; --c-surface-2:#F4F5F7;
+  --c-border:#E3E5E9; --c-border-input:#868C96;
+  --c-text:#16181D; --c-text-2:#545A63; --c-text-3:#6B7280;
+  --c-accent:#2C5FD6; --c-accent-weak:#EAF0FE; --c-accent-text:#1E4BB0;
+  --c-danger:#C4321E; --c-success:#1F7A4D; --c-warn:#9A6200;
+  --shadow-1:0 1px 2px rgba(16,18,22,.06),0 2px 8px rgba(16,18,22,.06);
+  --shadow-2:0 2px 4px rgba(16,18,22,.08),0 8px 24px rgba(16,18,22,.10);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;min-height:100dvh;background:var(--c-bg);color:var(--c-text);
+  font:16px/var(--lh-body) var(--font-sans);overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+::selection{background:var(--c-accent-weak);color:var(--c-text)}
+:where(a){color:var(--c-accent-text);text-underline-offset:2px;text-decoration-thickness:1px}
+:where(button,a,select,input,textarea,summary){-webkit-tap-highlight-color:transparent}
+:focus-visible{outline:2px solid var(--c-accent);outline-offset:2px;border-radius:4px}
+.wrap{max-width:760px;margin:0 auto;padding-left:16px;padding-right:16px}
+.top{
+  position:sticky;top:0;z-index:30;
+  background:color-mix(in srgb,var(--c-bg) 90%,transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--c-border);
+  padding-top:env(safe-area-inset-top);
+}
+.top-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 8px}
+h1{margin:0;font-size:20px;line-height:var(--lh-tight);letter-spacing:-.01em;text-wrap:balance}
+.sub{margin:2px 0 0;font-size:12px;letter-spacing:.02em;color:var(--c-text-3)}
+.iconbtn{
+  flex:0 0 auto;width:var(--tap-min);height:var(--tap-min);display:grid;place-items:center;
+  background:var(--c-surface-2);color:var(--c-text);border:1px solid var(--c-border);
+  border-radius:var(--r-md);cursor:pointer;font-size:15px;line-height:1;
+  transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);
+}
+.iconbtn:hover{background:var(--c-border)}
+.iconbtn:active{transform:scale(.97)}
+.tabs{
+  display:flex;gap:8px;overflow-x:auto;padding:0 16px 10px;margin:0 -16px;
+  scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 8px,#000 calc(100% - 14px),transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 8px,#000 calc(100% - 14px),transparent 100%);
+}
+.tabs::-webkit-scrollbar{display:none}
+.tabs a{
+  flex:0 0 auto;display:flex;align-items:center;height:34px;padding:0 12px;
+  border:1px solid var(--c-border);border-radius:var(--r-pill);
+  background:var(--c-surface);color:var(--c-text-2);text-decoration:none;
+  font-size:13px;line-height:var(--lh-snug);white-space:nowrap;
+  transition:color var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out);
+}
+.tabs a:hover{color:var(--c-text);border-color:var(--c-border-input)}
+.tabs a.on{color:var(--c-accent-text);border-color:var(--c-accent);background:var(--c-accent-weak)}
+main{padding-bottom:48px}
+section{padding-top:32px;scroll-margin-top:132px}
+h2{
+  margin:0 0 6px;font-size:26px;line-height:var(--lh-tight);letter-spacing:-.01em;
+  text-wrap:balance;font-weight:650;
+}
+.lead{margin:0 0 18px;color:var(--c-text-2);font-size:14px;max-width:68ch}
+h3{margin:24px 0 8px;font-size:17px;line-height:var(--lh-tight);letter-spacing:0;font-weight:600}
+p{margin:0 0 12px;max-width:68ch;text-wrap:pretty}
+.num{font-family:var(--font-mono);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.hint{
+  display:flex;gap:10px;align-items:flex-start;margin:14px 0 0;
+  border:1px solid var(--c-border);background:var(--c-surface);
+  border-radius:var(--r-lg);padding:12px 14px;font-size:13px;color:var(--c-text-2);
+  line-height:var(--lh-snug);
+}
+.hint p{margin:0;font-size:13px}
+.hint .x{margin-left:auto;background:none;border:0;color:var(--c-text-3);font-size:15px;cursor:pointer;padding:2px 4px;min-width:32px;min-height:32px}
+.item{border-bottom:1px solid var(--c-border)}
+.item:first-of-type{border-top:1px solid var(--c-border)}
+.item>summary{
+  display:flex;gap:12px;align-items:baseline;list-style:none;cursor:pointer;
+  padding:14px 0;min-height:var(--tap-min);touch-action:manipulation;
+}
+.item>summary::-webkit-details-marker{display:none}
+.item>summary .st{font-size:16px;line-height:var(--lh-snug);font-weight:550}
+.item>summary .sd{
+  margin-left:auto;font-family:var(--font-mono);font-variant-numeric:tabular-nums;
+  font-size:12px;color:var(--c-text-3);text-align:right;white-space:nowrap;
+}
+.item>summary .pm{
+  flex:0 0 18px;text-align:center;color:var(--c-text-3);font-family:var(--font-mono);
+  font-size:15px;line-height:1;
+}
+.item>summary .pm::before{content:"+"}
+.item[open]>summary .pm::before{content:"–"}
+.item[open]>summary .st{color:var(--c-accent-text)}
+.item-body{padding:0 0 16px;font-size:14px;color:var(--c-text-2)}
+.item-body p{margin:0 0 10px;font-size:14px}
+.kv{display:grid;grid-template-columns:92px 1fr;gap:9px 12px;margin:0 0 16px;font-size:14px}
+.kv dt{color:var(--c-text-3);font-size:13px}
+.kv dd{margin:0;color:var(--c-text)}
+.kv dd .num{font-size:14px;color:var(--c-text)}
+ul.tips{margin:0;padding-left:18px;font-size:14px;color:var(--c-text-2)}
+ul.tips li{margin-bottom:6px}
+ul.tips li::marker{color:var(--c-text-3)}
+.panel{
+  border:1px solid var(--c-border);background:var(--c-surface);
+  border-radius:var(--r-lg);padding:16px;margin:0 0 16px;
+}
+.field{display:block;margin-bottom:14px}
+.field>span{display:block;font-size:13px;color:var(--c-text-3);margin-bottom:6px;letter-spacing:.01em}
+select,input[type=text],input[type=number],textarea{
+  width:100%;min-height:var(--tap-min);padding:10px 12px;font-size:16px;line-height:1.4;
+  color:var(--c-text);background:var(--c-surface-2);border:1px solid var(--c-border-input);
+  border-radius:var(--r-sm);font-family:inherit;appearance:none;
+}
+select{
+  background-image:linear-gradient(45deg,transparent 50%,var(--c-text) 50%),linear-gradient(135deg,var(--c-text) 50%,transparent 50%);
+  background-position:calc(100% - 19px) 50%,calc(100% - 13px) 50%;
+  background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:38px;
+}
+textarea{min-height:72px;resize:vertical;line-height:var(--lh-snug)}
+select:focus,input:focus,textarea:focus{outline:none;border-color:var(--c-accent);box-shadow:0 0 0 3px var(--c-accent-weak)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media (max-width:420px){.row3{grid-template-columns:1fr 1fr}}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  min-height:var(--tap-min);padding:0 16px;border-radius:var(--r-md);
+  font-size:15px;font-family:inherit;cursor:pointer;touch-action:manipulation;
+  border:1px solid transparent;background:var(--c-accent);color:#0F1115;font-weight:600;
+  transition:background var(--dur-fast) var(--ease-out),border-color var(--dur-fast) var(--ease-out),opacity var(--dur-fast) var(--ease-out);
+}
+:root[data-theme="light"] .btn{color:#fff}
+.btn:hover{filter:brightness(1.06)}
+.btn:active{transform:scale(.985)}
+.btn.ghost{background:transparent;border-color:var(--c-border-input);color:var(--c-text);font-weight:500}
+.btn.ghost:hover{background:var(--c-surface-2)}
+.btn.small{min-height:36px;font-size:13px;padding:0 12px;border-radius:var(--r-sm)}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.readout{
+  border:1px solid var(--c-border);border-radius:var(--r-lg);
+  background:var(--c-surface);padding:16px 16px 12px;
+}
+.readout .big{
+  display:flex;align-items:baseline;gap:10px;margin-bottom:4px;
+}
+.readout .big b{
+  font-family:var(--font-mono);font-size:34px;line-height:1.05;font-weight:650;
+  letter-spacing:-.03em;font-variant-numeric:tabular-nums;
+}
+.readout .big span{font-size:13px;color:var(--c-text-3)}
+.readout .big em{font-style:normal;font-size:14px;color:var(--c-text-2);margin-left:auto;font-family:var(--font-mono)}
+.gridp{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin:12px 0 0;padding:0}
+.gridp div{min-width:0}
+.gridp dt,.gridp .k{font-size:12px;color:var(--c-text-3);margin-bottom:2px;display:block}
+.gridp dd,.gridp .v{margin:0;font-size:15px;font-family:var(--font-mono);font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 0}
+caption{caption-side:top;text-align:left;font-size:13px;color:var(--c-text-3);padding-bottom:8px}
+th,td{text-align:right;padding:9px 6px;border-bottom:1px solid var(--c-border);font-variant-numeric:tabular-nums;white-space:nowrap}
+th:first-child,td:first-child{text-align:left;padding-left:2px}
+thead th{font-weight:500;color:var(--c-text-3);font-size:12px;letter-spacing:.02em}
+tbody td{font-family:var(--font-mono);color:var(--c-text-2)}
+tbody tr.best td{color:var(--c-text);background:var(--c-accent-weak)}
+tbody tr.best td:first-child::after{content:" · 推荐";font-family:var(--font-sans);font-size:11px;color:var(--c-accent-text)}
+tbody tr.over td{color:var(--c-text-3)}
+.tscroll{overflow-x:auto;overscroll-behavior-x:contain}
+.lensbar{margin:6px 0 4px}
+.rail{position:relative;height:64px;margin:0 4px}
+.rail::before{content:"";position:absolute;left:0;right:0;top:26px;height:1px;background:var(--c-border-input)}
+.rail i{position:absolute;top:22px;width:1px;height:9px;background:var(--c-border-input)}
+.rail b{
+  position:absolute;top:0;transform:translateX(-50%);font-family:var(--font-mono);
+  font-size:11px;font-weight:500;color:var(--c-text-3);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.rail u{
+  position:absolute;top:38px;transform:translateX(-50%);text-decoration:none;
+  font-family:var(--font-mono);font-size:13px;color:var(--c-text);font-variant-numeric:tabular-nums;white-space:nowrap;
+}
+.chk{display:flex;gap:12px;align-items:flex-start;padding:13px 0;border-bottom:1px solid var(--c-border);min-height:var(--tap-min)}
+.chk:first-child{border-top:1px solid var(--c-border)}
+.chk input{
+  flex:0 0 24px;width:24px;height:24px;margin:0;accent-color:var(--c-accent);
+  touch-action:manipulation;cursor:pointer;
+}
+.chk label{display:block;font-size:15px;line-height:var(--lh-snug);cursor:pointer}
+.chk label small{display:block;font-size:12.5px;color:var(--c-text-3);margin-top:2px;line-height:var(--lh-snug)}
+.chk input:checked+label{color:var(--c-text-3)}
+.chk input:checked+label>span{text-decoration:line-through;text-decoration-thickness:1px}
+.count{font-size:13px;color:var(--c-text-3);margin:0 0 12px;font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.plan{border-bottom:1px solid var(--c-border);padding:14px 0}
+.plan:first-child{border-top:1px solid var(--c-border)}
+.plan h4{margin:0 0 6px;font-size:15px;font-weight:600;line-height:var(--lh-snug)}
+.plan .meta{font-family:var(--font-mono);font-size:12px;color:var(--c-text-3);margin:0 0 8px;overflow-wrap:anywhere}
+.plan .note{font-size:13px;color:var(--c-text-2);margin:0 0 10px;white-space:pre-wrap}
+.plan .acts{display:flex;gap:8px}
+.empty{font-size:14px;color:var(--c-text-3);padding:16px 0}
+footer{border-top:1px solid var(--c-border);padding:20px 0 32px;font-size:12px;color:var(--c-text-3);line-height:var(--lh-snug)}
+footer p{margin:0 0 6px;font-size:12px;max-width:none}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+}
+@media (hover:none){.btn:hover{filter:none}.tabs a:hover{color:var(--c-text-2);border-color:var(--c-border)}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="top-row">
+      <div>
+        <h1>18 Pro Max 拍照助手</h1>
+        <p class="sub">iPhone 18 Pro Max · 拍照专项</p>
+      </div>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="切换到浅色主题" aria-pressed="false">◐</button>
+    </div>
+    <nav class="tabs" aria-label="章节导航">
+      <a href="#s-scene" class="on">场景速查</a>
+      <a href="#s-focal">焦段决策</a>
+      <a href="#s-expo">曝光计算</a>
+      <a href="#s-spec">机型档案</a>
+      <a href="#s-set">设置清单</a>
+      <a href="#s-fix">排障手册</a>
+      <a href="#s-mine">我的方案</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="wrap">
+
+  <div class="hint" id="installHint" hidden>
+    <p>Safari 里点「分享」→「添加到主屏幕」，之后可全屏离线打开，无地址栏。</p>
+    <button class="x" type="button" id="hintX" aria-label="关闭安装提示">✕</button>
+  </div>
+
+  <!-- A 场景速查 -->
+  <section id="s-scene" aria-labelledby="h-scene">
+    <h2 id="h-scene">场景速查</h2>
+    <p class="lead">13 个高频场景，每项给出焦段、光圈、ISO 与快门底线。点开看要点，按当前光线取最低 ISO、快门不低于标注值。</p>
+
+    <details class="item">
+      <summary><span class="st">白天人像</span><span class="sd">100 mm · ƒ/2.8</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">4× / 100 mm</span>（环境人像退到 1×）</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 64–200</span>，快门 <span class="num">1/500 s</span> 以上，EV <span class="num">−0.3</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>人退到 2–3 m，用 4× 压缩背景，脸型更收，虚化比 1× 自然。</li>
+          <li>点按人脸锁定对焦与测光，曝光偏亮时向下滑 1 格再锁。</li>
+          <li>背光时开智能 HDR 5，别开闪光灯补光，脸部会失去过渡。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">室内人像 · 咖啡厅</span><span class="sd">48 mm · ƒ/1.8</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">2× / 48 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/1.8</span>（太暗再开 ƒ/1.48）</dd>
+          <dt>曝光</dt><dd><span class="num">ISO 200–800</span>，快门 <span class="num">1/60 s</span> 以上</dd>
+        </dl>
+        <ul class="tips">
+          <li>靠窗侧光，让光从 45° 打过来，比正面平光有立体感。</li>
+          <li>别让人背对窗户，背景一亮脸就黑，宁可换座位。</li>
+          <li>快门低于 1/60 s 就放弃手持，把手机靠在桌沿或杯子上。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">合影 · 群像</span><span class="sd">24–48 mm · ƒ/4.0</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">1× / 24 mm</span> 至 <span class="num">2× / 48 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/4.0</span>，保证后排也在景深内</dd>
+          <dt>曝光</dt><dd><span class="num">ISO 100</span>，快门 <span class="num">1/125 s</span> 以上</dd>
+        </dl>
+        <ul class="tips">
+          <li>用 2× 在 3–4 m 外拍，人物比例更自然，别贴脸用 0.5×。</li>
+          <li>拍两张：一张 ƒ/4.0 全员清晰，一张 ƒ/1.8 做氛围。</li>
+          <li>多排时站在略高处，镜头与中间一排的眼睛齐平。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">风光 · 山海城市</span><span class="sd">13 / 24 mm · ƒ/4.0</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">0.5× / 13 mm</span> 或 <span class="num">1× / 24 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/4.0</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 25–64</span>，快门 <span class="num">1/500 s</span> 以上</dd>
+        </dl>
+        <ul class="tips">
+          <li>开 48 MP 超高分辨率，后期裁切余地大；手持时先稳住再按。</li>
+          <li>打开网格与水平仪，地平线压在三分线，不要正好居中切一半。</li>
+          <li>超广角边缘会拉伸，主体放中间 2/3 区域，别贴边。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">建筑 · 街拍</span><span class="sd">13 / 48 mm</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">0.5×</span> 拍体量，<span class="num">2×</span> 拍细节</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/4.0</span></dd>
+          <dt>曝光</dt><dd>EV <span class="num">−0.3 ~ −0.7</span>，保住天空层次</dd>
+        </dl>
+        <ul class="tips">
+          <li>机身保持垂直，仰拍会让楼体「倒」；宁可退远再用 2×。</li>
+          <li>超广角务必开镜头畸变校正，否则直线变弧线。</li>
+          <li>街拍优先 2×，1× 会让路人显得过近、画面杂乱。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">美食 · 静物</span><span class="sd">48 mm 或微距 · ƒ/2.8</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">2× / 48 mm</span>，细节用微距</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 100–200</span>，快门 <span class="num">1/60 s</span> 以上，EV <span class="num">−0.3</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>光从侧后方 45° 打，比顶光更能出质感；白纸当反光板补暗部。</li>
+          <li>手机抬高到 45–60° 俯拍，别从头正上方拍成「平面图」。</li>
+          <li>热食先拍后吃，蒸汽会让画面发灰、对焦来回拉。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">宠物 · 小孩跑动</span><span class="sd">100 mm · ƒ/2.8</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">4× / 100 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 200–800</span>，快门 <span class="num">1/500 s</span> 以上</dd>
+        </dl>
+        <ul class="tips">
+          <li>开智能追踪对焦，长按主体锁定，别每次重新点屏幕。</li>
+          <li>蹲到与眼睛同高，尤其在室内，居高临下会拍出大头小身。</li>
+          <li>连拍 + 快门优先思路：宁可 ISO 高一点，也别让快门掉下来。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">舞台 · 演出</span><span class="sd">100–200 mm · ƒ/2.8</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">4× / 100 mm</span>，远座用 <span class="num">8× / 200 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 400–1600</span>，快门 <span class="num">1/200 s</span> 以上，EV <span class="num">−0.7</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>点测人脸，不要用全局测光；追光一打，脸会直接过曝成白块。</li>
+          <li>关闪光灯（现场也不允许），关实况以减少抖动废片。</li>
+          <li>8× 在弱光下画质明显下降，宁可 4× 拍完裁切。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">烟花（禁三脚架）</span><span class="sd">24 mm · 1/4–2 s</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">1× / 24 mm</span>，构图预留上半空</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/1.48 – ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 64–200</span>，快门 <span class="num">1/4 – 2 s</span>，EV <span class="num">−1.5</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>园区禁三脚架、自拍杆与稳定器：把手机压在栏杆或背包上，双手肘部夹紧身体。</li>
+          <li>用「专业级控制」拉长快门并锁 ISO；快门超过 1/4 s 仍抖，改 4K 120 fps 拍视频后截帧。</li>
+          <li>白平衡锁 5200–5600 K，否则连拍几张颜色会跳。</li>
+          <li>烟花升空炸开前半秒按下，别等看见花才按。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">星空 · 银河</span><span class="sd">13 mm · 10–30 s</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">0.5× / 13 mm</span>（13 mm 才能装下银河）</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.2</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 1600–3200</span>，夜间模式 <span class="num">10–30 s</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>必须固定：放地上、石头上或压在包上，手持 3 s 以上星星就成拖线。</li>
+          <li>避开月光与城市光害，选无月夜、朝远离城市的方向。</li>
+          <li>关夜间人像与闪光，拍完在相册里降噪，别在相机里加滤镜。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">月亮</span><span class="sd">200 mm · 1/125–1/250 s</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">8× / 200 mm</span>（再往上只是数码裁切）</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.8</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 64–200</span>，快门 <span class="num">1/125 – 1/250 s</span>，EV <span class="num">−2</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>关闭夜间模式。月亮是亮的，自动长曝只会拍出一个白饼。</li>
+          <li>手动把曝光拉到能看见环形山，宁可暗一点。</li>
+          <li>靠栏杆或墙稳住，8× 下手抖 1 mm 就糊。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">车流 · 光轨</span><span class="sd">24 mm · 1–4 s</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd><span class="num">1× / 24 mm</span></dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/4.0</span> 收小光圈，减少边角光晕</dd>
+          <dt>曝光</dt><dd><span class="num">ISO 50–100</span>，快门 <span class="num">1–4 s</span></dd>
+        </dl>
+        <ul class="tips">
+          <li>天刚黑、还有深蓝天空时最好看，全黑后画面只剩一条亮线。</li>
+          <li>机位固定在天桥或窗台，用夜间模式拉长曝光。</li>
+          <li>车灯会溢出，EV 往下压 1 格保住灯芯颜色。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">微距 · 花草昆虫</span><span class="sd">微距 · ƒ/2.2</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <dl class="kv">
+          <dt>焦段</dt><dd>自动切微距（超广角），或 <span class="num">2×</span> 拉远拍</dd>
+          <dt>光圈</dt><dd><span class="num">ƒ/2.2</span></dd>
+          <dt>曝光</dt><dd><span class="num">ISO 100</span>，快门 <span class="num">1/125 s</span> 以上</dd>
+        </dl>
+        <ul class="tips">
+          <li>距离 2–5 cm 才触发微距，太远不会切，太近对不上。</li>
+          <li>景深极浅，先对焦再微调机位，别对着主体按快门等它自己找。</li>
+          <li>户外有风时连拍 5–8 张，总有一张合焦。</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- B 焦段决策器 -->
+  <section id="s-focal" aria-labelledby="h-focal">
+    <h2 id="h-focal">焦段决策器</h2>
+    <p class="lead">选主体、距离与光线，直接给出该用哪颗镜头、光圈开到多少、快门不能低于多少。</p>
+
+    <div class="panel">
+      <label class="field"><span>拍什么</span>
+        <select id="dSubject">
+          <option value="portrait">单人肖像</option>
+          <option value="group">合影群像</option>
+          <option value="landscape">风光</option>
+          <option value="arch">建筑与街拍</option>
+          <option value="food">美食静物</option>
+          <option value="pet">宠物</option>
+          <option value="kids">孩子跑动</option>
+          <option value="stage">舞台演出</option>
+          <option value="firework">烟花</option>
+          <option value="star">星空银河</option>
+          <option value="moon">月亮</option>
+          <option value="traffic">车流光轨</option>
+          <option value="macro">微距花草</option>
+        </select>
+      </label>
+      <div class="row2">
+        <label class="field"><span>距离</span>
+          <select id="dDist">
+            <option value="near">近 · 1 m 内</option>
+            <option value="mid" selected>中 · 1–3 m</option>
+            <option value="far">远 · 3 m 外</option>
+          </select>
+        </label>
+        <label class="field"><span>光线</span>
+          <select id="dLight">
+            <option value="sun">强日光</option>
+            <option value="overcast">阴天散射</option>
+            <option value="indoor" selected>室内光</option>
+            <option value="night">夜间弱光</option>
+            <option value="dark">几乎全黑</option>
+          </select>
+        </label>
+      </div>
+    </div>
+
+    <div class="readout" aria-live="polite" id="dOut">
+      <div class="big"><b id="dFocal">100</b><span>mm</span><em id="dZoom">4×</em></div>
+      <dl class="gridp">
+        <div><span class="k">光圈</span><span class="v" id="dAp">ƒ/2.8</span></div>
+        <div><span class="k">ISO 区间</span><span class="v" id="dIso">64–200</span></div>
+        <div><span class="k">快门下限</span><span class="v" id="dShut">1/250 s</span></div>
+        <div><span class="k">曝光补偿</span><span class="v" id="dEv">−0.3</span></div>
+      </dl>
+      <h3 style="margin:16px 0 6px;font-size:14px;color:var(--c-text-3);font-weight:500">现场要点</h3>
+      <ul class="tips" id="dTips" style="font-size:14px"></ul>
+    </div>
+  </section>
+
+  <!-- C 曝光计算器 -->
+  <section id="s-expo" aria-labelledby="h-expo">
+    <h2 id="h-expo">曝光计算器</h2>
+    <p class="lead">按场景亮度与所选光圈，算出每个 ISO 对应的快门值，并标出可手持的那一行。手机是固定光圈镜头，收光圈是唯一能给白天降曝光的硬件手段。</p>
+
+    <div class="panel">
+      <label class="field"><span>场景亮度</span>
+        <select id="eScene">
+          <option value="15">晴天户外直射光 · EV 15</option>
+          <option value="13">阴天 / 大面积阴影 · EV 13</option>
+          <option value="12">日落前半小时 · EV 12</option>
+          <option value="9">室内明亮（商场 / 落地窗） · EV 9</option>
+          <option value="7" selected>室内家居常亮 · EV 7</option>
+          <option value="6">夜间街道 / 舞台 · EV 6</option>
+          <option value="5">烟花 · EV 5</option>
+          <option value="-3">星空 · EV −3</option>
+        </select>
+      </label>
+      <div class="row2">
+        <label class="field"><span>主摄光圈</span>
+          <select id="eAp">
+            <option value="1.48">ƒ/1.48（最大进光）</option>
+            <option value="1.8">ƒ/1.8</option>
+            <option value="2.8" selected>ƒ/2.8</option>
+            <option value="4">ƒ/4.0（最小进光）</option>
+          </select>
+        </label>
+        <label class="field"><span>拍摄焦段</span>
+          <select id="eFocal">
+            <option value="24" selected>24 mm · 1×</option>
+            <option value="48">48 mm · 2×</option>
+            <option value="100">100 mm · 4×</option>
+            <option value="200">200 mm · 8×</option>
+          </select>
+        </label>
+      </div>
+      <p style="margin:0;font-size:12.5px;color:var(--c-text-3)">快门上限 <span class="num">1/8000 s</span>；手持可靠下限按「1/焦距 ×4（OIS 放宽 2 档）」估算。</p>
+    </div>
+
+    <div class="tscroll">
+      <table id="eTable">
+        <caption id="eCap">当前组合：ƒ/2.8 · 24 mm · EV 7</caption>
+        <thead><tr><th scope="col">ISO</th><th scope="col">快门</th><th scope="col">判定</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="count" id="eNote"></p>
+  </section>
+
+  <!-- D 机型档案 -->
+  <section id="s-spec" aria-labelledby="h-spec">
+    <h2 id="h-spec">机型档案</h2>
+    <p class="lead">iPhone 18 Pro Max 是三颗 4800 万像素融合式镜头：13 mm 超广、24 mm 主摄（可变光圈）、100 mm 长焦。8× 的 200 mm 是长焦上的光学品质裁切，不是第四颗镜头。</p>
+
+    <div class="lensbar">
+      <div class="rail" role="img" aria-label="焦段分布：13 毫米 0.5 倍、24 毫米 1 倍、48 毫米 2 倍、100 毫米 4 倍、200 毫米 8 倍">
+        <b style="left:0%">0.5×</b><i style="left:0%"></i><u style="left:0%">13</u>
+        <b style="left:22.4%">1×</b><i style="left:22.4%"></i><u style="left:22.4%">24</u>
+        <b style="left:47.8%">2×</b><i style="left:47.8%"></i><u style="left:47.8%">48</u>
+        <b style="left:74.6%">4×</b><i style="left:74.6%"></i><u style="left:74.6%">100</u>
+        <b style="left:89%">8×</b><i style="left:89%"></i><u style="left:89%">200</u>
+      </div>
+    </div>
+
+    <h3>三颗镜头</h3>
+    <div class="tscroll">
+    <table>
+      <thead><tr><th scope="col">镜头</th><th scope="col">焦距</th><th scope="col">光圈</th><th scope="col">用途</th></tr></thead>
+      <tbody>
+        <tr><td>融合式主摄</td><td>24 mm</td><td>ƒ/1.48–4.0</td><td>通用、弱光</td></tr>
+        <tr><td>融合式超广角</td><td>13 mm</td><td>ƒ/2.2</td><td>风光、微距</td></tr>
+        <tr><td>融合式长焦</td><td>100 mm</td><td>ƒ/2.8</td><td>人像、远物</td></tr>
+        <tr><td>长焦 8× 档</td><td>200 mm</td><td>ƒ/2.8</td><td>月亮、舞台</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3>可变光圈怎么用</h3>
+    <p>主摄有 <span class="num">ƒ/1.48、ƒ/1.8、ƒ/2.8、ƒ/4.0</span> 四档物理光圈，这是 iPhone 第一次能用光圈同时管进光量和景深。</p>
+    <ul class="tips">
+      <li><b>ƒ/1.48</b>：夜间、室内、要最强虚化时。景深最浅，近距离拍人容易一只眼实一只眼虚。</li>
+      <li><b>ƒ/1.8</b>：室内人像的默认档，虚化还在，容错高一档。</li>
+      <li><b>ƒ/2.8</b>：人像、宠物、美食的通用档，锐度与虚化平衡。</li>
+      <li><b>ƒ/4.0</b>：强日光、合影、风光、光轨。收小光圈压曝光，同时把整个画面拉进景深。</li>
+    </ul>
+
+    <h3>规格与实际影响</h3>
+    <dl class="kv">
+      <dt>像素</dt><dd>三颗均 <span class="num">4800 万</span>，支持 24 MP 与 48 MP 超高分辨率照片</dd>
+      <dt>防抖</dt><dd>主摄与长焦为第二代 / 3D 传感器位移式 OIS，长焦带自动对焦</dd>
+      <dt>变焦</dt><dd>16 倍光学品质范围，最高 <span class="num">40 倍</span>数码变焦</dd>
+      <dt>微距</dt><dd><span class="num">4800 万</span>像素微距，由超广角自动接管</dd>
+      <dt>格式</dt><dd>HEIF、JPEG、ProRAW（DNG）</dd>
+      <dt>影像</dt><dd>光像引擎、深度融合、智能 HDR 5、摄影风格 3、智能追踪对焦、夜间模式</dd>
+      <dt>前摄</dt><dd><span class="num">1800 万</span>像素 Center Stage</dd>
+    </dl>
+    <p style="font-size:12.5px;color:var(--c-text-3)">参数依据 Apple 官方技术规格（iPhone 18 Pro / Pro Max，2026 年 10 月核对）。</p>
+  </section>
+
+  <!-- E 设置清单 -->
+  <section id="s-set" aria-labelledby="h-set">
+    <h2 id="h-set">设置清单</h2>
+    <p class="lead">开拍前过一遍。勾选状态存在本机，换设备或清缓存会丢。</p>
+    <p class="count" id="chkCount">0 / 0 已确认</p>
+    <div id="checklist"></div>
+  </section>
+
+  <!-- F 排障手册 -->
+  <section id="s-fix" aria-labelledby="h-fix">
+    <h2 id="h-fix">排障手册</h2>
+    <p class="lead">按现象查原因，每条给的是一步就能验证的动作，不是泛泛的「注意光线」。</p>
+
+    <details class="item">
+      <summary><span class="st">照片发虚、放大后一片糊</span><span class="sd">对焦 / 快门</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>先擦镜头。指印在逆光下会让整张发灰发软，这是最高频原因。</li>
+          <li>看快门：低于 1/焦距×4（如 100 mm 低于 1/25 s）就必然抖，把 ISO 抬上去换快门。</li>
+          <li>变焦跨档瞬间（尤其 2.9× 附近）会切镜头，等画面稳定半秒再按。</li>
+          <li>数码变焦超过 8× 后本质是裁切放大，画质断崖，回到 4× 拍完再裁。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">夜景噪点多、细节像油画</span><span class="sd">ISO / 镜头</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>弱光优先用 1× 主摄，别用 8×：小底 + 高 ISO 是双重损失。</li>
+          <li>能固定就固定，夜间模式才会给到长曝光，ISO 自然降下来。</li>
+          <li>把 ISO 手动压在 800 以内，快门不足就找支撑，而不是继续抬 ISO。</li>
+          <li>拍 ProRAW 后期降噪，比在相机里堆算法更耐看。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">霓虹灯牌、舞台脸过曝成白块</span><span class="sd">测光 / EV</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>点按人脸或灯牌本体测光，别让画面里的大片黑背景骗了全局测光。</li>
+          <li>按住对焦框向下滑，EV 压到 −1 至 −2，高光才留得住颜色。</li>
+          <li>主摄收到 ƒ/4.0 能减少大光圈下的高光溢出。</li>
+          <li>要一次拍全，用 ProRAW，高光信息留在 DNG 里还能拉回来。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">长焦对不上焦、来回拉风箱</span><span class="sd">距离 / 对比度</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>100 mm 最近对焦距离明显更远，贴太近它就是找不到焦点，退半步。</li>
+          <li>隔着玻璃、铁丝网拍会失焦，镜头贴紧玻璃可消除反光与误判。</li>
+          <li>纯色墙面、夜空这类低对比度目标，先对旁边有纹理的物体再平移回来。</li>
+          <li>弱光下用 4× 而不是 8×，后者进光量不够时对焦会明显变慢。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">夜间模式不触发 / 一拍就糊</span><span class="sd">环境 / 稳定</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>环境其实不够暗时不会自动开，可在相机顶部手动点夜间模式图标。</li>
+          <li>开了闪光灯会禁用夜间模式，先关闪光。</li>
+          <li>夜间模式靠多帧合成，按完后手要停住两秒，提前放下就是糊片。</li>
+          <li>识别到稳定支撑时最大曝光时间会明显延长，靠在栏杆上比手持好得多。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">靠近拍不切微距</span><span class="sd">距离 / 开关</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>微距由超广角接管，通常要到 2–5 cm 才切；手指挡住超广角镜头也不会切。</li>
+          <li>相机设置里打开「微距控制」，否则切过去就回不来。</li>
+          <li>想保留长焦视角拍细节，用 2× 后退拉远，比贴脸硬怼更容易对焦。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">人像模式没有虚化</span><span class="sd">距离 / 镜头</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>人像模式的景深控制需要主体在合适距离，太远（超过约 5 m）会提示「靠近一些」。</li>
+          <li>用 1× 或 4× 拍人像，超广角下算法虚化容易在发丝与肩线出错。</li>
+          <li>拍完仍可在相册里点「编辑」调光圈值，前期不必纠结。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">照片颜色和现场不一样</span><span class="sd">风格 / 屏幕</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>先看摄影风格 3 的当前预设，暖调风格会把白色拍成米色。</li>
+          <li>屏幕原彩显示（True Tone）会随环境光变暖，判断颜色前先关掉。</li>
+          <li>烟花、舞台这类混合光源，手动锁白平衡（约 5200–5600 K）比自动更稳定。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">ProRAW 打不开、文件太大</span><span class="sd">格式 / 存储</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>ProRAW 是 DNG，系统相册能预览，但编辑精修需要支持 DNG 的第三方 App。</li>
+          <li>单张 48 MP ProRAW 体积很大，出发前确认剩余存储够拍完全程。</li>
+          <li>不需要后期时切回 HEIF，省空间也省电。</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="item">
+      <summary><span class="st">相机黑屏、卡顿、按快门没反应</span><span class="sd">系统 / 硬件</span><span class="pm" aria-hidden="true"></span></summary>
+      <div class="item-body">
+        <ul class="tips">
+          <li>上滑关掉相机 App 重开，比在设置里翻半天更快。</li>
+          <li>存储将满时相机会写入失败甚至卡死，先清出几个 GB。</li>
+          <li>连续拍 4K 或长曝会让机身发热降频，停几分钟再拍。</li>
+          <li>以上都无效且黑屏稳定复现，属于硬件或系统级问题，走官方检测，不要自行拆修。</li>
+        </ul>
+      </div>
+    </details>
+  </section>
+
+  <!-- G 我的方案 -->
+  <section id="s-mine" aria-labelledby="h-mine">
+    <h2 id="h-mine">我的方案</h2>
+    <p class="lead">把调好的组合存下来，下次直接照抄。数据只在本机浏览器里。</p>
+
+    <form class="panel" id="planForm" novalidate>
+      <label class="field"><span>方案名称</span>
+        <input type="text" id="pName" name="pName" placeholder="例如：小区楼下拍烟花…" autocomplete="off" spellcheck="false" maxlength="30" required>
+      </label>
+      <div class="row2">
+        <label class="field"><span>场景</span>
+          <select id="pScene">
+            <option>人像</option><option>合影</option><option>风光</option><option>建筑</option>
+            <option>美食</option><option>宠物</option><option>舞台</option><option>烟花</option>
+            <option>星空</option><option>月亮</option><option>光轨</option><option>微距</option>
+          </select>
+        </label>
+        <label class="field"><span>焦段（倍率）</span>
+          <select id="pZoom">
+            <option>0.5×</option><option selected>1×</option><option>2×</option><option>4×</option><option>8×</option>
+          </select>
+        </label>
+      </div>
+      <div class="row3">
+        <label class="field"><span>光圈</span>
+          <select id="pAp"><option>ƒ/1.48</option><option>ƒ/1.8</option><option selected>ƒ/2.8</option><option>ƒ/4.0</option></select>
+        </label>
+        <label class="field"><span>ISO</span>
+          <input type="text" id="pIso" value="64–200" autocomplete="off" spellcheck="false" inputmode="text">
+        </label>
+        <label class="field"><span>快门</span>
+          <input type="text" id="pShut" value="1/250 s" autocomplete="off" spellcheck="false" inputmode="text">
+        </label>
+      </div>
+      <label class="field"><span>备注（站位、光线、要点）</span>
+        <textarea id="pNote" placeholder="栏杆左侧第二个灯柱下，提前半秒按快门…" autocomplete="off"></textarea>
+      </label>
+      <button class="btn" type="submit">保存方案</button>
+      <p class="count" id="pMsg" style="margin:10px 0 0" role="status" aria-live="polite"></p>
+    </form>
+
+    <h3>已保存 <span class="num" id="pCount" style="font-size:14px;color:var(--c-text-3)">0</span></h3>
+    <div id="planList"><p class="empty">还没有方案。上面填好参数，点「保存方案」就会出现在这里。</p></div>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>iPhone 18 Pro Max 拍照专项 · v1 · 2026-10-26</p>
+    <p>参数依据 Apple 官方技术规格。曝光换算为理论值，实拍请以取景框实时预览为准。</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var $=function(s,r){return (r||document).querySelector(s);};
+  var $$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s));};
+  var store={
+    get:function(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}},
+    set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+  };
+
+  /* ---------- 主题 ---------- */
+  var root=document.documentElement, themeBtn=$('#themeBtn');
+  var savedTheme=store.get('i18pm.theme','dark');
+  root.setAttribute('data-theme',savedTheme);
+  syncThemeBtn();
+  themeBtn.addEventListener('click',function(){
+    var next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next); store.set('i18pm.theme',next); syncThemeBtn();
+  });
+  function syncThemeBtn(){
+    var dark=root.getAttribute('data-theme')==='dark';
+    themeBtn.textContent=dark?'◐':'◑';
+    themeBtn.setAttribute('aria-pressed',dark?'false':'true');
+    themeBtn.setAttribute('aria-label',dark?'切换到浅色主题':'切换到深色主题');
+  }
+
+  /* ---------- 安装提示 ---------- */
+  var hint=$('#installHint');
+  var standalone=window.navigator.standalone===true||window.matchMedia('(display-mode: standalone)').matches;
+  if(!standalone && !store.get('i18pm.hintClosed',false)){hint.hidden=false;}
+  $('#hintX').addEventListener('click',function(){hint.hidden=true;store.set('i18pm.hintClosed',true);});
+
+  /* ---------- manifest（Chromium 系可装；Safari 靠 apple meta） ---------- */
+  try{
+    var iconHref=$('link[rel="apple-touch-icon"]').getAttribute('href');
+    var manifest={
+      name:'18 Pro Max 拍照助手',short_name:'拍照助手',display:'standalone',
+      background_color:'#0F1115',theme_color:'#0F1115',start_url:'.',
+      icons:[{src:iconHref,sizes:'180x180',type:'image/png',purpose:'any'}]
+    };
+    var blob=new Blob([JSON.stringify(manifest)],{type:'application/manifest+json'});
+    var link=document.createElement('link');link.rel='manifest';link.href=URL.createObjectURL(blob);
+    document.head.appendChild(link);
+  }catch(e){}
+
+  /* ---------- 导航高亮 ---------- */
+  var links=$$('.tabs a'), nav=document.querySelector('.tabs');
+  function nudge(a){
+    /* 标签被滚出可视区时自动带回，避免用户找不到当前项 */
+    if(!a||!nav) return;
+    var nr=nav.getBoundingClientRect(), cr=a.getBoundingClientRect();
+    if(cr.left<nr.left+8||cr.right>nr.right-8){
+      nav.scrollTo({left:nav.scrollLeft+(cr.left-nr.left)-(nr.width-cr.width)/2,behavior:'smooth'});
+    }
+  }
+  function setOn(a){
+    links.forEach(function(x){x.classList.toggle('on',x===a);});
+    nudge(a);
+  }
+  function atBottom(){
+    return window.innerHeight+window.scrollY>=document.documentElement.scrollHeight-8;
+  }
+  if('IntersectionObserver' in window){
+    var secs=links.map(function(a){return document.getElementById(a.getAttribute('href').slice(1));}).filter(Boolean);
+    var io=new IntersectionObserver(function(es){
+      if(atBottom()){ setOn(links[links.length-1]); return; }
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          var id=e.target.id;
+          links.forEach(function(a){
+            if(a.getAttribute('href')==='#'+id) setOn(a);
+          });
+        }
+      });
+    },{rootMargin:'-140px 0px -70% 0px',threshold:0});
+    secs.forEach(function(s){io.observe(s);});
+  }
+  links.forEach(function(a){
+    a.addEventListener('click',function(){ setOn(a); });
+  });
+  window.addEventListener('scroll',function(){ if(atBottom()) setOn(links[links.length-1]); },{passive:true});
+
+  /* ---------- 焦段决策 ---------- */
+  var SUBJ={
+    portrait:{f:100,alt:48,ap:'2.8',tips:['人退到 2–3 m 用 4×，压缩背景、脸型更收。','点按人脸锁 AF/AE，曝光偏亮向下滑一格。','环境人像改用 1× 后退，别在原地硬拉到超广。']},
+    group:{f:48,alt:24,ap:'4.0',tips:['用 2× 在 3–4 m 外拍，比例自然，别贴脸用 0.5×。','ƒ/4.0 保证后排也在景深内。','机位与中间一排眼睛齐平，多排时略高。']},
+    landscape:{f:13,alt:24,ap:'4.0',tips:['开 48 MP 超高分辨率，后期余地大。','打开网格与水平仪，地平线压三分线。','主体放中间 2/3，超广角边缘拉伸明显。']},
+    arch:{f:24,alt:13,ap:'4.0',tips:['机身保持垂直，仰拍楼体会倒。','超广角务必开镜头畸变校正。','拍细节换 2×，1× 会让路人过近、画面杂乱。']},
+    food:{f:48,alt:24,ap:'2.8',tips:['侧后 45° 打光，白纸补暗部。','机位抬高到 45–60° 俯拍，别从正上方拍成平面图。','热食先拍，蒸汽会让画面发灰、对焦来回拉。']},
+    pet:{f:100,alt:48,ap:'2.8',tips:['开智能追踪对焦，长按主体锁定。','蹲到与眼睛同高，室内尤其重要。','宁可抬 ISO 也要保住快门。']},
+    kids:{f:100,alt:48,ap:'2.8',tips:['连拍为主，快门优先于画质。','预判跑动方向，提前把主体放在取景框边缘。','蹲低拍，不要居高临下。']},
+    stage:{f:200,alt:100,ap:'2.8',tips:['点测人脸，别用全局测光，追光会把脸打爆。','关闪光与实况，减少废片。','8× 弱光画质下降明显，宁可 4× 拍完裁。']},
+    firework:{f:100,alt:24,ap:'2.8',tips:['禁三脚架时把手机压栏杆、双手夹紧身体。','专业级控制拉长快门并锁 ISO，超过 1/4 s 就改拍 4K 120 fps 截帧。','白平衡锁 5200–5600 K，否则连拍颜色会跳。']},
+    star:{f:24,alt:13,ap:'1.48',tips:['必须固定，手持 3 s 以上星星就拖线。','避开月光与城市光害方向。','关夜间人像与闪光，后期降噪。']},
+    moon:{f:200,alt:100,ap:'2.8',tips:['关闭夜间模式，否则拍出白饼。','手动压曝光到能看见环形山。','靠栏杆或墙，8× 下手抖 1 mm 就糊。']},
+    traffic:{f:24,alt:13,ap:'4.0',tips:['天刚黑、还有深蓝天空时最好看。','机位固定在天桥或窗台，用夜间模式拉长曝光。','EV 往下压一格，保住灯芯颜色。']},
+    macro:{f:13,alt:48,ap:'2.2',tips:['距离 2–5 cm 才触发微距。','景深极浅，先对焦再微调机位。','有风时连拍 5–8 张。']}
+  };
+  var LIGHT={
+    sun:{iso:'25–64',shutFloor:1/1000,ev:'−0.7',extra:'强日光下先收光圈到 ƒ/4.0，否则快门会顶到 1/8000 上限。'},
+    overcast:{iso:'64–200',shutFloor:1/250,ev:'−0.3',extra:'散射光下人物面部对比弱，可加一点 EV 并靠近反光面。'},
+    indoor:{iso:'200–800',shutFloor:1/60,ev:'0',extra:'室内靠窗侧光，别让人背对窗户。'},
+    night:{iso:'800–3200',shutFloor:1/30,ev:'−1',extra:'弱光优先主摄 1×，并用夜间模式多帧合成。'},
+    dark:{iso:'1600–6400',shutFloor:1/8,ev:'−1.5',extra:'接近全黑必须找固定支撑，手持只能拍光轨与烟花这类容忍虚焦的题材。'}
+  };
+  var ZOOM={'13':'0.5×','24':'1×','48':'2×','100':'4×','200':'8×'};
+  /* 这几类题材的快门不是「越快越好」，直接给可用区间 */
+  var LONGEXPO={star:'≈10 s（夜间模式 · 必须固定）',traffic:'1–3 s（夜间模式长曝）',firework:'1/4–2 s（夜间模式）',moon:'1/125 s（关夜间模式）'};
+  var EVOVR={star:'−2',firework:'−1.5',traffic:'−1.5',moon:'−1.7'};
+  function updateDecider(){
+    var key=$('#dSubject').value, s=SUBJ[key], dist=$('#dDist').value, lt=LIGHT[$('#dLight').value];
+    var f=s.f, tips=s.tips.slice(), ap=s.ap, shutTxt;
+    if(dist==='near'&&f>100){f=s.alt;tips.push('1 m 内用 '+(ZOOM[String(f)]||'更短焦段')+' 更稳，长焦最近对焦距离不够。');}
+    if(dist==='far'){
+      if(key==='portrait'&&f<200){f=200;tips.push('3 m 外拍半身直接上 8×，压缩背景更干净。');}
+      else if((key==='group'||key==='food'||key==='pet')&&f<48){f=48;tips.push('距离超过 3 m，切到 2× 主体才够大。');}
+    }
+    if($('#dLight').value==='dark'&&f>=200){f=100;tips.push('近乎全黑时 8× 进光不足，退回 4× 保证可拍。');}
+    if($('#dLight').value==='sun'&&(ap==='1.48'||ap==='1.8')){ap='4.0';tips.push('强日光配大光圈会过曝，主摄收到 ƒ/4.0。');}
+    if(LONGEXPO[key]){
+      shutTxt=LONGEXPO[key];
+    }else{
+      /* 焦距手持下限与光线快门下限都是「不得慢于此」，取更严的一条 */
+      shutTxt=fmtShutter(Math.min(1/f*4, lt.shutFloor));
+    }
+    $('#dFocal').textContent=f;
+    $('#dZoom').textContent=ZOOM[String(f)]||(f/24).toFixed(1)+'×';
+    $('#dAp').textContent='ƒ/'+ap;
+    $('#dIso').textContent=lt.iso;
+    $('#dShut').textContent=shutTxt;
+    $('#dEv').textContent=EVOVR[key]||lt.ev;
+    var ul=$('#dTips'); ul.innerHTML='';
+    tips.concat([lt.extra]).slice(0,4).forEach(function(t){
+      var li=document.createElement('li'); li.textContent=t; ul.appendChild(li);
+    });
+  }
+  function fmtShutter(sec){
+    if(sec>=1) return sec.toFixed(sec<10?1:0)+' s';
+    return '1/'+Math.round(1/sec)+' s';
+  }
+  ['#dSubject','#dDist','#dLight'].forEach(function(id){ $(id).addEventListener('change',updateDecider); });
+  updateDecider();
+
+  /* ---------- 曝光计算器 ---------- */
+  function renderExpo(){
+    var EV=parseFloat($('#eScene').value);
+    var N=parseFloat($('#eAp').value);
+    var f=parseFloat($('#eFocal').value);
+    var tMax=4/f;               /* 手持可靠下限（OIS 放宽 2 档） */
+    var tMin=1/8000;
+    var isos=[50,64,100,200,400,800,1600,3200,6400];
+    var body=$('#eTable tbody'); body.innerHTML='';
+    var bestIdx=-1, rows=[];
+    isos.forEach(function(iso){
+      var t=N*N*100/(iso*Math.pow(2,EV));
+      rows.push({iso:iso,t:t});
+    });
+    for(var i=0;i<rows.length;i++){
+      if(rows[i].t<=tMax && rows[i].t>=tMin){bestIdx=i;break;}
+    }
+    var motionIdx=-1;
+    for(var k=0;k<rows.length;k++){
+      if(rows[k].t<=1/125 && rows[k].t>=tMin){motionIdx=k;break;}
+    }
+    rows.forEach(function(r,i){
+      var tr=document.createElement('tr');
+      var verdict, cls='';
+      var t=r.t;
+      if(t<tMin){verdict='超快门上限';cls='over';}
+      else if(t>tMax){verdict='可能拍虚';}
+      else{verdict='可手持';}
+      if(i===bestIdx){cls='best';verdict='可手持';}
+      if(cls) tr.className=cls;
+      tr.innerHTML='<td>'+r.iso+'</td><td>'+fmtShutter(t)+'</td><td style="font-family:var(--font-sans)">'+verdict+'</td>';
+      body.appendChild(tr);
+    });
+    $('#eCap').textContent='当前组合：ƒ/'+($('#eAp').value)+' · '+f+' mm · EV '+EV;
+    var note=$('#eNote');
+    if(bestIdx<0){
+      if(rows[0].t<tMin){note.textContent='亮度太高：即使 ISO '+rows[0].iso+' 快门也超过 1/8000 s。把光圈收到 ƒ/4.0，或加 ND 减光。';}
+      else{note.textContent='亮度太低：ISO '+rows[rows.length-1].iso+' 时快门仍慢于手持下限，需要固定支撑或延长夜间模式曝光。';}
+    }else{
+      var txt='推荐 ISO '+rows[bestIdx].iso+'，快门 '+fmtShutter(rows[bestIdx].t)+'；手持下限约 '+fmtShutter(tMax)+'。';
+      if(motionIdx>-1 && motionIdx!==bestIdx){
+        txt+=' 主体会动（人、宠物、舞台）则至少 ISO '+rows[motionIdx].iso+'，快门 '+fmtShutter(rows[motionIdx].t)+'。';
+      }
+      note.textContent=txt;
+    }
+  }
+  ['#eScene','#eAp','#eFocal'].forEach(function(id){ $(id).addEventListener('change',renderExpo); });
+  renderExpo();
+
+  /* ---------- 设置清单 ---------- */
+  var CHECKS=[
+    {id:'c1',t:'格式选 ProRAW + HEIF 最高',d:'要后期就拍 DNG；只发朋友圈用 HEIF 高效，省一半空间。'},
+    {id:'c2',t:'摄影风格 3 预设调好',d:'先把高光与肤色定下来，全程不临时改，后期批次才一致。'},
+    {id:'c3',t:'网格与水平仪已开',d:'地平线与竖线不歪，比任何后期都省事。'},
+    {id:'c4',t:'保留设置：相机模式 / 滤镜 / 实况',d:'保持上次的参数，减少每次开相机重新调。'},
+    {id:'c5',t:'智能追踪对焦已开',d:'拍宠物、小孩、舞台时主体不会跑焦。'},
+    {id:'c6',t:'优先快速拍摄已关',d:'关了才会走完整多帧合成，画质优先时必关。'},
+    {id:'c7',t:'镜头畸变校正已开',d:'超广角的直线才不弯，建筑与室内必开。'},
+    {id:'c8',t:'微距控制已开',d:'近距离不会误切微距后回不来。'},
+    {id:'c9',t:'相机控制键手感已调',d:'轻按对焦、重按快门的力度按自己习惯设，避免误触。'},
+    {id:'c10',t:'镜头已擦干净',d:'最便宜也最有效的画质提升，逆光前必做。'},
+    {id:'c11',t:'剩余存储够本次拍摄',d:'48 MP ProRAW 单张很大；将满时相机会写入失败。'},
+    {id:'c12',t:'电量与发热状态正常',d:'连续 4K 或长曝会降频，带充电宝并避免太阳直晒。'},
+    {id:'c13',t:'已确认现场拍摄限制',d:'园区/场馆常禁三脚架、自拍杆、闪光，先问清再带装备。'},
+    {id:'c14',t:'关闭闪光灯（默认）',d:'闪光会禁用夜间模式，且几乎所有现场题材都不该用。'},
+    {id:'c15',t:'白平衡在混合光下已锁定',d:'烟花、舞台、夜市锁 5200–5600 K，连拍颜色才不跳。'},
+    {id:'c16',t:'手机已固定在可依靠处',d:'栏杆、台阶、背包都能当支撑，长曝与 8× 的前提。'}
+  ];
+  var checked=store.get('i18pm.checks',{});
+  var cl=$('#checklist');
+  CHECKS.forEach(function(c){
+    var wrap=document.createElement('div'); wrap.className='chk';
+    var inp=document.createElement('input'); inp.type='checkbox'; inp.id=c.id; inp.checked=!!checked[c.id];
+    var lab=document.createElement('label'); lab.setAttribute('for',c.id);
+    var sp=document.createElement('span'); sp.textContent=c.t;
+    var sm=document.createElement('small'); sm.textContent=c.d;
+    lab.appendChild(sp); lab.appendChild(sm);
+    wrap.appendChild(inp); wrap.appendChild(lab); cl.appendChild(wrap);
+    inp.addEventListener('change',function(){
+      checked[c.id]=inp.checked; store.set('i18pm.checks',checked); countChecks();
+    });
+  });
+  function countChecks(){
+    var n=CHECKS.filter(function(c){return !!checked[c.id];}).length;
+    $('#chkCount').textContent=n+' / '+CHECKS.length+' 已确认';
+  }
+  countChecks();
+
+  /* ---------- 我的方案 ---------- */
+  var plans=store.get('i18pm.plans',[]);
+  var planList=$('#planList');
+  function esc(s){return String(s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+  function renderPlans(){
+    $('#pCount').textContent=plans.length;
+    planList.innerHTML='';
+    if(!plans.length){
+      var p=document.createElement('p'); p.className='empty';
+      p.textContent='还没有方案。上面填好参数，点「保存方案」就会出现在这里。';
+      planList.appendChild(p); return;
+    }
+    plans.slice().reverse().forEach(function(pl){
+      var d=document.createElement('div'); d.className='plan';
+      var h=document.createElement('h4'); h.textContent=pl.name;
+      var m=document.createElement('p'); m.className='meta';
+      m.textContent=[pl.scene,pl.zoom,pl.ap,'ISO '+pl.iso,pl.shut].join(' · ');
+      d.appendChild(h); d.appendChild(m);
+      if(pl.note){var n=document.createElement('p'); n.className='note'; n.textContent=pl.note; d.appendChild(n);}
+      var acts=document.createElement('div'); acts.className='acts';
+      var cp=document.createElement('button'); cp.type='button'; cp.className='btn ghost small'; cp.textContent='复制参数';
+      cp.addEventListener('click',function(){
+        var txt=pl.name+'\n'+[pl.scene,pl.zoom,pl.ap,'ISO '+pl.iso,pl.shut].join(' · ')+(pl.note?'\n'+pl.note:'');
+        if(navigator.clipboard&&navigator.clipboard.writeText){
+          navigator.clipboard.writeText(txt).then(function(){cp.textContent='已复制';setTimeout(function(){cp.textContent='复制参数';},1500);},
+            function(){cp.textContent='复制失败';});
+        }else{cp.textContent='长按选取';}
+      });
+      var del=document.createElement('button'); del.type='button'; del.className='btn ghost small'; del.textContent='删除';
+      del.addEventListener('click',function(){
+        var i=plans.indexOf(pl); if(i>-1){plans.splice(i,1);store.set('i18pm.plans',plans);renderPlans();}
+      });
+      acts.appendChild(cp); acts.appendChild(del); d.appendChild(acts);
+      planList.appendChild(d);
+    });
+  }
+  $('#planForm').addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=$('#pName').value.trim();
+    if(!name){$('#pName').focus();$('#pMsg').textContent='先给方案起个名字。';return;}
+    plans.push({
+      name:name, scene:$('#pScene').value, zoom:$('#pZoom').value, ap:$('#pAp').value,
+      iso:$('#pIso').value.trim()||'自动', shut:$('#pShut').value.trim()||'自动',
+      note:$('#pNote').value.trim(), at:Date.now()
+    });
+    store.set('i18pm.plans',plans);
+    $('#pMsg').textContent='已保存「'+name+'」。';
+    $('#pName').value=''; $('#pNote').value='';
+    renderPlans();
+  });
+  renderPlans();
+})();
+</script>
+<div id="pvBar" style="position:fixed;bottom:14px;right:12px;z-index:9999;display:flex;flex-direction:column;gap:8px;">
+  <a id="pvHome" href="../index.html" aria-label="返回项目清单" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;text-decoration:none;font-size:16px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8962;</a>
+  <button class="btn sm" id="pvUpd" type="button" aria-label="检查并更新到最新版本" style="width:36px;height:36px;border:none;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8635;</button>
+</div>
+<script>
+/* 「更新」按钮：比对 version.json 的 build，不一致即清缓存+注销 SW+硬重载 */
+(function(){
+  var b=document.getElementById('pvUpd'); if(!b) return;
+  var m=document.querySelector('meta[name="pv-build"]'); var local=m?m.getAttribute('content'):'';
+  var t0=b.textContent;
+  function say(t,ms){ b.textContent=t; setTimeout(function(){ b.textContent=t0; }, ms||1600); }
+  function hard(){
+    try{ if('caches' in window){ caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){}); } }catch(e){}
+    try{ if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){ navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ try{ r.unregister(); }catch(e){} }); }); } }catch(e){}
+    setTimeout(function(){ var u=location.href.split('#')[0]; var sep=u.indexOf('?')>=0?'&':'?'; try{ location.replace(u+sep+'t='+Date.now()); }catch(e){ location.reload(); } },150);
+  }
+  b.addEventListener('click', function(){
+    if(!/^https?:/i.test(location.protocol)){ hard(); return; }
+    var base = location.pathname.indexOf('/tools/') >= 0 ? '../' : '';
+    say('检查中');
+    fetch(base+'version.json?t='+Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+      if(j && j.build && j.build !== local){ say('更新中'); hard(); } else { say('已最新'); }
+    }).catch(function(){ hard(); });
+  });
+})();
+</script>
+
+</body>
+</html>
