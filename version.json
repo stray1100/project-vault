@@ -1,6 +1,6 @@
 {
-  "build": "7420428996",
-  "built_at": "2026-10-22 20:05",
+  "build": "3583571883",
+  "built_at": "2026-10-26 02:14",
   "platform": "GitHub Pages",
   "base_url": "https://stray1100.github.io/project-vault",
   "pages": [
@@ -13,8 +13,10 @@
     "P008.html",
     "P009.html",
     "P010.html",
+    "P011.html",
     "SKILL-GUIDE.html",
     "index.html",
+    "tools/iphone18pm-camera-guide.html",
     "tools/prompt-forge.html"
   ]
 }

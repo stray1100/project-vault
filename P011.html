@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="3583571883">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>iPhone 18 Pro Max 拍照助手（离线速查） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-26 02:13</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P011</span>
+  <h1>iPhone 18 Pro Max 拍照助手（离线速查）</h1>
+  <p class="summary">单文件离线拍照速查：场景→焦段→曝光三次点选出结果，可加到 iPhone 主屏当工具 App。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P011</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-26</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML（零外链） / 原生 JS 无框架 / localStorage 本地持久化 / 动态 manifest（可加主屏）</td></tr><tr><td class="k">线上地址</td><td class="v">未部署</td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-26 02:13</td></tr></table>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>单文件离线拍照速查：场景→焦段→曝光三次点选出结果，可加到 iPhone 主屏当工具 App。</p>
+    <p class="para">现场拍摄的瓶颈通常不是设备，而是临场决策：该用哪颗镜头、快门给多少、光圈要不要收。此页把这三步压缩成点选，30 秒内出结论。</p><p class="para">单文件 HTML，零外链、无 CDN，断网可跑；加到 iPhone 主屏后就是可离线打开的速查工具，不依赖电脑开机。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">场景速查</td><td>拍什么（14 类）× 距离（3 档）× 光线（5 档）三选即出「现场要点」：机位、镜头、快门下限。</td></tr><tr><td class="fname">焦段决策器</td><td>24/48/100/200 mm 四档等效焦段的适用与禁忌，含三颗镜头硬件差异与实际影响。</td></tr><tr><td class="fname">曝光计算器</td><td>场景亮度 EV 15 → EV −3 共 8 档，叠光圈 ƒ/1.48–4.0 与焦段，输出快门与 ISO 建议值。</td></tr><tr><td class="fname">机型档案</td><td>三颗镜头规格、可变光圈四档的进光与景深取舍、规格变化带来的实际拍摄影响。</td></tr><tr><td class="fname">设置清单</td><td>相机设置逐项对照勾选，勾选状态本机保留。</td></tr><tr><td class="fname">排障手册</td><td>糊、噪点、过曝、偏色、对焦拉风箱等现场症状的逐项排除顺序。</td></tr><tr><td class="fname">我的方案</td><td>自建拍摄方案（场景/焦段/光圈/ISO/快门/备注）保存到 localStorage，可增删。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>① 打开：电脑上双击本机 HTML；手机直接开线上地址（本项目 site 字段）→ 预期：深色速查页，顶部三颗胶囊「场景速查 / 焦段决策器 / 曝光计算器」，右上角「◐」切换深浅主题。</li><li>② 加到主屏（仅手机、仅 https）：Safari 打开线上地址 → 底部「分享」→「添加到主屏幕」，名称默认「拍照助手」→ 预期：主屏出现图标，断网点开仍可用。若菜单里没有「添加到主屏幕」，说明当前是 file:// 打开的，改用 site 字段的 https 地址重开。</li><li>③ 场景速查（最常用）：顶部选「拍什么」（单人肖像/合影群像/风光/建筑与街拍/美食静物/宠物/孩子跑动/舞台演出/烟花/星空银河/月亮/车流光轨/微距花草）→ 选「距离」（近 1 m 内 / 中 1–3 m / 远 3 m 外）→ 选「光线」（强日光/阴天散射/室内光/夜间弱光/几乎全黑）→ 预期：下方「现场要点」立即给出该组合的机位、该用哪颗镜头与快门下限。</li><li>④ 焦段决策器：看「三颗镜头」卡片（24 mm 1×、48 mm 2×、100 mm 4×、200 mm 8×）→ 按被摄体和站位选倍率 → 预期：卡片给出该焦段适合什么、什么时候别用（如 8× 需光线充足、4× 人像要留距离）。</li><li>⑤ 曝光计算器：选「场景亮度」（EV 15 晴天直射 → EV −3 星空，共 8 档）→「主摄光圈」（ƒ/1.48、ƒ/1.8、ƒ/2.8、ƒ/4.0）→「拍摄焦段」（1×/2×/4×/8×）→ 预期：输出建议快门与 ISO 组合；照此在相机里进手动/半自动档设定即可。结果与相机自动曝光不一致属正常，相机会叠加 HDR 与夜景合成，把计算值当起点。</li><li>⑥ 可变光圈：读「可变光圈怎么用」小节，按意图选档 —— 要浅景深虚化选 ƒ/1.48–1.8，要星芒/大景深选 ƒ/2.8–4.0；预期：清楚哪档牺牲进光、哪档牺牲虚化。</li><li>⑦ 设置清单：逐条对照相机设置（格式、网格、锁 AE/AF、实况等），改完勾选 → 预期：勾选状态存本机，下次打开仍保持；换浏览器或清站点数据会清空。</li><li>⑧ 我的方案：填「方案名称 / 场景 / 焦段 / 光圈 / ISO / 快门 / 备注」→ 点「保存方案」→ 预期：右上「已保存 N」递增，方案进列表；点方案上的「✕」删除。数据只存当前浏览器 localStorage。</li><li>⑨ 排障手册：现场出问题（糊、噪点、过曝、偏色、对焦来回拉）按症状查条目，按给出的顺序逐项排除（先擦镜头→再查对焦锁定→再改快门/ISO）。</li><li>⑩ 更新：线上版右上「更新」比对 version.json，落后则自动清缓存并硬重载；一致会提示已是最新。加在主屏的图标下次打开会自动升级，不用删掉重加。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_029435bd82ce403aa621d4d3c61f87cd\output\iphone18pm-camera-guide-v1-1026.html</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>曝光建议基于 EV 与安全快门经验公式推算，不是独立测光表；高反差场景仍以实时直方图与高光提示为准。</li><li>机型参数按 iPhone 18 Pro Max 公开规格整理，iOS 版本更新后菜单名称与入口可能变化，以机内实际菜单为准。</li><li>只覆盖拍照，不含视频、ProRes、Log 与后期流程。</li><li>方案与勾选存在浏览器 localStorage，清除站点数据、换浏览器、无痕窗口都会丢失。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">iPhone 上找不到「添加到主屏幕」？</p><p class="a">多半是用 file:// 本地文件打开的，Safari 对该协议不提供该选项。改用项目的 https 线上地址打开即可。</p></div><div class="qa"><p class="q">打开后内容还是旧版？</p><p class="a">点页面右上「更新」，它会比对 version.json 并在落后时清缓存重载；仍不生效就关掉标签页重开。</p></div><div class="qa"><p class="q">曝光计算给的快门与相机显示不一致？</p><p class="a">正常。相机自动档会叠加 HDR 与夜景多帧合成，计算值只作手动档的起点。</p></div><div class="qa"><p class="q">换手机后我的方案还在吗？</p><p class="a">不在。数据存本机浏览器，不联网同步；需要迁移就照列表手工重录。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">单文件零外链，断网可用；方案与勾选仅存本机 localStorage；只覆盖拍照，不含视频/ProRes/Log。不含个人信息，可直接公开。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>v1（2026-10-26）：单文件 66.3 KB，脚本文本扫描无 http(s) 外链，可完全离线运行。</li><li>Playwright 实测视口 320 / 390 / 430 px 均无横向溢出，无 JS 控制台报错。</li><li>决策器 14 组「拍什么」组合逐一点选，输出均非空且与所选组合对应。</li><li>深色/浅色主题切换与 localStorage 持久化（方案保存、勾选保留）实测通过。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-26</span> 登记入库</li><li><span class="t">2026-10-26</span> 更新：notes</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-26 02:13</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 ）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>
