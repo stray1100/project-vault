@@ -1,5 +1,5 @@
 /* 项目档案馆站点 Service Worker：在线取最新，离线读缓存 */
-const CACHE = 'pv-site-3416268791';
+const CACHE = 'pv-site-1691302205';
 const PRECACHE = [
   'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'P012.html', 'SKILL-GUIDE.html', 'index.html', 'tools/iphone18pm-camera-guide.html', 'tools/photography-academy-std.html', 'tools/photography-classic-plus.html', 'tools/photography-lite-practical.html', 'tools/photography-portrait-street.html', 'tools/prompt-forge.html',
 
