@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="7028264711">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f5f6f8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e1116" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<title>嵌入式学习助手 B1 · 第1-8周 S0+S1（分层精讲）</title>
+<style>
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  color-scheme: light dark;
+  --bg:#f5f6f8; --card:#ffffff; --tx:#15181c; --tx2:#4f5a65; --tx3:#69747f;
+  --line:#e4e8ed; --acc:#1f5cd1; --accsoft:#e9f0fd; --warn:#b45309; --warnsoft:#fff4e5;
+  --ok:#15803d; --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.05);
+  --fs:16px;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1116; --card:#1a1f26; --tx:#e8ecf1; --tx2:#a7b3bf; --tx3:#97a3b0;
+    --line:#2c333c; --acc:#7aa4ff; --accsoft:#1c2740; --warn:#f0b06a; --warnsoft:#2a2116;
+    --ok:#5ec98b; --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.35);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1116; --card:#1a1f26; --tx:#e8ecf1; --tx2:#a7b3bf; --tx3:#97a3b0;
+  --line:#2c333c; --acc:#7aa4ff; --accsoft:#1c2740; --warn:#f0b06a; --warnsoft:#2a2116;
+  --ok:#5ec98b; --shadow:0 1px 2px rgba(0,0,0,.5),0 8px 24px rgba(0,0,0,.35);
+}
+html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--tx);font-size:var(--fs);line-height:1.72;
+  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",system-ui,"Noto Sans SC","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Roboto,sans-serif;
+  padding-bottom:calc(max(env(safe-area-inset-bottom),10px) + 24px);
+  min-height:100vh;min-height:100dvh;overflow-wrap:anywhere;word-break:break-word;
+}
+.wrap{width:100%;max-width:760px;margin:0 auto;padding:0 16px}
+header.top{
+  position:sticky;top:0;z-index:20;background:var(--bg);
+  padding-top:calc(max(env(safe-area-inset-top),10px));padding-bottom:8px;
+  border-bottom:1px solid var(--line);
+}
+.title-row{display:flex;align-items:flex-start;gap:10px}
+h1{font-size:19px;line-height:1.4;margin:6px 0 2px;font-weight:650;letter-spacing:.2px}
+.sub{font-size:13px;color:var(--tx2);margin:0}
+.theme-btn{flex:0 0 auto;margin-left:auto;border:1px solid var(--line);background:var(--card);color:var(--tx2);
+  width:38px;height:38px;border-radius:11px;font-size:15px;display:grid;place-items:center;cursor:pointer}
+.prog{margin:10px 0 8px}
+.bar{height:7px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--acc),#7aa7ff);border-radius:99px;transition:width .25s ease}
+.prog-txt{display:flex;justify-content:space-between;font-size:12.5px;color:var(--tx2);margin-top:6px}
+.toolbar{display:flex;gap:8px;align-items:center;margin-top:2px}
+.search{flex:1 1 auto;min-width:0;position:relative}
+.search input{width:100%;height:38px;border:1px solid var(--line);background:var(--card);color:var(--tx);
+  border-radius:11px;padding:0 12px 0 34px;font-size:15px;outline:none}
+.search input:focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--accsoft)}
+.search svg{position:absolute;left:11px;top:11px;width:16px;height:16px;stroke:var(--tx3);fill:none;stroke-width:2}
+.filter{flex:0 0 auto;height:38px;border:1px solid var(--line);background:var(--card);color:var(--tx2);
+  border-radius:11px;padding:0 12px;font-size:14px}
+.chips{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:8px 0 2px;scrollbar-width:none}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:0 0 auto;display:inline-flex;align-items:center;min-height:34px;border:1px solid var(--line);background:var(--card);color:var(--tx2);border-radius:99px;
+  padding:0 13px;font-size:13.5px;cursor:pointer;white-space:nowrap}
+.chip[aria-pressed="true"]{background:var(--accsoft);border-color:var(--acc);color:var(--acc);font-weight:600}
+main{padding-top:14px}
+.weekh{display:flex;align-items:baseline;gap:8px;margin:18px 0 10px}
+.weekh h3{font-size:15px;margin:0;font-weight:650}
+.weekh span{font-size:12.5px;color:var(--tx3)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:14px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card.done{opacity:.62}
+.head{display:flex;gap:10px;align-items:flex-start}
+.dnum{flex:0 0 auto;font-size:12px;font-weight:700;color:var(--acc);background:var(--accsoft);
+  border-radius:8px;padding:3px 7px;margin-top:3px;letter-spacing:.4px}
+.card h2{font-size:16.5px;line-height:1.5;margin:0;font-weight:650;flex:1 1 auto;min-width:0}
+.chk{flex:0 0 auto;display:grid;place-items:center;width:44px;height:44px;margin:-6px -6px -6px 0;cursor:pointer}
+.chk input{position:absolute;opacity:0;width:0;height:0}
+.chk span{width:24px;height:24px;border:1.8px solid var(--line);border-radius:8px;display:block;position:relative;transition:.15s}
+.chk input:checked+span{background:var(--ok);border-color:var(--ok)}
+.chk input:checked+span:after{content:"";position:absolute;left:7px;top:3px;width:6px;height:11px;
+  border:2px solid #fff;border-top:0;border-left:0;transform:rotate(42deg)}
+.meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:9px 0 4px;font-size:12.5px;color:var(--tx3)}
+.badge{border-radius:6px;padding:1px 7px;font-weight:600}
+.badge.pA{background:var(--warnsoft);color:var(--warn)}
+.badge.pB{background:var(--accsoft);color:var(--acc)}
+.badge.pC{background:var(--line);color:var(--tx2)}
+.tag:before{content:"#"}
+.src{margin:2px 0 10px;font-size:13px;color:var(--tx3);line-height:1.6}
+.block{margin:10px 0;padding:10px 12px;border-radius:11px;background:var(--bg);border:1px solid var(--line)}
+.block>b{display:block;font-size:12.5px;color:var(--acc);letter-spacing:.3px;margin-bottom:4px}
+.block.kp>b{color:var(--ok)}
+.block.prac>b{color:var(--warn)}
+.block p{margin:0;font-size:16px}
+.block ol{margin:3px 0 0;padding-left:20px}
+.block ol li{margin:5px 0;font-size:16px;line-height:1.7}
+.deep{margin-top:10px;border-top:1px dashed var(--line);padding-top:8px}
+.deep>summary{display:flex;align-items:center;min-height:44px;font-size:14.5px;color:var(--acc);cursor:pointer;padding:4px 0;list-style:none;font-weight:600}
+.deep>summary::-webkit-details-marker{display:none}
+.deep>summary:before{content:"▸ ";}
+.deep[open]>summary:before{content:"▾ ";}
+.anchor{color:var(--tx2);font-style:normal;background:var(--accsoft);border-left:3px solid var(--acc);
+  padding:9px 11px;border-radius:0 8px 8px 0;margin:6px 0 12px;font-size:16px}
+.sec{margin:10px 0}
+.sec h4{margin:0 0 3px;font-size:14.5px;font-weight:650;color:var(--tx)}
+.sec p{margin:0;font-size:16px;color:var(--tx2);line-height:1.75}
+.lst{margin:12px 0}
+.lst h4{margin:0 0 4px;font-size:13px;color:var(--tx3);font-weight:600;letter-spacing:.3px}
+.lst ul{margin:0;padding-left:19px}
+.lst li{font-size:16px;margin:4px 0;line-height:1.7}
+.lst.pit li{color:var(--tx2)}
+.quiz{margin-top:10px;background:var(--bg);border:1px solid var(--line);border-radius:11px;padding:10px 12px}
+.quiz .q{margin:0 0 6px;font-size:16px;font-weight:600}
+.quiz details summary{font-size:13.5px;color:var(--acc);cursor:pointer;padding:2px 0}
+.quiz .a{margin:6px 0 2px;font-size:16px;font-weight:650;color:var(--ok)}
+.quiz .why{margin:0;font-size:16px;color:var(--tx2)}
+.empty{text-align:center;color:var(--tx3);font-size:14.5px;padding:40px 0}
+footer{color:var(--tx2);font-size:12.5px;line-height:1.9;padding:22px 0 calc(max(env(safe-area-inset-bottom),10px) + 6px);border-top:1px solid var(--line);margin-top:16px}
+.totop{position:fixed;right:14px;bottom:calc(max(env(safe-area-inset-bottom),10px) + 14px);z-index:30;
+  width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--tx2);
+  box-shadow:var(--shadow);font-size:17px;display:none;place-items:center;cursor:pointer}
+.totop.show{display:grid}
+@media (max-width:360px){
+  .wrap{padding:0 12px}
+  .card{padding:12px}
+  .block{padding:9px 10px}
+}
+@media (min-width:700px){
+  .card{padding:18px}
+  h1{font-size:21px}
+}
+/* ---- v2 深度精讲 ---- */
+.why{margin:10px 0;padding:11px 12px;border-radius:11px;background:var(--accsoft);border:1px solid var(--line)}
+.why>b{display:block;font-size:12.5px;color:var(--acc);letter-spacing:.3px;margin-bottom:4px}
+.why>p{margin:0;font-size:16px;color:var(--tx);line-height:1.75}
+.tblwrap{margin:12px 0;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:11px}
+.tcap{font-size:12.5px;color:var(--tx3);padding:7px 10px;border-bottom:1px solid var(--line);background:var(--bg)}
+table.reg{width:100%;border-collapse:collapse;font-size:13.5px;line-height:1.6;table-layout:fixed}
+table.reg th,table.reg td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:7px 9px;text-align:left;vertical-align:top;word-break:break-word;overflow-wrap:anywhere}
+table.reg th:last-child,table.reg td:last-child{border-right:0}
+table.reg tr:last-child td{border-bottom:0}
+table.reg thead th{background:var(--accsoft);color:var(--acc);font-weight:650}
+table.reg td:first-child,table.reg th:first-child{width:31%}
+table.reg.diag thead th{background:var(--warnsoft);color:var(--warn)}
+.codeblock{margin:12px 0;border:1px solid var(--line);border-radius:11px;overflow:hidden;background:var(--bg)}
+.codeblock>h5{margin:0;padding:7px 10px;font-size:12.5px;color:var(--tx3);font-weight:600;border-bottom:1px solid var(--line)}
+.codeblock pre{margin:0;padding:10px 11px;overflow-x:auto;-webkit-overflow-scrolling:touch;max-width:100%}
+.codeblock code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Courier New",monospace;
+  font-size:12.5px;line-height:1.62;white-space:pre;color:var(--tx);tab-size:2}
+.lst.vf ol{margin:0;padding-left:19px}
+.lst.vf li{font-size:16px;margin:5px 0;line-height:1.7;color:var(--tx2)}
+.link{margin:12px 0;padding:10px 12px;border-radius:11px;background:var(--bg);border:1px dashed var(--line)}
+.link>b{display:block;font-size:12.5px;color:var(--tx3);margin-bottom:3px}
+.link>p{margin:0;font-size:15.5px;color:var(--tx2);line-height:1.72}
+.drill details{margin:6px 0;background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:8px 11px}
+.drill details summary{font-size:15.5px;font-weight:600;cursor:pointer;line-height:1.6;list-style:none;position:relative;padding-right:18px}
+.drill details summary::-webkit-details-marker{display:none}
+.drill details summary:after{content:"+";position:absolute;right:0;top:0;color:var(--acc);font-weight:700}
+.drill details[open] summary:after{content:"−"}
+.drill details p{margin:7px 0 1px;font-size:15.5px;color:var(--tx2);line-height:1.75}
+.refs{margin:12px 0 2px}
+.refs h4{margin:0 0 4px;font-size:12.5px;color:var(--tx3);font-weight:600;letter-spacing:.3px}
+.refs ul{margin:0;padding-left:17px}
+.refs li{font-size:13px;color:var(--tx3);line-height:1.65;margin:2px 0}
+@media print{
+  header.top,.chk,.totop{display:none}
+  .card{break-inside:avoid;box-shadow:none}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <div class="title-row">
+      <div style="min-width:0">
+        <h1>嵌入式学习助手 · B1</h1>
+        <p class="sub">第1-8周 S0+S1（分层精讲）　D1–D14／全程 308 天</p>
+      </div>
+      <button class="theme-btn" id="themeBtn" aria-label="切换主题">☾</button>
+    </div>
+    <div class="prog">
+      <div class="bar"><i id="barIn"></i></div>
+      <div class="prog-txt"><span id="progCnt">已完成 0 / 14 天</span><span id="progTxt">0%</span></div>
+    </div>
+    <div class="toolbar">
+      <div class="search">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="searchInput" type="search" placeholder="搜索知识点、寄存器、标签" autocomplete="off">
+      </div>
+    </div>
+    <div class="chips" role="group" aria-label="筛选">
+      <button class="chip" data-mode="all" aria-pressed="true">全部 14 天</button>
+      <button class="chip" data-mode="todo" aria-pressed="false">未完成</button>
+      <button class="chip" data-mode="A" aria-pressed="false">A 类必做</button>
+    </div>
+  </div>
+</header>
+<main class="wrap">
+  
+  <div class="weekh"><h3>第 1 周</h3><span>硬件基础 · 工具链 · 启动</span></div>
+<article class="card" data-day="1" data-pri="A" data-tag="硬件基础" data-text="mcu 最小系统四要素：电源、时钟、复位、启动模式 最小系统是 vdd/vdda 供电、hse 晶振、nrst 复位、boot0 启动选择四件事，缺任何一项芯片都可能完全不响应调试器 能在原理图上指出四类引脚并说明各自失效时的现象 硬件基础">
+  <div class="head">
+    <div class="dnum">D01</div>
+    <h2>MCU 最小系统四要素：电源、时钟、复位、启动模式</h2>
+    <label class="chk"><input type="checkbox" data-day="1" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">10-26 周1</span><span class="tag">硬件基础</span></div>
+  <p class="src">来源：STM32F407 开发板原理图 · RM0090 复位与时钟控制章节</p>
+  <div class="block goal"><b>今日目标</b><p>能在原理图上指出四类引脚并说明各自失效时的现象</p></div>
+  <div class="block kp"><b>关键点</b><p>最小系统是 VDD/VDDA 供电、HSE 晶振、NRST 复位、BOOT0 启动选择四件事，缺任何一项芯片都可能完全不响应调试器</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>在原理图上标出四类引脚；</li><li>用万用表测 VDD 与 NRST 电压；</li><li>把 BOOT0 拨到不同位置观察启动差异</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3260 字）</summary>
+    <p class="anchor">一块只有芯片的板子为什么不跑？先问四件事：供电、时钟、复位、启动模式。</p>
+    <div class="why"><b>为什么要学这个</b><p>最小系统是唯一必须自己画对的电路，也是所有后续实验的地基。开发板能跑，不代表你知道它为什么能跑；一旦自己画板、换芯片、改供电，四要素里少一环就是整块板不亮。把这件看似玄学的事拆成四个可测量的物理量，是嵌入式入门真正的第一步——它决定了你后面遇到问题时会去量电压，还是一直改代码。</p></div>
+    <div class="sec"><h4>一、供电不是一路，是五路</h4><p>VDD 给 IO 环与内核逻辑，通常多组引脚并联，每组旁边必须有 100nF 去耦电容，缺一路并不会立刻坏，而是表现为某个 BANK 的 IO 异常或高负载时随机跑飞。VDDA/VREF+ 是模拟供电，独立引脚独立滤波，ADC 精度直接取决于它是否干净。VCAP_1/VCAP_2 是内核 1.2V 稳压器的外接储能脚，F4 系列要求各接 2.2µF 低 ESR 电容到地，缺它或容值不对，内核电压抖动会让程序在随机位置进 HardFault。VBAT 供 RTC 与备份寄存器，掉电保持时间靠它。</p></div>
+    <div class="sec"><h4>二、时钟有两套，性能与精度分开</h4><p>HSI 是内部 16MHz RC，上电即可用、无需外部器件，但精度差（室温约 ±1%，全温区更差），只能保证芯片能动，不能保证串口波特率准、定时不漂。HSE 是外部晶振，F407 支持 4–26MHz，经 PLL 倍频可到 168MHz 主频；晶振能否起振取决于负载电容匹配、走线长度与是否包地，起振失败时芯片通常自动退回 HSI 继续跑——这正是最危险的故障：板子看似正常，但通信全部错帧。LSE 是 32.768kHz，专供 RTC。</p></div>
+    <div class="sec"><h4>三、复位是状态机，不是一根线</h4><p>NRST 低电平复位，芯片内部有弱上拉，外部并 100nF 到地构成上电延时，保证电源爬升期间一直处于复位。但复位源不止引脚：上电/掉电复位（POR/PDR）、欠压复位（BOR）、独立看门狗、窗口看门狗、软件复位都会触发复位。关键是 RCC_CSR 里的标志位会记录&quot;这次是谁把我复位的&quot;，读它比猜快一百倍——尤其是排查&quot;板子每隔几秒自己重启&quot;这类问题时。</p></div>
+    <div class="sec"><h4>四、启动模式决定 0x00000000 指向谁</h4><p>上电瞬间 CPU 从 0x00000000 取初始 MSP、从 0x00000004 取复位向量，而这两个地址是别名，实际映射由 BOOT0/BOOT1 决定：映射到主 Flash（正常运行）、系统存储器（ST 内置 bootloader，可用串口/USB DFU 救砖）、内置 SRAM（调试用）。BOOT0 悬空最要命——上电那一刻电平不确定，于是&quot;有时能跑有时不能跑&quot;，且换一块板子表现还不一样。</p></div>
+    <div class="tblwrap"><div class="tcap">复位来源判读：RCC_CSR 关键标志位</div><table class="reg"><thead><tr><th>标志位</th><th>含义</th><th>排查用途</th></tr></thead><tbody><tr><td>PINRSTF</td><td>NRST 引脚复位</td><td>外部复位电路、按键卡死、复位线上有干扰</td></tr><tr><td>PORRSTF</td><td>上电/掉电复位</td><td>电源爬升过慢、供电跌落、电池供电低压</td></tr><tr><td>BORRSTF</td><td>欠压复位</td><td>电源纹波大、负载瞬变拉到 BOR 门限以下</td></tr><tr><td>SFTRSTF</td><td>软件复位</td><td>代码里主动 NVIC_SystemReset 或 bootloader 跳转</td></tr><tr><td>IWDGRSTF</td><td>独立看门狗复位</td><td>喂狗超时：任务阻塞、死循环、中断被长时间屏蔽</td></tr><tr><td>WWDGRSTF</td><td>窗口看门狗复位</td><td>喂狗过早或过晚：时序逻辑写错</td></tr><tr><td>LPWRRSTF</td><td>低功耗管理复位</td><td>进入/退出 Stop、Standby 流程异常</td></tr><tr><td>RMVF</td><td>清除全部复位标志</td><td>读完后写 1 清除，避免下次误判为旧事件</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>上电第一件事：查明复位来源（寄存器直写，不依赖 HAL）</h5><pre><code>/* RCC 基址 0x40023800，CSR 偏移 0x74（RM0090 RCC 章） */
+#include &lt;stdint.h&gt;
+
+#define RCC_BASE   0x40023800UL
+#define RCC_CSR    (*(volatile uint32_t *)(RCC_BASE + 0x74U))
+#define CSR_RMVF   (1UL &lt;&lt; 24)   /* 清标志位，位号见 RM0090 RCC_CSR */
+#define CSR_PINRST (1UL &lt;&lt; 26)
+#define CSR_PORRST (1UL &lt;&lt; 27)
+#define CSR_SFTRST (1UL &lt;&lt; 28)
+#define CSR_IWDGRST (1UL &lt;&lt; 29)
+#define CSR_WWDGRST (1UL &lt;&lt; 30)
+#define CSR_LPWRRST (1UL &lt;&lt; 31)
+
+typedef enum { RST_PIN, RST_POWER, RST_SOFT, RST_IWDG, RST_WWDG, RST_LOWPWR, RST_UNKNOWN } rst_t;
+
+rst_t reset_cause(void)
+{
+    uint32_t f = RCC_CSR;          /* 先读，读之前不要清 */
+    RCC_CSR |= CSR_RMVF;           /* 清标志，写 1 有效 */
+    if (f &amp; CSR_IWDGRST) return RST_IWDG;
+    if (f &amp; CSR_WWDGRST) return RST_WWDG;
+    if (f &amp; CSR_LPWRRST) return RST_LOWPWR;
+    if (f &amp; CSR_SFTRST)  return RST_SOFT;
+    if (f &amp; CSR_PINRST)  return RST_PIN;
+    if (f &amp; CSR_PORRST)  return RST_POWER;
+    return RST_UNKNOWN;
+}
+
+/* 用法：把结果打印到串口，或点亮不同 LED，作为&quot;上次死因&quot;记录 */</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>万用表直流档量 VDD 与 VDDA（对 VSSA），应在 3.3V±5%；示波器 AC 档看纹波，峰峰应小于 50mV。</li><li>示波器接 HSE 引脚（或用调试器读 RCC_BDCR/RCC_CR 的 HSERDY 位），上电后 2ms 内应稳定起振，幅度接近轨到轨。</li><li>读 RCC_CSR 并串口打印复位原因；随后手动按复位键、拔插电源、触发看门狗，三种情况下打印结果必须不同。</li><li>把 BOOT0 分别接 0 与 1，观察程序是否都从 Flash 启动；若不一致说明 BOOT0 电路有问题。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">四要素故障对照表</div><table class="reg diag"><thead><tr><th>现象</th><th>首查对象</th><th>判据</th><th>处置</th></tr></thead><tbody><tr><td>调试器连不上，电流几乎为 0</td><td>供电</td><td>VDD 缺失或短路</td><td>先查焊接与稳压器输出，再上电</td></tr><tr><td>能连上但程序不跑，PC 停在异常</td><td>VCAP/内核供电</td><td>VCAP 无 2.2µF 或 ESR 过高</td><td>补齐电容，测内核电压是否稳定</td></tr><tr><td>程序在跑，但串口全是乱码</td><td>时钟</td><td>实际主频与波特率算错，HSE 未起振退回 HSI</td><td>读 HSERDY；核对晶振负载电容与 PLL 参数</td></tr><tr><td>每隔数秒自动重启</td><td>复位源/看门狗</td><td>RCC_CSR 显示 IWDGRSTF</td><td>找喂狗点是否被阻塞，先修任务结构</td></tr><tr><td>同一程序换板行为不同</td><td>BOOT0</td><td>BOOT0 悬空，上电电平随机</td><td>加 10k 下拉到地，明确启动模式</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游接 D02 的编译链路（你要先有能烧的 .elf），下游接 D03 的 SWD 通路（四要素正常才能连上调试器）。四要素是把&quot;连不上&quot;从玄学变成清单的分界线。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>VDDA 为什么不能和 VDD 直接短接共用一组去耦？</summary><p>模拟供电对电源噪声极敏感。数字 IO 翻转产生的开关噪声会通过共用阻抗耦合进 ADC 参考，直接表现为采样值跳动、有效位数下降。即便电压相同也必须单独滤波、单独走线，在芯片下方单点汇合。</p></details><details class="dq"><summary>VCAP 电容为什么强调低 ESR，随便一颗 2.2µF 不行吗？</summary><p>VCAP 是内核稳压器的输出储能，负载是 MHz 级跳变的数字逻辑。ESR 高会形成明显的瞬时压降，内核在高速切换时被拉低，表现为随机 HardFault 或数据错误。必须选低 ESR 陶瓷电容，且紧贴引脚布局。</p></details><details class="dq"><summary>BOOT0 悬空为什么会导致&quot;时好时坏&quot;，而不是干脆不启动？</summary><p>悬空脚的电压由漏电流、寄生电容和上电斜率共同决定，每次上电的电荷状态可能不同，因此映射目标在 Flash 与系统存储器之间随机跳变。落在系统存储器里就表现为&quot;程序没跑、但芯片是活的&quot;。</p></details></div>
+    <div class="refs"><h4>出处</h4><ul><li>RM0090：Reset and clock control（RCC）——复位标志与时钟使能</li><li>STM32F407 数据手册：供电方案、VCAP 要求、BOOT 配置表</li><li>Yiu《ARM Cortex-M3 与 Cortex-M4 权威指南》第 3 版：复位与向量表章节</li></ul></div>
+  </details>
+</article>
+<article class="card" data-day="2" data-pri="A" data-tag="工具链" data-text="交叉编译三段：编译、汇编、链接各自产出什么 gcc 驱动一切：预处理出 .i、编译出 .s、汇编出 .o、链接出 .elf，再由 objcopy 转 .bin/.hex；报错阶段不同，排查手段也不同 能说清 .c 到 .elf 每一步的输入与输出文件 工具链">
+  <div class="head">
+    <div class="dnum">D02</div>
+    <h2>交叉编译三段：编译、汇编、链接各自产出什么</h2>
+    <label class="chk"><input type="checkbox" data-day="2" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">10-27 周1</span><span class="tag">工具链</span></div>
+  <p class="src">来源：王利涛《嵌入式C语言自我修养》编译与链接相关章节</p>
+  <div class="block goal"><b>今日目标</b><p>能说清 .c 到 .elf 每一步的输入与输出文件</p></div>
+  <div class="block kp"><b>关键点</b><p>gcc 驱动一切：预处理出 .i、编译出 .s、汇编出 .o、链接出 .elf，再由 objcopy 转 .bin/.hex；报错阶段不同，排查手段也不同</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>用 -E/-S/-c 分别停在每个阶段并查看产物；</li><li>用 arm-none-eabi-objdump -d 反汇编 .elf；</li><li>用 objcopy 生成 .bin 对比体积</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3114 字）</summary>
+    <p class="anchor">编译器不是一步到位的黑盒：预处理、编译、汇编、链接，每一步都有可检查的中间产物。</p>
+    <div class="why"><b>为什么要学这个</b><p>不懂这条链路，你就只能靠&quot;改一改、烧一烧、看现象&quot;试错。懂这条链路，报错信息会直接告诉你问题在哪一层：是头文件路径错（预处理）、语法/类型错（编译）、目标架构不匹配（汇编）、还是段放不下、符号重复（链接）。嵌入式里最常见的启动失败，八成死在链接阶段的向量表与段布局，而不是 C 代码写错。</p></div>
+    <div class="sec"><h4>一、预处理：文本替换，不理解语法</h4><p>gcc -E 展开 #include、#define、条件编译，产出 .i 文件。这一层出错通常是&quot;找不到头文件&quot;&quot;宏展开后类型不匹配&quot;。它不看类型，所以宏写错时的报错往往指向宏展开后的位置，让人误以为是别处的语法问题——用 -E 把 .i 打出来看，一眼就能定位。</p></div>
+    <div class="sec"><h4>二、编译：C 到汇编，做类型检查与优化</h4><p>gcc -S 把 .i 转成 .s 汇编。这里完成语法/类型检查、寄存器分配、优化（-O0/-O2/-Os）。-O0 便于单步调试，-Os 便于体积，-O2 兼顾速度。注意：优化等级越高，变量可能被放进寄存器甚至优化掉，这正是 volatile 存在的原因（D41 展开）。</p></div>
+    <div class="sec"><h4>三、汇编：汇编到目标文件</h4><p>gcc -c 把 .s 转成 .o（ELF 可重定位目标文件），内含符号表、各段内容、重定位信息。此时地址全是相对的，未定义符号留空等链接解决。用 arm-none-eabi-objdump -d 可以直接反汇编 .o，确认某函数到底被编成了什么指令。</p></div>
+    <div class="sec"><h4>四、链接：拼装地址与段布局</h4><p>链接器按链接脚本（.ld）把多个 .o 的段放到指定地址：.isr_vector 必须在 Flash 起始，.text 紧随其后，.data 的初值存 Flash、运行时复制到 RAM，.bss 只在 RAM 占位不占 Flash。链接出错的三类典型：region overflow（Flash/RAM 放不下）、multiple definition（重复定义）、undefined reference（找不到符号）。链接完成后产出 .elf，再 objcopy 成 .bin/.hex 用于烧写。</p></div>
+    <div class="sec"><h4>五、为什么必须先看 size 与 map</h4><p>arm-none-eabi-size 给出 text/data/bss 三个数：text+bss 决定 Flash 与 RAM 的余量口径（data 两头都占）。map 文件给出每个函数/变量的具体地址与大小，是排查&quot;RAM 不够&quot;&quot;某个库吃掉 8KB&quot;的唯一权威依据。不带 map 的工程，等于闭眼估体积。</p></div>
+    <div class="tblwrap"><div class="tcap">产物与阶段对照（不是寄存器，是链路）</div><table class="reg"><thead><tr><th>阶段</th><th>命令</th><th>产物</th><th>典型错误</th></tr></thead><tbody><tr><td>预处理</td><td>gcc -E -I./inc x.c -o x.i</td><td>.i</td><td>头文件找不到、宏展开异常</td></tr><tr><td>编译</td><td>gcc -S x.i -o x.s</td><td>.s</td><td>语法/类型错误、隐式声明</td></tr><tr><td>汇编</td><td>gcc -c x.s -o x.o</td><td>.o</td><td>目标架构不匹配（-mthumb 缺失）</td></tr><tr><td>链接</td><td>ld/gcc x.o ... -T link.ld</td><td>.elf</td><td>region overflow、重复定义、未定义符号</td></tr><tr><td>转换</td><td>objcopy -O binary x.elf x.bin</td><td>.bin/.hex</td><td>起始地址设错、bin 不含调试信息</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>四步手工执行（Cortex-M4F，可直接对照观察每一层产物）</h5><pre><code># 0. 统一的架构参数：少一个都会在链接或运行时炸
+CFLAGS=&quot;-mcpu=cortex-m4 -mthumb -mfpu=fpv4-sp-d16 -mfloat-abi=hard -O2 -g -I./inc -DSTM32F407xx&quot;
+
+# 1. 预处理：看宏与头文件展开结果
+gcc -E $CFLAGS main.c -o build/main.i
+
+# 2. 编译：生成汇编，检查优化后是否还有你要的语句
+gcc -S $CFLAGS build/main.i -o build/main.s
+
+# 3. 汇编：生成可重定位目标文件
+gcc -c $CFLAGS build/main.s -o build/main.o
+
+# 4. 链接：按链接脚本落到 Flash/RAM 地址
+arm-none-eabi-gcc -T link.ld $CFLAGS build/main.o -o build/app.elf -Wl,-Map=build/app.map
+
+# 5. 体检：体积与符号
+arm-none-eabi-size build/app.elf          # text / data / bss
+arm-none-eabi-objdump -d build/main.o | head -40   # 看实际指令
+arm-none-eabi-nm --size-sort -S build/app.elf | tail -20  # 谁最占体积
+
+# 6. 生成烧写用镜像
+arm-none-eabi-objcopy -O binary build/app.elf build/app.bin</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>删除 build 目录后重跑四步，四类产物（.i/.s/.o/.elf）逐一存在，缺任何一个说明该步没真正执行。</li><li>改动一个宏（如 LED_PIN 从 5 改到 6），对比 -E 输出，确认宏替换确实发生在预处理层。</li><li>故意写一个未定义函数调用，观察报错是链接期的 undefined reference 而非编译期——这是分层排查的直觉训练。</li><li>用 size 记录每一版体积，改动代码后对比 text 增量，异常增长（如 +8KB）必须用 map 查明来源。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">报错分层定位表</div><table class="reg diag"><thead><tr><th>报错关键词</th><th>出错阶段</th><th>常见根因</th><th>处置</th></tr></thead><tbody><tr><td>No such file or directory</td><td>预处理</td><td>-I 路径错、相对路径基准不对</td><td>用 -H 打印实际包含路径</td></tr><tr><td>implicit declaration of function</td><td>编译</td><td>缺头文件声明，C89 隐式推断</td><td>补 #include，-Werror 强制暴露</td></tr><tr><td>expected &#x27;)&#x27; before</td><td>编译</td><td>宏未加括号、括号不配对</td><td>看 .i 展开结果定位原行</td></tr><tr><td>region `FLASH&#x27; overflowed</td><td>链接</td><td>代码+常量超 Flash 容量</td><td>看 map 找大户，改 -Os 或裁库</td></tr><tr><td>multiple definition of</td><td>链接</td><td>全局变量在头文件里定义</td><td>头文件只放 extern，定义放 .c</td></tr><tr><td>undefined reference to</td><td>链接</td><td>未加对应 .o 或库，链接顺序错</td><td>补目标文件，库放最后</td></tr><tr><td>HardFault 且 PC 指向 0x00000000</td><td>运行</td><td>向量表未放到 Flash 起始或 VTOR 未设</td><td>查 .ld 的 .isr_vector 位置</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游接 D01（四要素正常才谈编译产物），下游接 D03（.elf 要通过 SWD 才能进芯片）。D12 会用 size 与 map 做体积治理，本日是它的地基。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>-mcpu=cortex-m4 与 -mthumb 少一个会怎样？</summary><p>少 -mthumb 会生成 ARM 指令集代码，Cortex-M4 只支持 Thumb/Thumb-2，运行即 HardFault 或根本链接失败；少 -mcpu 则优化与浮点指令选择出错，体积与性能都不对，浮点运算可能落到软件模拟。</p></details><details class="dq"><summary>为什么 .data 段的初值要存在 Flash 里？</summary><p>RAM 掉电即失，初值必须固化在非易失的 Flash。启动文件在 main 之前把 Flash 中的初值复制到 RAM 的 .data 段，同时把 .bss 段清零。这也解释了为什么启动文件里那两个循环不能删。</p></details><details class="dq"><summary>编译通过、链接通过，烧进去却不跑，最可能在哪一层？</summary><p>在链接产物的布局层，而不是 C 代码层。典型是向量表没落在 Flash 起始地址、初始 MSP 值非法、或 .ld 里 RAM 长度写得比实际小导致栈顶越界。此时看 map 中 .isr_vector 的地址与 .elf 头部入口点即可确认。</p></details></div>
+    <div class="refs"><h4>出处</h4><ul><li>GNU Arm Embedded Toolchain：gcc/ld/objcopy/size/nm 手册</li><li>Yiu 第 3 版：编译流程、链接脚本、启动文件与向量表</li><li>王利涛《嵌入式 C 语言自我修养》第 1 版：编译链接与段布局</li></ul></div>
+  </details>
+</article>
+<article class="card" data-day="3" data-pri="A" data-tag="工具链" data-text="swd 与 jtag：调试通路的角色分工 swd 只用 swclk/swdio 两根线，走 arm 的 adi 协议；st-link 是 usb 到 swd 的桥，openocd 是 pc 侧协议实现，三者任一环断连都表现为连不上目标 能画出 pc—调试器—目标板 的连接与协议链 工具链">
+  <div class="head">
+    <div class="dnum">D03</div>
+    <h2>SWD 与 JTAG：调试通路的角色分工</h2>
+    <label class="chk"><input type="checkbox" data-day="3" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">10-28 周1</span><span class="tag">工具链</span></div>
+  <p class="src">来源：Yiu《ARM Cortex-M3与Cortex-M4权威指南》第3版 调试特性章节</p>
+  <div class="block goal"><b>今日目标</b><p>能画出 PC—调试器—目标板 的连接与协议链</p></div>
+  <div class="block kp"><b>关键点</b><p>SWD 只用 SWCLK/SWDIO 两根线，走 ARM 的 ADI 协议；ST-Link 是 USB 到 SWD 的桥，OpenOCD 是 PC 侧协议实现，三者任一环断连都表现为连不上目标</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>用 ST-Link 连接并在 OpenOCD 打印目标 IDCODE；</li><li>故意接反 SWDIO/GND 复现失败并记录报错；</li><li>尝试 connect under reset 模式</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 2374 字）</summary>
+    <p class="anchor">调试器连不上，九成不是调试器坏，而是目标板没给它一个可用的&quot;握手现场&quot;。</p>
+    <div class="why"><b>为什么要学这个</b><p>SWD 是你唯一能看见芯片内部的眼睛。没有它，你只能靠串口打印和 LED 猜程序死在哪。而它连不上时，新手第一反应是换线、换调试器、重装驱动——真正原因通常只有四类：目标没供电、时钟没跑、复位被拉住、调试口被程序禁用。把这四类按顺序量一遍，五分钟能解决的问题不该耗一下午。</p></div>
+    <div class="sec"><h4>一、SWD 只要两根信号线，但需要完整的参考地</h4><p>SWDIO 双向数据、SWCLK 时钟，加上 GND 与目标电压参考（VREF/VAPP），共四根即可完成调试与烧写。相比 JTAG 的五线，SWD 引脚更省、时序更简单。关键点是 GND 必须真正共地——用长排线只接信号不接地，会出现&quot;偶尔能连、一碰就断&quot;。</p></div>
+    <div class="sec"><h4>二、握手发生在内核上电之后，不是上电即通</h4><p>调试器上电后先发线序切换序列，再读 IDCODE 确认目标存在。这要求内核已经有时钟（HSI 默认可满足）、未被复位拉住、且调试模块没被关闭。所以&quot;目标板没供电&quot;和&quot;芯片被程序关掉调试口&quot;表现完全一样：都读不到 IDCODE。</p></div>
+    <div class="sec"><h4>三、连接模式决定能否抢在程序之前接管</h4><p>Normal 模式先复位再连，程序跑起来后才停；Connect under reset 模式在复位释放前就接管总线，专门对付&quot;程序一跑就把引脚复用掉或进低功耗&quot;的板子；Attach 模式不复位，用于分析已运行现场。三者的差别不是玄学，是谁先拿到总线控制权。</p></div>
+    <div class="sec"><h4>四、读保护与选项字节是一条隐形锁</h4><p>芯片若被设置读保护（RDP），调试器会读到全 0 或直接拒绝连接，此时正常连接流程彻底无效，只能整片擦除解锁（同时清空程序）。这不是故障，是安全机制——所以量产板插上调试器连不上时，先确认是不是故意锁的。</p></div>
+    <div class="tblwrap"><div class="tcap">排障顺序与判据（按此顺序量，不要跳步）</div><table class="reg"><thead><tr><th>顺序</th><th>检查项</th><th>正常判据</th><th>异常含义</th></tr></thead><tbody><tr><td>1</td><td>目标 VDD 与 GND</td><td>3.3V±5%，共地良好</td><td>没供电或地线断：一切后续都无意义</td></tr><tr><td>2</td><td>SWDIO/SWCLK 电平</td><td>空闲时 SWDIO 被上拉为高</td><td>被外部拉死或短路：读不到 IDCODE</td></tr><tr><td>3</td><td>NRST 电平</td><td>高（非复位态）</td><td>被按键/LDO 拉住：内核不启动，SWD 无响应</td></tr><tr><td>4</td><td>HSI 是否运行</td><td>复位后默认即运行</td><td>被程序关掉 HSI 又没切时钟：内核停摆</td></tr><tr><td>5</td><td>连接模式</td><td>Connect under reset 能连上</td><td>Normal 连不上说明程序抢占了引脚</td></tr><tr><td>6</td><td>读保护状态</td><td>未加密</td><td>连不上且板子是量产品：可能 RDP 生效</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>用连接模式区别两类&quot;连不上&quot;（OpenOCD 配置片段）</h5><pre><code># 场景 A：Normal 连不上、under reset 能连 —— 程序把调试引脚复用或进了低功耗
+# reset_config &lt;signals&gt; &lt;open_drain/reset&gt; &lt;trst&gt;
+reset_config srst_only srst_nogate connect_assert_srst
+
+# 场景 B：两者都连不上 —— 先怀疑供电与地，不要怀疑调试器
+# 排查命令（OpenOCD 交互口）
+#   &gt; scan_chain          # 看能否识别到 TAP/IDCODE
+#   &gt; targets             # 看目标是否进入 examined 状态
+#   &gt; reset halt          # 强制复位并停在入口
+
+# 烧写后自动复位运行
+transport select hla_swd
+adapter speed 2000
+program build/app.elf verify reset exit</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>用 Connect under reset 模式连接一次，记录是否成功；再切回 Normal 模式对比——两者的差异直接告诉你程序是否抢占了调试口。</li><li>拔掉目标板供电后尝试连接，确认报错信息与&quot;程序禁用调试口&quot;时的报错是否一致，建立&quot;同一现象不同原因&quot;的辨识经验。</li><li>把 SWCLK 速度从 4MHz 降到 500kHz 再连，若变稳定说明排线过长或信号完整性问题。</li><li>烧一个进入 Standby 低功耗的固件，验证普通连接失效而 under reset 可救——这是低功耗项目的必备技能。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">连接失败四类归因</div><table class="reg diag"><thead><tr><th>报错/现象</th><th>最可能原因</th><th>快速验证</th><th>处置</th></tr></thead><tbody><tr><td>No target connected</td><td>供电或地线问题</td><td>量 VDD 与 GND 通断</td><td>先修供电，再谈连接</td></tr><tr><td>IDCODE 读到 0x00000000</td><td>SWDIO 被拉低/短路，或内核无时钟</td><td>示波器看 SWDIO 空闲电平</td><td>排查上拉电阻与引脚复用</td></tr><tr><td>连上但一连就断</td><td>SWCLK 过快或线太长</td><td>降速到 500kHz 重试</td><td>缩短排线、加地线回流</td></tr><tr><td>under reset 可连、normal 不可</td><td>程序关闭调试口或进低功耗</td><td>对比两种模式</td><td>固件里保留调试引脚，或改用 under reset 流程</td></tr><tr><td>所有模式都拒绝连接</td><td>读保护生效</td><td>换一颗空片验证</td><td>整片擦除解锁（会丢程序）</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游是 D02 的 .elf（有产物才谈烧写），下游是 D04 的启动流程（能连上才看得见复位后第一条指令）。本项目后续所有调试动作都建立在本日打通的通路上。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>为什么把 SWCLK 降速能解决一部分连接问题？</summary><p>长排线、无地线回流、上拉不足都会让信号边沿变缓并引入串扰，高速时采样点落在不稳定区间。降速等于加大时序裕量，代价只是烧写变慢。这是现场最快的验证手段，也是判断&quot;信号完整性 vs 逻辑故障&quot;的分水岭。</p></details><details class="dq"><summary>程序里把 SWD 引脚复用成普通 GPIO，会发生什么？还能救吗？</summary><p>调试口一旦被复用，内核调试模块失去通路，Normal 模式彻底连不上。此时用 Connect under reset：调试器在复位释放前接管总线，抢在程序配置引脚之前停住 CPU，就能重新烧写正确固件。这也是为什么低功耗/量产固件必须保留救砖路径。</p></details><details class="dq"><summary>调试器能读到 IDCODE 但烧写失败，问题在哪一层？</summary><p>在 Flash 控制器层，不在 SWD 层。常见是 Flash 被写保护、供电在擦除瞬间跌落、或时钟配置不满足 Flash 编程时序要求。此时看烧写报错的具体阶段（erase/program/verify），分别对应保护位、电源、时序三类原因。</p></details></div>
+    <div class="refs"><h4>出处</h4><ul><li>PM0214：Cortex-M4 内核调试（Debug）章节——DHCSR、调试访问端口</li><li>ARM CoreSight 架构文档：SWD 协议与时序</li><li>RM0090：调试支持（DBGMCU）与 Flash 编程章节</li></ul></div>
+  </details>
+</article>
+<article class="card" data-day="4" data-pri="A" data-tag="启动" data-text="启动流程：从复位向量到 main 之间发生了什么 上电取 msp 初值→取 reset_handler 地址→执行启动代码（拷贝 .data、清 .bss、初始化时钟）→调用 systeminit→跳 main；不是芯片直接跑 main 能按顺序复述上电到 main 的六个步骤 启动">
+  <div class="head">
+    <div class="dnum">D04</div>
+    <h2>启动流程：从复位向量到 main 之间发生了什么</h2>
+    <label class="chk"><input type="checkbox" data-day="4" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">10-29 周1</span><span class="tag">启动</span></div>
+  <p class="src">来源：Yiu 第3版 第2章 嵌入式软件开发简介</p>
+  <div class="block goal"><b>今日目标</b><p>能按顺序复述上电到 main 的六个步骤</p></div>
+  <div class="block kp"><b>关键点</b><p>上电取 MSP 初值→取 Reset_Handler 地址→执行启动代码（拷贝 .data、清 .bss、初始化时钟）→调用 SystemInit→跳 main；不是芯片直接跑 main</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>在 Reset_Handler 首行打断点单步；</li><li>观察 MSP 初值来自向量表第 0 项；</li><li>把 .bss 清零代码注释掉，看全局变量残值</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3446 字）</summary>
+    <p class="anchor">程序没进 main，先别怀疑 C 代码——芯片在 main 之前已经跑了几百条汇编，你怀疑的那行还没轮到。</p>
+    <div class="why"><b>为什么要学这个</b><p>断点打不到 main、全局变量初值不对、加了构造函数就死机、换块板子同一工程跑不起来——这四类问题占调试时间的一大块，成因全在 main 之前的启动代码里。启动流程是你从没写过、却每天在跑的代码，把六步背下来，「不跑」就变成一个能逐段取证的清单。</p></div>
+    <div class="sec"><h4>一、复位瞬间：内核只做两件事</h4><p>复位释放后，Cortex-M4 不执行任何代码，直接从 0x00000000 取第一个字装进 MSP，从 0x00000004 取第二个字装进 PC。注意是取「地址 0 与地址 4」的内容，不是调用函数。F407 在 BOOT0=0 时把 Flash 别名到 0 地址，于是这两个字来自 0x08000000 处向量表的前两项：栈顶值与 Reset_Handler 地址。这就是栈顶写在链接脚本、向量表写在启动文件、二者必须对齐同一份链接结果的原因。</p></div>
+    <div class="sec"><h4>二、Reset_Handler：三段固定动作</h4><p>复位向量指向的 Reset_Handler 只做三件事：搬 .data（初值从 Flash 的 _sidata 拷到 RAM 的 _sdata）、清 .bss（_sbss 到 _ebss 写 0）、调 SystemInit 后 BL main。有初值的全局变量并不住在 RAM 里，是每次上电现拷的——这解释了为何掉电后它还能是 5。这两段循环若被链接脚本符号写错，表现就是初值随机，或清到了栈区导致一进 main 就 HardFault。</p></div>
+    <div class="sec"><h4>三、SystemInit：FPU、向量表、时钟</h4><p>ST 的 SystemInit 做三件容易被忽略的事：使能 FPU（CPACR 的 CP10/CP11 置全 1）、把 VTOR 设为 VECT_TAB_OFFSET（默认 0x08000000，做 bootloader 时必须改）、按宏配 PLL 与总线分频。很多人以为浮点没开只是慢，实际是直接异常：Cortex-M4 默认禁用协处理器，一条 VMUL 就进 UsageFault，现象却像跑飞。</p></div>
+    <div class="sec"><h4>四、__libc_init_array：C 运行时最后一步</h4><p>SystemInit 之后、main 之前，newlib 会遍历 .preinit_array 与 .init_array 并逐个调用。C++ 全局对象构造、__attribute__((constructor)) 都挂在这里。它依赖链接脚本生成 __init_array_start/__init_array_end 符号；符号缺失时构造函数静默不执行，现象是「对象成员全是 0」，比崩溃更难查。</p></div>
+    <div class="sec"><h4>五、向量表与弱定义：中断没反应的真相</h4><p>向量表前 16 项是内核异常，第 16 项起是外设中断，每一项都是一个地址。启动文件把全部向量 weak 定义成同一个 Default_Handler 死循环——「开了中断却没写服务函数」时程序停在那里，不是没进中断，是进了弱定义。要让中断生效，函数名必须与向量名逐字一致，拼错一个字母就静默回落，且编译器不报警。</p></div>
+    <div class="tblwrap"><div class="tcap">启动阶段会被读写的四个关键位置</div><table class="reg"><thead><tr><th>位置</th><th>地址/偏移</th><th>关键位</th><th>写错后的现象</th></tr></thead><tbody><tr><td>向量表[0] 栈顶</td><td>0x00000000（Flash 别名）</td><td>_estack</td><td>MSP 落在非法地址，进 HardFault 或栈溢出覆盖 .data</td></tr><tr><td>向量表[1] 复位向量</td><td>0x00000004</td><td>Reset_Handler</td><td>上电第一跳跑偏，程序完全不跑</td></tr><tr><td>SCB-&gt;VTOR</td><td>0xE000ED08</td><td>TBLBASE[29:7]</td><td>bootloader 跳应用后异常全进 Default_Handler</td></tr><tr><td>SCB-&gt;CPACR</td><td>0xE000ED88</td><td>CP10/CP11[23:20]</td><td>第一条浮点指令触发 UsageFault</td></tr><tr><td>FLASH-&gt;ACR</td><td>0x40023C00</td><td>LATENCY[2:0]</td><td>主频升高后取指出错，随机跑飞</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>启动三段的最小可读版本（不依赖 HAL）</h5><pre><code>/* 链接脚本需提供 _sidata/_sdata/_edata/_sbss/_ebss/_estack */
+extern uint32_t _sidata, _sdata, _edata, _sbss, _ebss, _estack;
+extern int main(void);
+void SystemInit(void);
+void __libc_init_array(void);
+
+void Reset_Handler(void)
+{
+    uint32_t *s = &amp;_sidata, *d;
+    for (d = &amp;_sdata; d &lt; &amp;_edata; ) *d++ = *s++;   /* 1 搬 .data */
+    for (d = &amp;_sbss;  d &lt; &amp;_ebss;  ) *d++ = 0;      /* 2 清 .bss  */
+    SystemInit();                                   /* 3 时钟/FPU/VTOR */
+    __libc_init_array();                            /* 4 构造与 init 段 */
+    main();
+    for (;;) { }                                    /* main 不许返回 */
+}
+
+__attribute__((section(&quot;.isr_vector&quot;), used))
+void (* const g_vectors[])(void) = {
+    (void (*)(void))&amp;_estack,   /* [0] 栈顶，必须是首项 */
+    Reset_Handler,              /* [1] 复位 */
+    Default_Handler, Default_Handler  /* [2][3] NMI / HardFault */
+};</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>断点在 Reset_Handler 首条指令，复位后单步，MSP 应等于 map 文件里的 _estack 数值。</li><li>在 main 首行读 g_vectors[0] 与 SCB-&gt;VTOR，两者应指向同一张表；改过偏移时应等于 0x08000000+offset。</li><li>定义两个全局变量（一个带初值 5、一个不带），main 首行看到 5 与 0，说明搬 .data、清 .bss 都跑了。</li><li>写一个 constructor 函数点灯，上电即亮说明 __libc_init_array 生效；不亮就查 init_array 符号。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">程序没进 main 的定位表</div><table class="reg diag"><thead><tr><th>现象</th><th>首查对象</th><th>判据</th><th>处置</th></tr></thead><tbody><tr><td>调试器连不上</td><td>供电/复位/BOOT</td><td>VDD 是否 3.3V、NRST 是否被拉低、BOOT0 电平</td><td>先修硬件</td></tr><tr><td>能连上但 main 断点不命中</td><td>向量表与 VTOR</td><td>读 0x08000004 是否为 Reset_Handler；VTOR 指向何处</td><td>改链接脚本段位置或 VTOR</td></tr><tr><td>进 main 就 HardFault，PC 在浮点指令</td><td>CPACR</td><td>CPACR[23:20] 是否为 0xF</td><td>SystemInit 里开 FPU</td></tr><tr><td>中断进死循环</td><td>向量名与 weak</td><td>反汇编看该向量项是否仍指 Default_Handler</td><td>对齐函数名，删多余 weak</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游接 D03 的 SWD 通路（能连上才谈单步），下游喂 D05 的 CMSIS 骨架与 D08 的时钟树——SystemInit 里最容易配错的就是时钟那一段。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>main 为什么不允许返回？返回了会怎样？</summary><p>Reset_Handler 用 BL 调 main，返回地址紧随其后。若那里是死循环，程序静默停住像卡死；若没写死循环，返回地址可能是随机数据，PC 跳非法地址触发 HardFault。裸机没有「退出」这个概念，所以标准写法是末尾 for(;;)。</p></details><details class="dq"><summary>为什么不能上电先 memset 整片 RAM 再搬 .data？</summary><p>MSP 此时已指向栈顶，启动代码自身的局部变量与返回地址就在栈里，盲清会把它清掉。工程做法是由链接脚本给出 .bss 起止符号，只清 .bss 段，不碰栈与已搬入的 .data。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>复位瞬间硬件只做两件事：从 0x0 取 MSP，从 0x4 取 PC。</li><li>Reset_Handler 三段：搬 .data、清 .bss、SystemInit 后进 main。</li><li>main 之前还有 __libc_init_array，C++ 构造挂在这里。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>中断函数名拼错，weak 静默接管，现象是「中断没反应」且零告警。</li><li>改 VECT_TAB_OFFSET 忘同步改 Flash 起始，能烧进去但一中断就飞。</li></ul></div>
+    <div class="quiz"><p class="q">自测：上电后 PC 的第一条指令地址从哪里取？</p><details><summary>看答案</summary><p class="a">从 0x00000004 取出的字，即向量表第二项。</p><p class="why">第一项给 MSP，第二项给 PC，Cortex-M 的硬约定。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="5" data-pri="B" data-tag="工程结构" data-text="工程骨架与 cmsis：为什么要 include 一个陌生头文件 core_cm4.h 定义内核外设（nvic/systick/scb）与内核寄存器结构体，器件头文件定义外设基地址与位域；cmsis 是 arm 定的统一层，让代码跨厂商可移 能说出 core_cm4.h 与 stm32f4xx.h 各自定义了什么 工程结构">
+  <div class="head">
+    <div class="dnum">D05</div>
+    <h2>工程骨架与 CMSIS：为什么要 include 一个陌生头文件</h2>
+    <label class="chk"><input type="checkbox" data-day="5" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pB">B 类</span><span class="date">10-30 周1</span><span class="tag">工程结构</span></div>
+  <p class="src">来源：Yiu 第3版 第2章 CMSIS 小节 · CMSIS-Core 头文件</p>
+  <div class="block goal"><b>今日目标</b><p>能说出 core_cm4.h 与 stm32f4xx.h 各自定义了什么</p></div>
+  <div class="block kp"><b>关键点</b><p>core_cm4.h 定义内核外设（NVIC/SysTick/SCB）与内核寄存器结构体，器件头文件定义外设基地址与位域；CMSIS 是 ARM 定的统一层，让代码跨厂商可移</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>打开 core_cm4.h 找到 NVIC_Type 定义；</li><li>在 stm32f4xx.h 找到 GPIOA 基址；</li><li>用 sizeof 验证寄存器结构体大小</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1550 字）</summary>
+    <p class="anchor">写 0x40020014 也能点灯，但没人愿背三百个偏移。</p>
+    <div class="why"><b>为什么要学这个</b><p>手写绝对地址能跑，但换芯片就全废。CMSIS 把「手册里的偏移」翻译成可直接引用的结构体，理解它怎么翻译，才知道为什么改错头文件会写坏别的外设。</p></div>
+    <div class="sec"><h4>一、三层结构，各管一段</h4><p>CMSIS-Core（core_cm4.h）只定义内核：NVIC、SysTick、SCB；设备头（stm32f4xx.h）定义 GPIO_TypeDef 等外设结构体与基址；启动文件与 system_stm32f4xx.c 提供向量表与 SystemInit。</p></div>
+    <div class="sec"><h4>二、结构体就是手册的偏移表</h4><p>GPIO_TypeDef 的成员顺序严格等于 RM0090 的偏移顺序（MODER 0x00、OTYPER 0x04、OSPEEDR 0x08、PUPDR 0x0C、IDR 0x10、ODR 0x14、BSRR 0x18、LCKR 0x1C、AFR 0x20 两字），编译器按成员大小累加偏移，所以 GPIOA-&gt;BSRR 才正好落在 0x40020018。成员类型全是 volatile uint32_t。</p></div>
+    <div class="sec"><h4>三、SystemInit 与时钟的关系</h4><p>启动文件在跳到 main 之前调用 SystemInit，由它配置时钟与向量表位置。绕过它自己写 main，芯片仍在复位默认的 HSI 16MHz 上跑——所有按 84MHz 算的波特率、定时都会差 5 倍多。</p></div>
+    <div class="tblwrap"><div class="tcap">文件分工速查</div><table class="reg"><thead><tr><th>文件</th><th>提供什么</th><th>少了会怎样</th></tr></thead><tbody><tr><td>core_cm4.h</td><td>内核寄存器与 NVIC 接口</td><td>无法使用 __NVIC 系列函数</td></tr><tr><td>stm32f4xx.h</td><td>外设结构体与基址</td><td>只能手写绝对地址</td></tr><tr><td>system_stm32f4xx.c</td><td>SystemInit 与时钟初值</td><td>仍跑 HSI 16MHz</td></tr><tr><td>startup_stm32f407xx.s</td><td>向量表与复位入口</td><td>链接后无入口，运行即 HardFault</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>用 CMSIS 结构体替代魔法地址</h5><pre><code>#include &quot;stm32f4xx.h&quot;
+
+void pa5_init(void)
+{
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOAEN;   /* 先开时钟，否则写入无效 */
+    GPIOA-&gt;MODER &amp;= ~(3u &lt;&lt; (5 * 2));      /* 清两位 */
+    GPIOA-&gt;MODER |=  (1u &lt;&lt; (5 * 2));      /* 01 = 通用输出 */
+    GPIOA-&gt;OTYPER &amp;= ~(1u &lt;&lt; 5);           /* 0 = 推挽 */
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>编译后查看 map：GPIOA 的地址应为 0x40020000，GPIOA-&gt;BSRR 偏移 0x18。</li><li>sizeof(GPIO_TypeDef) 应为 0x28，成员顺序错位会立刻体现在这个值上。</li><li>注释掉 SystemInit 调用，串口输出变乱码，证明时钟初值的作用。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">工程结构类故障</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>处置</th></tr></thead><tbody><tr><td>undefined symbol GPIOA</td><td>是否包含设备头、宏开关是否正确</td><td>加 #include &quot;stm32f4xx.h&quot; 并定义芯片型号宏</td></tr><tr><td>写入后寄存器无变化</td><td>对应外设时钟是否使能</td><td>先置 RCC 的 EN 位</td></tr><tr><td>运行即 HardFault</td><td>向量表与启动文件是否匹配</td><td>换用与芯片一致的 startup 文件</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>承 D04 的启动流程（SystemInit 就在复位路径上），启 D08 的时钟配置与 D09 的引脚配置——本节是后面所有寄存器写法的语法基础。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>为什么结构体成员必须是 volatile？</summary><p>寄存器内容会被硬件改变，volatile 禁止编译器把它缓存到寄存器或优化掉重复访问，否则轮询与连续写都会失真。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>CMSIS 分内核层与设备层，前者管 NVIC，后者管外设结构体。</li><li>成员顺序等于手册偏移顺序，GPIOA-&gt;BSRR 才正好落在 0x18。</li><li>SystemInit 决定时钟初值，绕过它就回到 HSI 16MHz。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>混用别的系列设备头，偏移错位，写入落到别处。</li></ul></div>
+    <div class="quiz"><p class="q">自测：GPIOA-&gt;MODER |= (1&lt;&lt;10) 与 &amp;= ~(3&lt;&lt;10) 的区别是什么？</p><details><summary>看答案</summary><p class="a">后者先清零两位再设值，前者只置位不清零；若原值是 10（复用），|= 会得到 11（保留的非法组合）。</p><p class="why">多位字段先清后写。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="6" data-pri="A" data-tag="调试基础" data-text="printf 重定向：串口输出与半主机的区别 printf 最终调用 _write，重定向就是自己实现 _write 把缓冲写进 usart 数据寄存器；半主机（semihosting）是把 io 转发给调试器，脱机即失效 能让 printf 走 uart 输出并解释原理 调试基础">
+  <div class="head">
+    <div class="dnum">D06</div>
+    <h2>printf 重定向：串口输出与半主机的区别</h2>
+    <label class="chk"><input type="checkbox" data-day="6" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">10-31 周1</span><span class="tag">调试基础</span></div>
+  <p class="src">来源：王利涛 标准库与底层接口相关章节</p>
+  <div class="block goal"><b>今日目标</b><p>能让 printf 走 UART 输出并解释原理</p></div>
+  <div class="block kp"><b>关键点</b><p>printf 最终调用 _write，重定向就是自己实现 _write 把缓冲写进 USART 数据寄存器；半主机（semihosting）是把 IO 转发给调试器，脱机即失效</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>实现 _write 输出到 USART1；</li><li>对比开启 semihosting 时脱机运行的表现；</li><li>用微秒计时估算波特率误差</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1524 字）</summary>
+    <p class="anchor">程序一进 printf 就停住，九成是半主机在等一个不存在的调试器。</p>
+    <div class="why"><b>为什么要学这个</b><p>printf 是最便宜的观测手段，裸机上却不是现成的：卡死（半主机）、无输出（_write 未实现）、乱码（波特率依赖时钟），三者原因完全不同。</p></div>
+    <div class="sec"><h4>一、半主机是「默认实现」带来的坑</h4><p>newlib 的 _write 默认走半主机：用 BKPT 请求调试器代为输出。没接调试器时无人应答，程序停在 BKPT——现象是「一打印就死」而非没输出。解决办法是实现 _write 并声明 __use_no_semihosting。</p></div>
+    <div class="sec"><h4>二、重定向的两个入口</h4><p>GCC/newlib 走 _write(fd, buf, len)，ARMCC 走 fputc。重定向与所链 C 库不匹配，就是「写了没效果」。</p></div>
+    <div class="sec"><h4>三、波特率由外设时钟决定</h4><p>BRR = fPCLK / (16 × 波特率)。USART1 挂 APB2，84MHz 下 115200 对应 BRR=0x2D9，小数只有 4 位故存在量化误差。时钟配错成 HSI 16MHz 则倍数级偏差，直接乱码。</p></div>
+    <div class="tblwrap"><div class="tcap">USART1 关键寄存器</div><table class="reg"><thead><tr><th>寄存器</th><th>偏移</th><th>关键位</th><th>作用</th></tr></thead><tbody><tr><td>SR</td><td>0x00</td><td>TXE bit7、TC bit6</td><td>发送寄存器空 / 发送完成</td></tr><tr><td>DR</td><td>0x04</td><td>低 9 位</td><td>写数据即启动发送</td></tr><tr><td>BRR</td><td>0x08</td><td>尾数+小数</td><td>波特率分频</td></tr><tr><td>CR1</td><td>0x0C</td><td>UE bit13、TE bit3</td><td>使能 USART 与发送器</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>最小 _write 重定向（GCC + newlib）</h5><pre><code>#include &lt;sys/stat.h&gt;
+
+int _write(int fd, const char *buf, int len)
+{
+    for (int i = 0; i &lt; len; i++) {
+        while (!(USART1-&gt;SR &amp; USART_SR_TXE)) { }
+        USART1-&gt;DR = (uint8_t)buf[i];
+    }
+    while (!(USART1-&gt;SR &amp; USART_SR_TC)) { }   /* 等末字节移出 */
+    return len;
+}
+
+void uart1_init_115200(void)   /* APB2 = 84MHz */
+{
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    RCC-&gt;APB2ENR |= RCC_APB2ENR_USART1EN;
+    GPIOA-&gt;AFR[0] |= (7u &lt;&lt; (9 * 4));     /* PA9 = AF7 */
+    GPIOA-&gt;MODER  |= (2u &lt;&lt; (9 * 2));     /* 复用 */
+    USART1-&gt;BRR = 0x2D9;                  /* 84MHz/115200 */
+    USART1-&gt;CR1 = USART_CR1_UE | USART_CR1_TE;
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>串口助手 115200-8-N-1 收到完整字符串且无截断。</li><li>拔掉调试器重新上电仍正常跑完，证明已脱离半主机。</li><li>BRR 改成 0x2D 再发一帧收到乱码，反向确认波特率作用。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">串口打印故障</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>处置</th></tr></thead><tbody><tr><td>一打印就停住</td><td>是否半主机 BKPT</td><td>实现 _write 并禁用半主机</td></tr><tr><td>无输出或乱码</td><td>USART 时钟、UE/TE 位、BRR</td><td>先查时钟再按 PCLK 重算 BRR</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>接 D05 的写法与 D08 的时钟，下游见 D13——printf 是慢速状态观测，不能代替波形。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>中断里为什么别用 printf？</summary><p>printf 含格式化与阻塞等 TXE，耗时可达毫秒级，会拖住中断；且 newlib 的 printf 不可重入，主循环与中断同时调用会破坏内部状态。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>半主机表现是卡死而非没输出，靠实现 _write 解除。</li><li>BRR 由外设时钟决定，时钟错则倍数级乱码。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>发送后不等 TC，复位或掉电时最后一两字节丢失。</li></ul></div>
+    <div class="quiz"><p class="q">自测：115200 能通而 921600 大量误码，最可能是什么？</p><details><summary>看答案</summary><p class="a">高波特率下分频量化误差与时钟精度被放大，HSI 偏差不再可接受，改用 HSE 或降波特率。</p><p class="why">BRR 只有 4 位小数，误差随波特率升高而放大。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="7" data-pri="A" data-tag="整合" data-text="整合复盘：把“写代码到板子上跑”拆成六个可观测环节 六环节=编码→编译→链接→烧写→复位→运行；每环节都有独立证据（编译日志/elf 段表/烧写回读/复位向量/串口输出），先取证据再猜原因 能对任一环节故障给出可执行的定位动作 整合">
+  <div class="head">
+    <div class="dnum">D07</div>
+    <h2>整合复盘：把“写代码到板子上跑”拆成六个可观测环节</h2>
+    <label class="chk"><input type="checkbox" data-day="7" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-01 周1</span><span class="tag">整合</span></div>
+  <p class="src">来源：综合：本周 6 个知识点</p>
+  <div class="block goal"><b>今日目标</b><p>能对任一环节故障给出可执行的定位动作</p></div>
+  <div class="block kp"><b>关键点</b><p>六环节=编码→编译→链接→烧写→复位→运行；每环节都有独立证据（编译日志/elf 段表/烧写回读/复位向量/串口输出），先取证据再猜原因</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>画六环节图并标注每步的验证命令；</li><li>故意制造链接错误与烧写失败各一次；</li><li>写 300 字复盘：卡在哪一环、证据是什么</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1207 字）</summary>
+    <p class="anchor">灯不亮时最浪费时间的动作，是从头重读自己的代码。</p>
+    <div class="why"><b>为什么要学这个</b><p>同一句「灯不亮」可能卡在六个完全不同的环节：没编译进去、链接地址错、烧写失败、没进 main、时钟没开、引脚配错。复盘的价值在于把六个环节各配一个证据，让二分法有落点。</p></div>
+    <div class="sec"><h4>一、构建链：代码有没有进固件</h4><p>看 .map 与 size：函数符号在不在、.text 是否增加。符号不存在说明被优化掉或没加入编译列表。</p></div>
+    <div class="sec"><h4>二、下载链：镜像有没有真的写进去</h4><p>烧写工具的校验通过不等于运行正确，读回 Flash 首字应等于向量表初始 MSP（0x2000xxxx）。</p></div>
+    <div class="sec"><h4>三、运行链：从复位到引脚</h4><p>复位向量 → SystemInit 时钟 → GPIO 时钟 → MODER → ODR。每一环都能用一个寄存器读数验证，链路断了必然停在某一环。</p></div>
+    <div class="tblwrap"><div class="tcap">六个环节与对应证据</div><table class="reg"><thead><tr><th>环节</th><th>证据</th><th>失败现象</th></tr></thead><tbody><tr><td>编译</td><td>map 中有 main 与目标函数</td><td>链接报未定义 / 符号消失</td></tr><tr><td>链接</td><td>起始地址 0x08000000</td><td>烧写后立即 HardFault</td></tr><tr><td>烧写</td><td>读回首字为初始 MSP</td><td>复位后无反应</td></tr><tr><td>启动</td><td>断点停在 main</td><td>停在启动文件循环</td></tr><tr><td>时钟</td><td>RCC-&gt;CR 的 HSERDY/PLLRDY 置位</td><td>串口乱码、延时差 5 倍</td></tr><tr><td>引脚</td><td>MODER/ODR 读回预期值</td><td>灯不亮或常亮</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>回归用例：十行 blinky，每批交付前必跑</h5><pre><code>int main(void)
+{
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    GPIOA-&gt;MODER |= (1u &lt;&lt; 10);          /* PA5 输出 */
+    for (;;) {
+        GPIOA-&gt;BSRR = (1u &lt;&lt; 5);
+        for (volatile uint32_t i = 0; i &lt; 800000; i++) { }
+        GPIOA-&gt;BSRR = (1u &lt;&lt; (5 + 16));
+        for (volatile uint32_t i = 0; i &lt; 800000; i++) { }
+    }
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>按六环节顺序各取一次证据，形成一条可复现的检查清单。</li><li>故意改坏一环（例如注释掉 GPIOA 时钟使能），确认现象与表中一致。</li><li>整条链走通后记录耗时，作为下次故障的对照基线。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">复盘日必答三问</div><table class="reg diag"><thead><tr><th>问题</th><th>判据</th><th>结论</th></tr></thead><tbody><tr><td>代码进固件了吗</td><td>map 中有符号</td><td>没有则查编译列表与优化等级</td></tr><tr><td>时钟对吗</td><td>CR 的 PLLRDY 与实测频率</td><td>不对则回 D08</td></tr><tr><td>引脚对吗</td><td>MODER/ODR 读回值</td><td>不对则回 D09</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>本节是 S0 前半段的收口，也是 D08–D14 的方法框架：后面每个新外设都按同一套「六环节」定位，不换思路只换寄存器。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>灯不亮时你的第一个动作是什么？</summary><p>先读 MODER 与 ODR 两个寄存器，确认软件侧配置已生效；再看 PA5 实际电平。软件已到位而电平不对，才怀疑硬件与时钟。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>构建、下载、运行是三条独立链路，各自要有证据。</li><li>六环节清单让「灯不亮」变成可二分的定位问题。</li><li>每一环都能用寄存器读数自证，不依赖猜测。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>跳过构建与烧写核对，直接怀疑代码逻辑。</li><li>用「重新全编译一次」代替定位，掩盖真实原因。</li></ul></div>
+    <div class="quiz"><p class="q">自测：烧写显示成功，但读回 Flash 首字不是 0x2000xxxx，说明什么？</p><details><summary>看答案</summary><p class="a">镜像首地址或链接脚本错了，向量表没落到 0x08000000，芯片取不到初始 MSP。</p><p class="why">首字即初始栈顶，是判断向量表是否就位的最快证据。</p></details></div>
+  </details>
+</article>
+  <div class="weekh"><h3>第 2 周</h3><span>时钟 · GPIO · 寄存器</span></div>
+<article class="card" data-day="8" data-pri="A" data-tag="时钟" data-text="时钟树：hse 到 sysclk 的倍频链 sysclk 可由 hsi/hse/pll 提供；pll 输出 = 源频 × plln ÷ (pllm × pllp)，ahb/apb 再分频；串口波特率依赖 apb 时钟，时钟算错波特率必错 能算出给定晶振与 pll 参数下的 sysclk 与各总线频率 时钟">
+  <div class="head">
+    <div class="dnum">D08</div>
+    <h2>时钟树：HSE 到 SYSCLK 的倍频链</h2>
+    <label class="chk"><input type="checkbox" data-day="8" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-02 周2</span><span class="tag">时钟</span></div>
+  <p class="src">来源：RM0090 复位与时钟控制章节 · 时钟树图</p>
+  <div class="block goal"><b>今日目标</b><p>能算出给定晶振与 PLL 参数下的 SYSCLK 与各总线频率</p></div>
+  <div class="block kp"><b>关键点</b><p>SYSCLK 可由 HSI/HSE/PLL 提供；PLL 输出 = 源频 × PLLN ÷ (PLLM × PLLP)，AHB/APB 再分频；串口波特率依赖 APB 时钟，时钟算错波特率必错</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>用 8MHz 晶振配出 168MHz 并手算各总线频率；</li><li>改 PLLM 观察串口乱码；</li><li>用 MCO 引脚输出时钟并用示波器验证</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3491 字）</summary>
+    <p class="anchor">串口乱码、USB 不认、定时器差 4 倍——三个看似无关的故障，根子是同一张时钟树配错了一格。</p>
+    <div class="why"><b>为什么要学这个</b><p>时钟是唯一一个「配错后所有外设一起坏，但代码看起来完全正确」的模块。它决定了 Flash 等待周期、总线上限、串口波特率、定时器计数频率、ADC 采样时钟，乃至 USB 能不能枚举。把 8MHz 到 168MHz 的每一格自己算一遍，串口乱码这类故障就变成算术题：先看 PCLK，别急着换线。</p></div>
+    <div class="sec"><h4>一、两级倍频：PLL 公式必须会算</h4><p>VCO = (HSE ÷ PLLM) × PLLN，SYSCLK = VCO ÷ PLLP，另有 48MHz = VCO ÷ PLLQ 专供 USB/SDIO/RNG。8MHz 配 168MHz 的一组解：PLLM=8 得 1MHz 参考（RM0090 建议 PLL 输入 1–2MHz、VCO 100–432MHz），PLLN=336 得 336MHz，PLLP=2 得 168MHz，PLLQ=7 得 48MHz。四个参数是一组解，改一个必须重算其余。</p></div>
+    <div class="sec"><h4>二、总线分频与「定时器 ×2」规则</h4><p>HCLK 上限 168MHz，APB1 上限 42MHz，APB2 上限 84MHz。关键细节：APB 预分频不为 1 时，该总线上的定时器时钟自动 ×2。故 168MHz 系统里 APB1 配 /4 得 42MHz，TIM2–7 实跑 84MHz；APB2 配 /2 得 84MHz，TIM1/8–11 跑 168MHz。算定时器重装值时漏这一步，定时正好差 2 倍。</p></div>
+    <div class="sec"><h4>三、Flash 等待周期：先加等待再提速</h4><p>Flash 读速度跟不上 168MHz 内核。DS8626 表 10：2.7–3.6V、150–168MHz 需 5 个等待周期，120–150MHz 需 4 个，逐档递减。ACR 写 LATENCY=5 并开 PRFTEN/ICEN/DCEN 才拿得回性能。顺序必须「先写 ACR，再切 SYSCLK」，反过来会在切换瞬间取到错指令，现象是随机跑飞。</p></div>
+    <div class="sec"><h4>四、切换是一套握手，不是一次赋值</h4><p>顺序：置 HSEON 等 HSERDY→改 PLLCFGR（PLL 必须处于关闭态才可写）→置 PLLON 等 PLLRDY→写 ACR→CFGR 的 SW 选 PLL→轮询 SWS 直到为 PLL。SWS 是硬件回执，只有它变了才算真切过去；跳过它继续初始化，外设会落在旧时钟上，现象是「偶尔能跑、偶尔全错」。</p></div>
+    <div class="sec"><h4>五、时钟如何长成波特率</h4><p>过采样 16 时 USARTDIV = fPCLK ÷ (16 × baud)，过采样 8 时除以 8 × baud。115200 在 42MHz 上算得 22.79，实测波特率有零点几的误差，一般可接受；但把 PCLK1 误当 84MHz 来算，误差直接翻倍，接收端全帧错。</p></div>
+    <div class="tblwrap"><div class="tcap">配时钟要动的四个寄存器</div><table class="reg"><thead><tr><th>寄存器</th><th>偏移</th><th>关键位</th><th>取值示例（168MHz）</th></tr></thead><tbody><tr><td>RCC_CR</td><td>0x00</td><td>HSION/HSERDY bit0/17；PLLON/PLLRDY bit24/25</td><td>HSE+PLL 均已 Ready</td></tr><tr><td>RCC_PLLCFGR</td><td>0x04</td><td>PLLM[5:0]、PLLN[14:6]、PLLP[17:16]、PLLSRC bit22、PLLQ[27:24]</td><td>M=8,N=336,P=0(÷2),Q=7,SRC=1(HSE)</td></tr><tr><td>RCC_CFGR</td><td>0x08</td><td>SW[1:0]/SWS[3:2]、HPRE[7:4]、PPRE1[12:10]、PPRE2[15:13]</td><td>SW=10(PLL)、HPRE=/1、PPRE1=101(/4)、PPRE2=100(/2)</td></tr><tr><td>FLASH_ACR</td><td>0x40023C00</td><td>LATENCY[2:0]、PRFTEN bit8、ICEN bit9、DCEN bit10</td><td>5 WS + 三项全开</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>寄存器级 168MHz 配置（无 HAL，可逐条对照 RM0090）</h5><pre><code>#define RCC_BASE     0x40023800UL
+#define RCC_CR       (*(volatile uint32_t *)(RCC_BASE + 0x00))
+#define RCC_PLLCFGR  (*(volatile uint32_t *)(RCC_BASE + 0x04))
+#define RCC_CFGR     (*(volatile uint32_t *)(RCC_BASE + 0x08))
+#define FLASH_ACR    (*(volatile uint32_t *)0x40023C00UL)
+
+void clock_168mhz(void)
+{
+    RCC_CR |= (1u &lt;&lt; 16);                       /* HSEON  */
+    while (!(RCC_CR &amp; (1u &lt;&lt; 17))) { }          /* HSERDY：不起振就停在这里 */
+
+    FLASH_ACR = (5u &lt;&lt; 0) | (1u &lt;&lt; 8) | (1u &lt;&lt; 9) | (1u &lt;&lt; 10);  /* 5WS+预取+ICache+DCache */
+
+    /* VCO = 8MHz/8*336 = 336MHz ; SYSCLK = 336/2 = 168MHz ; 48M = 336/7 */
+    RCC_PLLCFGR = (8u &lt;&lt; 0) | (336u &lt;&lt; 6) | (0u &lt;&lt; 16) | (1u &lt;&lt; 22) | (7u &lt;&lt; 24);
+    RCC_CR |= (1u &lt;&lt; 24);                       /* PLLON  */
+    while (!(RCC_CR &amp; (1u &lt;&lt; 25))) { }          /* PLLRDY */
+
+    RCC_CFGR = (0u &lt;&lt; 4) | (5u &lt;&lt; 10) | (4u &lt;&lt; 13) | (2u &lt;&lt; 0);
+    /* AHB/1 168M ; APB1/4 42M ; APB2/2 84M ; SW=PLL */
+    while (((RCC_CFGR &gt;&gt; 2) &amp; 3u) != 2u) { }    /* 等 SWS 回执 */
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>读 RCC_CFGR 的 SWS[3:2]，等于 10 才是 PLL；等于 00 说明仍挂在 HSI 上。</li><li>MCO1 配成 PLLCLK 输出到 PA8（MCO1[22:21]=11、MCO1PRE[26:24]=100 即 /2），示波器应见 84MHz 方波。</li><li>SysTick 按 168MHz 计 1 秒翻 LED，对手机秒表跑 60 秒；偏 2 倍去查 APB 与定时器 ×2。</li><li>串口 115200 连续发 1KB 递增数，逻辑分析仪量一位宽度应约 8.68µs。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">时钟相关故障定位表</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>判据</th><th>处置</th></tr></thead><tbody><tr><td>所有串口同时乱码</td><td>PCLK 实际值</td><td>BRR 是否按 42/84MHz 算</td><td>重算 BRR</td></tr><tr><td>切 PLL 后立刻跑飞</td><td>Flash 等待周期</td><td>ACR.LATENCY 是否 ≥5WS</td><td>先写 ACR 再切 SW</td></tr><tr><td>跑了但仍是 16MHz</td><td>HSERDY/PLLRDY</td><td>HSE 是否 Ready；是否在 PLLON 态改参数</td><td>先关 PLL 再改</td></tr><tr><td>USB 无法枚举</td><td>PLLQ</td><td>48MHz 是否准确（VCO/PLLQ）</td><td>按 VCO 重算 PLLQ</td></tr><tr><td>ADC 采样不稳</td><td>ADC 时钟</td><td>是否超 36MHz</td><td>ADC 预分频再降档</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游是 D04 的 SystemInit——它内部就是本节的实例化；下游直接决定 D09 之后的每一次波形测量与 D10 的消抖计时是否可信，也决定串口这条调试通道是否可用。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>为什么改 PLL 参数之前必须先清 PLLON？</summary><p>RM0090 明确 PLLCFGR 只有在 PLL 关闭时才可写，运行中修改会被硬件忽略。很多工程「改了参数没变化」就是这个原因——寄存器读了是对的，但 PLL 还在用旧值跑。</p></details><details class="dq"><summary>PLLP 只能取 2/4/6/8，想配 100MHz 怎么办？</summary><p>先凑 VCO 再降频：VCO=400MHz、PLLP=4 得 100MHz；或 VCO=200MHz、PLLP=2。SYSCLK 只能取 VCO 的 1/2、1/4、1/6、1/8，不是连续可调，配不出就调 PLLN。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>VCO=(HSE÷PLLM)×PLLN；SYSCLK=VCO÷PLLP；48MHz=VCO÷PLLQ。</li><li>APB 分频≠1 时，挂在该总线上的定时器时钟自动 ×2。</li><li>先写 FLASH_ACR 的等待周期，再切 SW；切换后必须等 SWS 回执。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>只改 RCC_CFGR 的 SW 不看 SWS，误以为已切到 PLL，实际还跑在 HSI 16MHz。</li><li>APB1 超 42MHz 通信不稳、ADC 超 36MHz 采样失真，两者都不报错，只表现为难查的隐性故障。</li></ul></div>
+    <div class="quiz"><p class="q">自测：8MHz 晶振、PLLM=8、PLLN=336、PLLP=2，SYSCLK 与 PCLK1（APB1 /4）各是多少？</p><details><summary>看答案</summary><p class="a">SYSCLK=168MHz，PCLK1=42MHz，TIM2–7 为 84MHz。</p><p class="why">VCO=336MHz，÷2 得 168；APB1 再 ÷4；APB 分频≠1 时定时器 ×2。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="9" data-pri="A" data-tag="GPIO" data-text="gpio 输出：推挽、开漏、速度与上下拉 推挽能主动输出高低电平；开漏只能拉低需外部上拉，适合总线与电平转换；速度档决定边沿斜率与 emi，不是越快越好 能针对 led、i2c、mos 驱动三种负载选对输出模式 gpio">
+  <div class="head">
+    <div class="dnum">D09</div>
+    <h2>GPIO 输出：推挽、开漏、速度与上下拉</h2>
+    <label class="chk"><input type="checkbox" data-day="9" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-03 周2</span><span class="tag">GPIO</span></div>
+  <p class="src">来源：RM0090 通用 I/O 章节</p>
+  <div class="block goal"><b>今日目标</b><p>能针对 LED、I2C、MOS 驱动三种负载选对输出模式</p></div>
+  <div class="block kp"><b>关键点</b><p>推挽能主动输出高低电平；开漏只能拉低需外部上拉，适合总线与电平转换；速度档决定边沿斜率与 EMI，不是越快越好</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>推挽与开漏各点一次灯并测波形；</li><li>开漏不加上拉观察失效；</li><li>用 2MHz 与 100MHz 档对比示波器边沿</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3259 字）</summary>
+    <p class="anchor">灯不亮不是代码没跑，是引脚还停在复位默认的输入态——GPIO 复位后没有一个是输出；而推挽配成开漏，灯只会微亮。</p>
+    <div class="why"><b>为什么要学这个</b><p>GPIO 是唯一一类「每个功能外设都要经过它」的器件：串口、SPI、PWM、ADC、外部中断，最终都落在某个引脚的几种模式上。灯不亮、按键乱跳、波形边沿难看、仿真器突然连不上，四类现象里有一半根子在 MODER/PUPDR/AFR 这三组位。把八种模式的内部通路想清楚，接线前就能判断该不该加上拉。</p></div>
+    <div class="sec"><h4>一、四个开关决定一个引脚</h4><p>每个引脚内部有四个可配环节：MODER 决定信号往哪走（输入/输出/复用/模拟），PUPDR 决定挂不挂内部上下拉，OTYPER 决定输出级是推挽还是开漏，OSPEEDR 决定输出驱动的压摆率。复用模式下还要 AFR 选具体外设通道。四者组合出官方文档里的八种模式，任何「引脚行为不对」都能拆到这四组位。</p></div>
+    <div class="sec"><h4>二、输入侧：浮空、上下拉、模拟的区别</h4><p>浮空输入把引脚直接接到施密特触发器，电平由外部决定；不接东西时读数随机，手一碰就变——按键悬空乱跳就是这个原因。内部上/下拉约 30–50kΩ（典型 40kΩ），只能做「默认电平」，驱不动负载。模拟模式下施密特触发器被断开，引脚直连 ADC 采样网络；此时若还开数字上下拉，会直接污染采样值。</p></div>
+    <div class="sec"><h4>三、输出侧：推挽与开漏的适用边界</h4><p>推挽输出由 PMOS/NMOS 互补驱动，能同时拉高拉低，适合直接驱动 LED、MOS 栅极。开漏只有 NMOS，高电平靠外部上拉，因此能做电平转换（3.3V 器件驱动 5V 上拉总线）与线与（I2C 的 SDA/SCL 必须开漏）。开漏不加上拉时测到的是高阻，灯微亮或不亮，很多人误判为「引脚坏了」。</p></div>
+    <div class="sec"><h4>四、速度位不是「越高速越好」</h4><p>OSPEEDR 调的是输出级压摆率：档位越高边沿越陡、上升时间越短，同时 EMI 与过冲越大。驱动 LED、继电器这类慢速负载用低档即可；SPI、SDIO 这类高速信号才需要高档。全部配成最高速是新手常见做法，代价是辐射变差、长线振铃，示波器上会看到明显的过冲与振铃。</p></div>
+    <div class="sec"><h4>五、两个易踩的坑：AFR 与 SWD 引脚</h4><p>复用功能由 MODER=10 加 AFR[0]/AFR[1] 的 4 位通道号共同决定，只配 MODER 不配 AFR 引脚不会有波形；且一个引脚同时只能选一个 AF，选错就是「无输出」。另外 PA13/PA14 复位后是 SWDIO/SWCLK，把它们配成普通 GPIO 或模拟，仿真器立刻掉连接，只能靠 BOOT0 或 connect under reset 抢救。</p></div>
+    <div class="tblwrap"><div class="tcap">GPIO 配置寄存器（以 GPIOA 为例）</div><table class="reg"><thead><tr><th>寄存器</th><th>偏移</th><th>位宽</th><th>编码要点</th></tr></thead><tbody><tr><td>MODER</td><td>0x00</td><td>2 位/引脚</td><td>00 输入｜01 输出｜10 复用｜11 模拟</td></tr><tr><td>OTYPER</td><td>0x04</td><td>1 位/引脚</td><td>0 推挽｜1 开漏</td></tr><tr><td>OSPEEDR</td><td>0x08</td><td>2 位/引脚</td><td>00 低｜01 中｜10 快｜11 高速</td></tr><tr><td>PUPDR</td><td>0x0C</td><td>2 位/引脚</td><td>00 无｜01 上拉｜10 下拉｜11 保留</td></tr><tr><td>AFR[0]/[1]</td><td>0x20/0x24</td><td>4 位/引脚</td><td>引脚 0–7 用 AFR[0]，8–15 用 AFR[1]</td></tr><tr><td>BSRR</td><td>0x18</td><td>写 1 有效</td><td>低 16 位置位，高 16 位复位，天然原子操作</td></tr><tr><td>LCKR</td><td>0x1C</td><td>1 位/引脚</td><td>置位并写序列后锁定，防运行中误改</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>寄存器级：推挽输出点灯 + 开漏改配 + 输入读键</h5><pre><code>#define RCC_AHB1ENR (*(volatile uint32_t *)0x40023830UL)
+#define GPIOA_MODER (*(volatile uint32_t *)0x40020000UL)
+#define GPIOA_OTYPER (*(volatile uint32_t *)0x40020004UL)
+#define GPIOA_OSPEEDR (*(volatile uint32_t *)0x40020008UL)
+#define GPIOA_PUPDR (*(volatile uint32_t *)0x4002000CUL)
+#define GPIOA_IDR   (*(volatile uint32_t *)0x40020010UL)
+#define GPIOA_BSRR  (*(volatile uint32_t *)0x40020018UL)
+
+void gpio_init(void)
+{
+    RCC_AHB1ENR |= (1u &lt;&lt; 0);              /* 必须先开 GPIOA 时钟，否则写寄存器无效 */
+
+    /* PA5 = 输出、推挽、低速、无上下拉 */
+    GPIOA_MODER   = (GPIOA_MODER   &amp; ~(3u &lt;&lt; 10)) | (1u &lt;&lt; 10);
+    GPIOA_OTYPER &amp;= ~(1u &lt;&lt; 5);
+    GPIOA_OSPEEDR = (GPIOA_OSPEEDR &amp; ~(3u &lt;&lt; 10)) | (0u &lt;&lt; 10);
+    GPIOA_PUPDR   = (GPIOA_PUPDR   &amp; ~(3u &lt;&lt; 10)) | (0u &lt;&lt; 10);
+
+    /* PA0 = 输入 + 内部上拉（按键另一端接 GND，按下读 0） */
+    GPIOA_MODER = (GPIOA_MODER &amp; ~(3u &lt;&lt; 0)) | (0u &lt;&lt; 0);
+    GPIOA_PUPDR = (GPIOA_PUPDR &amp; ~(3u &lt;&lt; 0)) | (1u &lt;&lt; 0);
+}
+
+static inline void led_on(void)  { GPIOA_ODR |=  (1u &lt;&lt; 5); }
+static inline void led_off(void) { GPIOA_ODR &amp;= ~(1u &lt;&lt; 5); }
+/* 单引脚用上面两行即可；整端口更新见 D11 的影子变量写法 */</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>输出高时万用表量 PA5 对 GND 应约 3.3V，输出低应接近 0V；中间值说明被外部负载拉住。</li><li>把 PA0 配成无上下拉，手指碰引脚，读 IDR 值随机变化——证明浮空；改回上拉后稳定为 1。</li><li>改 OTYPER 为开漏且不接外部上拉，量到的是约 1.6V 的悬浮电平，接 10kΩ 上拉后恢复 3.3V。</li><li>示波器看 PA5 翻转边沿，低档上升时间明显长于高档；先确认不是靠「全配高速」掩盖问题。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">GPIO 故障定位表</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>判据</th><th>处置</th></tr></thead><tbody><tr><td>写 MODER 无效</td><td>GPIO 时钟</td><td>RCC_AHB1ENR 对应位是否为 1</td><td>先开时钟再配</td></tr><tr><td>灯常亮或不亮</td><td>OTYPER/接线</td><td>是否开漏且无上拉；LED 极性是否接反</td><td>改推挽或加上拉</td></tr><tr><td>按键读数乱跳</td><td>PUPDR</td><td>是否为浮空输入</td><td>启用内部上拉或外接 10k</td></tr><tr><td>复用无波形</td><td>AFR</td><td>AF 通道号是否与外设表一致</td><td>查 DS8626 复用表</td></tr><tr><td>仿真器连不上</td><td>PA13/PA14</td><td>是否被改成 GPIO/模拟</td><td>connect under reset 后改回</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游接 D04 的时钟与 D08 的 AHB1 时钟使能；下游是 D11 按键消抖的电气前提——上拉没配对，软件再好的滤波也救不回抖动误判，D13 的波形测量同样从引脚的边沿开始。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>整端口输出（如并口屏 8 位数据）为什么不能逐位改 ODR？</summary><p>逐位改 ODR 是「读—改—写」三步，8 位要重复 8 次，每次都可能被打断，且中间态会短暂输出错误电平。做法是先在影子变量里拼好整字节，再一次写入 ODR，保证 8 位同时更新。</p></details><details class="dq"><summary>开漏输出为什么必须配上拉？不接会怎样？</summary><p>开漏只有下拉管，写 1 时引脚处于高阻而非高电平，电压由外部决定。不接上拉时量到的是悬浮电平（随负载与环境漂移），做 I2C 会直接通信失败，做电平转换则永远到不了高电平。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>MODER/PUPDR/OTYPER/OSPEEDR 四组位决定八种模式。</li><li>复用功能必须同时配 MODER=10 与 AFR 通道号。</li><li>输出速度档位按信号边沿需求选，不是越高越好。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>忘开 RCC_AHB1ENR 就写 MODER，寄存器读写正常但引脚毫无反应。</li><li>把 PA13/PA14 配成普通 GPIO，调试器从此连不上，需 connect under reset 抢救。</li><li>模拟输入仍开内部上下拉，ADC 采样被偏置，误差可达数十个码。</li></ul></div>
+    <div class="quiz"><p class="q">自测：PA5 复位后默认是什么模式？为什么点灯前必须先配 MODER？</p><details><summary>看答案</summary><p class="a">复位后为输入模式（MODER=00），此时引脚不驱动，必须置为 01 才能输出。</p><p class="why">STM32 复位默认全部 GPIO 为输入，这是硬件设定，不因代码写了 ODR 而改变。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="10" data-pri="A" data-tag="GPIO" data-text="gpio 输入与按键抖动：上拉、下拉、浮空怎么选 浮空引脚电平不确定，按键未按下时悬空会随机翻转；接地上拉的按键应配内部上拉，按下为低，配合 10–20ms 软件消抖或 rc 硬件消抖 能解释浮空输入在按键场景下为何不可靠 gpio">
+  <div class="head">
+    <div class="dnum">D10</div>
+    <h2>GPIO 输入与按键抖动：上拉、下拉、浮空怎么选</h2>
+    <label class="chk"><input type="checkbox" data-day="10" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-04 周2</span><span class="tag">GPIO</span></div>
+  <p class="src">来源：RM0090 通用 I/O 章节</p>
+  <div class="block goal"><b>今日目标</b><p>能解释浮空输入在按键场景下为何不可靠</p></div>
+  <div class="block kp"><b>关键点</b><p>浮空引脚电平不确定，按键未按下时悬空会随机翻转；接地上拉的按键应配内部上拉，按下为低，配合 10–20ms 软件消抖或 RC 硬件消抖</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>浮空与上拉两种配置下读按键并统计误触发；</li><li>实现 20ms 消抖并对比计数；</li><li>用示波器看按下瞬间的抖动波形</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1544 字）</summary>
+    <p class="anchor">浮空引脚像根天线，手一靠近就变。</p>
+    <div class="why"><b>为什么要学这个</b><p>按键是最简单的输入，却集中三个经典问题：没设输入所以读不到、浮空所以随机跳、抖动所以按一次触发多次。现象相似，改错方向就会一直「加延时」而不见效。</p></div>
+    <div class="sec"><h4>一、输入路径与上下拉</h4><p>MODER=00 为输入，信号经施密特触发器同步采样进 IDR。PUPDR 选内部上拉（01）或下拉（10），F4 典型 40kΩ，足以在按键断开时定住电平。浮空仅在外部已有明确驱动时可用。</p></div>
+    <div class="sec"><h4>二、按键接法决定上下拉方向</h4><p>按键接地（低有效）配内部上拉：松开读 1、按下读 0；按键接电源配下拉，逻辑相反。选错方向的现象是「按下与松开状态颠倒」，不是「读不到」。</p></div>
+    <div class="sec"><h4>三、抖动 5–20ms，三种消抖</h4><p>机械触点在闭合瞬间产生多次通断。三种做法：阻塞延时 10–20ms 后重读（最省事但阻塞）、定时采样 10ms 判稳（推荐）、状态机记录稳定时间（可支持长按与双击）。阻塞延时在中断里会拖垮系统。</p></div>
+    <div class="tblwrap"><div class="tcap">输入相关位域</div><table class="reg"><thead><tr><th>寄存器</th><th>位域</th><th>取值</th><th>含义</th></tr></thead><tbody><tr><td>MODER</td><td>2n+1:2n</td><td>00</td><td>输入模式</td></tr><tr><td>PUPDR</td><td>2n+1:2n</td><td>01/10</td><td>内部上拉 / 下拉</td></tr><tr><td>IDR</td><td>n</td><td>只读</td><td>引脚当前电平</td></tr><tr><td>OTYPER</td><td>n</td><td>—</td><td>输入时无意义</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>10ms 定时采样消抖（非阻塞）</h5><pre><code>#define KEY_DOWN()  ((GPIOC-&gt;IDR &amp; (1u &lt;&lt; 13)) == 0)   /* 低有效 */
+
+uint8_t key_scan_10ms(void)     /* 每 10ms 调用一次 */
+{
+    static uint8_t cnt, last;
+    if (KEY_DOWN() != last) { last = KEY_DOWN(); cnt = 0; return 0; }  /* 变化即复位 */
+    if (cnt &lt; 2) { cnt++; return 0; }
+    if (last) { last = 2; return 1; }   /* 稳定按下且只报一次 */
+    return 0;
+}
+
+void key_init(void)
+{
+    RCC-&gt;AHB1ENR |= RCC_AHB1ENR_GPIOCEN;
+    GPIOC-&gt;MODER &amp;= ~(3u &lt;&lt; (13 * 2));      /* 输入 */
+    GPIOC-&gt;PUPDR &amp;= ~(3u &lt;&lt; (13 * 2));
+    GPIOC-&gt;PUPDR |=  (1u &lt;&lt; (13 * 2));      /* 上拉 */
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>松开与按下时读 IDR 的 bit13，应分别为 1 和 0，无中间漂移。</li><li>示波器或逻辑分析仪抓按键两端，能看到 5–20ms 的抖动串，作为消抖必要性的证据。</li><li>长按 3 秒，消抖函数只返回一次 1；去掉消抖后计数明显跳变。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">按键类故障</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>处置</th></tr></thead><tbody><tr><td>永远读到固定值</td><td>MODER 是否设成输入、上下拉方向</td><td>改 PUPDR，必要时外部 10kΩ</td></tr><tr><td>一次按下触发多次</td><td>有无消抖、采样周期</td><td>10ms 定时采样或状态机</td></tr><tr><td>未触摸也乱跳</td><td>引脚是否浮空、走线是否长</td><td>开内部上拉或加外部上拉</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游是 D09 的输出配置（同一套 MODER/PUPDR 位域），下游进入 S2 的中断章节——按键最终会从轮询升级为 EXTI 中断，但消抖逻辑不变。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>内部上拉已经够了，为什么有些板子还要外部 10kΩ？</summary><p>内部上拉阻值大、一致性差，长走线或强干扰环境下抗扰不足；外部电阻可低到 4.7–10kΩ，噪声容限更高，且不依赖芯片是否上电。</p></details><details class="dq"><summary>为什么消抖不放 HAL_Delay 在中断里？</summary><p>阻塞延时会占住 CPU 且拖住同/低优先级中断，按键频繁时系统响应变差；非阻塞采样把等待交给时间基准，主循环照常运行。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>输入必须先设 MODER=00，再用 PUPDR 定电平。</li><li>低有效按键配内部上拉，方向错会表现为状态颠倒。</li><li>消抖优先用 10ms 定时采样，不在中断里阻塞等待。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>长延时消抖会拖慢主循环。</li></ul></div>
+    <div class="quiz"><p class="q">自测：按键一端接 3.3V、另一端接引脚，PUPDR 应设什么？</p><details><summary>看答案</summary><p class="a">下拉（10）。按下读到 1，松开由下拉保持 0。</p><p class="why">上下拉方向由按键另一端接电源还是接地决定。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="11" data-pri="A" data-tag="寄存器" data-text="寄存器读改写：为什么置位要用 bsrr 而不是 odr odr 是读-改-写三步，中断插进来会丢更新；bsrr 是只写寄存器，写 1 生效写 0 无影响，天然原子，且高 16 位可复位 能说明读改写在多任务或中断场景下的竞态风险 寄存器">
+  <div class="head">
+    <div class="dnum">D11</div>
+    <h2>寄存器读改写：为什么置位要用 BSRR 而不是 ODR</h2>
+    <label class="chk"><input type="checkbox" data-day="11" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-05 周2</span><span class="tag">寄存器</span></div>
+  <p class="src">来源：RM0090 通用 I/O 章节 · BSRR 寄存器</p>
+  <div class="block goal"><b>今日目标</b><p>能说明读改写在多任务或中断场景下的竞态风险</p></div>
+  <div class="block kp"><b>关键点</b><p>ODR 是读-改-写三步，中断插进来会丢更新；BSRR 是只写寄存器，写 1 生效写 0 无影响，天然原子，且高 16 位可复位</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>用 ODR 异或翻转并在中断里同时改同一端口观察丢步；</li><li>换 BSRR 复测；</li><li>只用一条 BSRR 写入同时置位与复位两个引脚</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="deep"><summary>精讲 · 深度版（约 3121 字）</summary>
+    <p class="anchor">偶发丢灯、偶发配置没生效，八成不是逻辑错，是一条 |= 被中断劈成了两半。</p>
+    <div class="why"><b>为什么要学这个</b><p>「我明明写了置位，为什么灯偶尔不亮」是裸机阶段最难查的一类 bug：单步永远正确、加打印就消失、示波器上一个月出现两次。根因是 C 的 |= 在汇编里是三步，中间可以被任何中断切开，两个上下文各写一次，后写把前写覆盖掉。BSRR 之所以是新手的第一个「硬件级并发原语」，就在于它把读改写压成了单次写入。</p></div>
+    <div class="sec"><h4>一、|= 的真实形态：LDR、ORR、STR</h4><p>GPIOA-&gt;ODR |= (1u &lt;&lt; 5) 在 -O0 下编译为 LDR r0,[ODR] → ORR r0,r0,#0x20 → STR r0,[ODR]，三步之间可插入任意中断。时序：主循环先读到 ODR=0x00，中断把 bit5 置 1（ODR=0x20），中断返回后主循环把自己算的 0x01 写回，bit5 消失。这就是「丢灯」，且丢的是别人写的位，不是自己写的位。</p></div>
+    <div class="sec"><h4>二、BSRR：写 1 生效，写 0 无影响</h4><p>BSRR 低 16 位 bs 写 1 置位、高 16 位 br 写 1 复位，写 0 的位完全不受影响，且一条 STR 完成全部动作，中间没有可插入的窗口。同一位若 bs 与 br 同时写 1，硬件规定置位优先（RM0090 8.4.7）。BRR（偏移 0x28）只做复位，等价于只写 BSRR 的高 16 位，二者选一即可。</p></div>
+    <div class="sec"><h4>三、什么时候反而必须直写 ODR</h4><p>整端口并行输出——并口 LCD 的 8 位数据、数码管段码——要求 8 位同时更新，逐位 BSRR 会产生中间态（先高后低的瞬态错误码）。做法：在影子变量 uint16_t shadow 里拼好完整字节，再一次 GPIOA-&gt;ODR = shadow。此时写的是完整值而非读改写，本身不存在竞态，前提是影子变量只由一个上下文维护。</p></div>
+    <div class="sec"><h4>四、volatile 管的是「不被优化掉」</h4><p>寄存器指针必须是 volatile，否则 while (!(GPIOA-&gt;IDR &amp; 0x01)) 这种轮询会被编译器提到循环外变成死循环——它认为没人会改那块内存。但 volatile 只保证每次都真实访存，不提供任何原子性：把 |= 改成 volatile 读写三步，竞态照旧。这是两个正交问题，混为一谈就会写出「加了 volatile 怎么还丢」。</p></div>
+    <div class="sec"><h4>五、硬件没有单写寄存器的场合</h4><p>PLLCFGR、TIMx_PSC 这类寄存器只能整体读改写。此时要么先算好完整值一次写入（无并发写者时最干净），要么用 __disable_irq()/__enable_irq() 或 BASEPRI 临界区把三步包起来。F4 还提供位带别名区（别名地址 = 0x42000000 + 字节偏移×32 + 位号×4）可对单个位做原子读写，但一次访问要算地址，性能不如 BSRR，只在需要「原子读某一位并据此判断」时才用。</p></div>
+    <div class="tblwrap"><div class="tcap">GPIO 输出相关寄存器与位带换算</div><table class="reg"><thead><tr><th>寄存器</th><th>偏移</th><th>写行为</th><th>用途</th></tr></thead><tbody><tr><td>IDR</td><td>0x10</td><td>只读</td><td>读引脚实际电平</td></tr><tr><td>ODR</td><td>0x14</td><td>整体读改写</td><td>整端口并行输出用</td></tr><tr><td>BSRR</td><td>0x18</td><td>写 1 有效，写 0 忽略</td><td>原子置位（低 16 位）/复位（高 16 位）</td></tr><tr><td>BRR</td><td>0x28</td><td>写 1 复位，写 0 忽略</td><td>只做复位，可省一半位运算</td></tr><tr><td>位带别名</td><td>0x42000000+n</td><td>按字读写</td><td>单个位原子访问</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>三种写法对照：竞态写法、BSRR、影子变量整端口</h5><pre><code>#define GPIOA_ODR  (*(volatile uint32_t *)0x40020014UL)
+#define GPIOA_BSRR (*(volatile uint32_t *)0x40020018UL)
+#define GPIOA_BRR  (*(volatile uint32_t *)0x40020028UL)
+
+/* ✗ 有竞态：三步之间可被中断插入 */
+void bad_toggle(void) { GPIOA_ODR ^= (1u &lt;&lt; 5); }
+
+/* ✓ 原子：一条 STR 完成，不影响同端口其它位 */
+static inline void led_set(void)   { GPIOA_BSRR = (1u &lt;&lt; 5); }
+static inline void led_clear(void) { GPIOA_BSRR = (1u &lt;&lt; (5 + 16)); }
+static inline void led_clear2(void){ GPIOA_BRR  = (1u &lt;&lt; 5); }
+
+/* ✓ 整端口输出：影子变量拼字节，一次写入，无中间态 */
+static uint16_t g_port_shadow;
+void port_write_byte(uint8_t v)
+{
+    g_port_shadow = (g_port_shadow &amp; 0xFF00u) | v;
+    GPIOA_ODR = g_port_shadow;
+}
+
+/* ✓ 必须读改写又没有单写寄存器时：临界区包住三步 */
+void pll_set_plln(uint32_t n)
+{
+    __disable_irq();
+    RCC-&gt;PLLCFGR = (RCC-&gt;PLLCFGR &amp; ~(0x1FFu &lt;&lt; 6)) | (n &lt;&lt; 6);
+    __enable_irq();
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>对 bad_toggle 反汇编，应看到 LDR/ORR/STR 三条；对 led_set 反汇编，应只有一条 STR——这是原子性的直接证据。</li><li>并发压测：主循环每 1ms 用 ODR 读改写翻转 PA0，同时 TIM2 中断（更高优先级）翻转 PA1，跑 10 分钟统计 PA1 丢失次数；改用 BSRR 后丢失应为 0。</li><li>把轮询改成 while (!(GPIOA-&gt;IDR &amp; 1)) 并去掉 volatile，-O2 下会陷入死循环；加回 volatile 立刻恢复——证明它管的是优化不是原子性。</li><li>位带写法：别名地址 = 0x42000000 + (0x14×32) + (5×4)，写入 1 与直接写 BSRR 结果一致，可用万用表或 IDR 复核。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">位操作类故障定位表</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>判据</th><th>处置</th></tr></thead><tbody><tr><td>偶发丢某一位</td><td>并发写同一寄存器</td><td>是否两处都用 |= / ^=</td><td>改 BSRR 或加临界区</td></tr><tr><td>写 BSRR 无效</td><td>位域位置</td><td>是否误把复位写进低 16 位</td><td>置位写 bs，复位写 br</td></tr><tr><td>同时置位复位不生效</td><td>优先级规则</td><td>bs 与 br 同一位都写了 1</td><td>只写一侧，或分两次</td></tr><tr><td>轮询永远不退出</td><td>volatile</td><td>寄存器指针是否缺 volatile</td><td>补 volatile 再编译</td></tr><tr><td>整端口输出闪错码</td><td>更新方式</td><td>是否逐位更新 ODR</td><td>影子变量一次写</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游是 D09 的引脚模式（BSRR 只对已配成输出的引脚有意义）与 D08 的时钟使能；下游直接落到 D10 的按键读取与 S1 的位运算专题——后面所有「原子置位」的写法都从这里长出来。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>BSRR 为什么不需要关中断就安全？</summary><p>它没有读这一步：一次存储写指令，硬件按位解释「写 1 动作、写 0 忽略」。没有中间态，也就不存在被插入的窗口，中断在写指令之前或之后发生都不影响结果。</p></details><details class="dq"><summary>位带和 BSRR 都能原子操作，选哪个？</summary><p>只做置位/复位选 BSRR：一条指令、无需算地址、还能一次改多个位。需要对单个位做「原子读—判断—回写」的复合操作（如测试并置位的信号量）才用位带，因为它把一位映射成一个可读写的字，读与写各自原子。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>|= 在汇编里是三步，中间可被中断打断，这是丢位的根因。</li><li>BSRR 写 1 生效、写 0 忽略，一条指令完成置位或复位，同一位置位优先。</li><li>volatile 保证真实访存，不提供原子性，两者不能互相替代。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>以为 volatile 能解决竞态，加了 volatile 继续丢位。</li><li>整端口逐位更新，中间态被外设当作有效数据采走。</li><li>临界区里调用可能阻塞的函数，把系统节拍一起关掉。</li></ul></div>
+    <div class="quiz"><p class="q">自测：主循环与中断都要置 PA5 和 PA6，为什么用两次 BSRR 而不是 ODR |= 0x60？</p><details><summary>看答案</summary><p class="a">两次 BSRR 各自原子，互不覆盖；ODR |= 0x60 是读改写，两侧并发时会丢掉对方刚写的位。</p><p class="why">原子性来自「单次写入 + 写 0 无影响」，与是否一次改多个位无关。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="12" data-pri="A" data-tag="链接" data-text="固件体积构成：size 输出与 map 文件的读法 text 进 flash、data 既占 flash 又占 ram（初值需搬运）、bss 只占 ram；map 文件按对象文件列出符号大小，是找“谁把 flash 撑爆”的唯一依据 能用 size 与 map 说清 flash 与 ram 各被谁占用 链接">
+  <div class="head">
+    <div class="dnum">D12</div>
+    <h2>固件体积构成：size 输出与 map 文件的读法</h2>
+    <label class="chk"><input type="checkbox" data-day="12" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-06 周2</span><span class="tag">链接</span></div>
+  <p class="src">来源：王利涛 链接与段布局相关章节</p>
+  <div class="block goal"><b>今日目标</b><p>能用 size 与 map 说清 Flash 与 RAM 各被谁占用</p></div>
+  <div class="block kp"><b>关键点</b><p>text 进 Flash、data 既占 Flash 又占 RAM（初值需搬运）、bss 只占 RAM；map 文件按对象文件列出符号大小，是找“谁把 Flash 撑爆”的唯一依据</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>跑 size 记录三列数值；</li><li>在 map 里找最大的三个符号；</li><li>加一个大 const 数组与一个大普通数组，对比两者的段归属</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1392 字）</summary>
+    <p class="anchor">Flash 还剩多少、RAM 会不会撞栈，只有 size 和 map 说得清。</p>
+    <div class="why"><b>为什么要学这个</b><p>「编译通过了」不等于「装得下、跑得稳」。size 给出三个数值的边界，map 给出每个字节的归属；读不懂它们，就只能靠「加个变量试试」来猜 RAM 够不够。</p></div>
+    <div class="sec"><h4>一、text/data/bss 三个数各管一件事</h4><p>text 是代码加只读常量，占 Flash；data 是带初值的可写变量，初值存 Flash、运行时装进 RAM，故两头都占；bss 是零初始化变量，只占 RAM，启动时由启动代码清零。三者之和不是 Flash 总量，必须按「Flash = text + data、RAM = data + bss」分别核对。</p></div>
+    <div class="sec"><h4>二、map 的作用是按符号归账</h4><p>map 里先给段汇总（.isr_vector、.text、.data、.bss、.heap、.stack），再按符号列出地址与大小，按大小排序就能一眼看出谁在吃空间——常见大户是浮点格式化、printf、查表和大的全局缓冲。</p></div>
+    <div class="sec"><h4>三、栈与堆是看不见的那部分</h4><p>启动文件里 ._user_heap_stack 只预留大小，运行期实际用量全靠估算。局部大数组、深递归、中断嵌套都会让栈超限，表现是随机 HardFault 或变量被莫名改写——这类故障在 size 里完全看不出。</p></div>
+    <div class="tblwrap"><div class="tcap">size 三个数的归属</div><table class="reg"><thead><tr><th>段</th><th>内容</th><th>占 Flash</th><th>占 RAM</th></tr></thead><tbody><tr><td>.text</td><td>代码 + 常量</td><td>是</td><td>否</td></tr><tr><td>.data</td><td>有初值全局变量</td><td>是（存初值）</td><td>是</td></tr><tr><td>.bss</td><td>零初始化变量</td><td>否</td><td>是</td></tr><tr><td>.heap/.stack</td><td>预留区</td><td>否</td><td>是</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>一次构建后的体积核对</h5><pre><code>arm-none-eabi-size build/app.elf
+#   text    data     bss     dec     hex filename
+#  18420     312    2848   21580    544c build/app.elf
+
+# 结论：Flash 占用 = 18420+312 ≈ 18.3KB
+#       RAM  占用 = 312+2848  ≈ 3.1KB（不含栈堆用量）
+
+arm-none-eabi-nm --size-sort -S build/app.elf | tail -8   # 谁最占地方</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>在代码里加一个 uint8_t buf[1024] 全局数组，bss 应增加 1024。</li><li>改成带初值的 1024 字节数组，data 增加 1024 而 bss 回落。</li><li>对照 map 的段汇总与 size 三数，两者应能互相印证。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">体积类故障</div><table class="reg diag"><thead><tr><th>现象</th><th>首查</th><th>处置</th></tr></thead><tbody><tr><td>烧写报区域溢出</td><td>text+data 是否超 Flash</td><td>关调试打印、去浮点、换优化等级</td></tr><tr><td>上电后变量被改写</td><td>栈是否撞到 bss</td><td>加大栈、减局部大数组</td></tr><tr><td>bss 异常巨大</td><td>是否有大全局数组或缓冲区</td><td>改动态分配或缩小尺寸</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>上游接 D02 的链接阶段与 D07 的六环节（构建环节的证据就是 size 与 map），下游被 D13 的选择逻辑引用：先知道体积与时间花在哪，才谈得上换手段观测。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>为什么 data 段在 Flash 和 RAM 里都算一份？</summary><p>初值必须存在非易失的 Flash 里，上电后由启动代码拷贝到 RAM 的运行时地址；两处各有一份副本，所以两头都占。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>Flash = text + data，RAM = data + bss，分开核对。</li><li>map 按符号归账，按大小排序能快速找到大户。</li><li>栈堆用量不在 size 里，需单独估算与实测。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>把 text+data+bss 直接与 Flash 容量比，误判溢出。</li><li>只看编译是否通过，不核对 RAM 余量，运行期随机 HardFault。</li></ul></div>
+    <div class="quiz"><p class="q">自测：加上 -O2 后 bss 不变而 text 减少，说明什么？</p><details><summary>看答案</summary><p class="a">优化作用于代码生成，减少了指令与临时量；bss 由变量声明决定，与优化等级无关。</p><p class="why">优化改代码不改全局变量的存在性。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="13" data-pri="B" data-tag="调试方法" data-text="调试手段分层：printf、断点、逻辑分析仪、示波器各管什么 printf 看软件状态但会破坏实时性；断点看流程但会暂停系统；逻辑分析仪看数字时序与协议；示波器看模拟质量与边沿；时序类故障用 printf 往往测不出来 能按故障类型选对观测工具而不是一律 printf 调试方法">
+  <div class="head">
+    <div class="dnum">D13</div>
+    <h2>调试手段分层：printf、断点、逻辑分析仪、示波器各管什么</h2>
+    <label class="chk"><input type="checkbox" data-day="13" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pB">B 类</span><span class="date">11-07 周2</span><span class="tag">调试方法</span></div>
+  <p class="src">来源：Yiu 第3版 调试特性章节 · Making Embedded Systems 调试章</p>
+  <div class="block goal"><b>今日目标</b><p>能按故障类型选对观测工具而不是一律 printf</p></div>
+  <div class="block kp"><b>关键点</b><p>printf 看软件状态但会破坏实时性；断点看流程但会暂停系统；逻辑分析仪看数字时序与协议；示波器看模拟质量与边沿；时序类故障用 printf 往往测不出来</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>同一 I2C 故障分别用 printf 与逻辑分析仪排查并记录差异；</li><li>测 printf 一次输出的耗时；</li><li>列出四类工具各一个适用场景</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1241 字）</summary>
+    <p class="anchor">用 printf 查时序问题，等于用秒表量纳秒。</p>
+    <div class="why"><b>为什么要学这个</b><p>四种手段的时间分辨率与侵入性差几个数量级。选错工具不是效率低，而是会得到错误结论：printf 本身耗时毫秒级，用它测中断间隔必然失真。</p></div>
+    <div class="sec"><h4>一、按时间尺度分层</h4><p>printf 适合状态与流程（ms 以上）；断点适合逻辑分支（停在那一刻看变量）；逻辑分析仪适合协议与多路时序（ns–µs，且不打断 CPU）；示波器适合模拟量、上升沿与电源纹波（看波形质量）。</p></div>
+    <div class="sec"><h4>二、侵入性要一起考虑</h4><p>断点会暂停 CPU，改变时序甚至让竞态消失；printf 占用串口与 CPU，且在中断里可能破坏实时性；分析仪与示波器是外部观测，几乎零侵入，代价是要有引脚可探。</p></div>
+    <div class="sec"><h4>三、CPU 周期计数补足中间层</h4><p>DWT-&gt;CYCCNT 以 CPU 周期计时，误差在一个周期内，适合量函数耗时与中断响应，比 printf 精确得多，也不需要外部设备。前提是使能 DWT 并注意计数器 32 位回绕。</p></div>
+    <div class="tblwrap"><div class="tcap">手段选择速查</div><table class="reg"><thead><tr><th>故障类型</th><th>首选</th><th>理由</th></tr></thead><tbody><tr><td>逻辑走错分支</td><td>断点 + 变量观察</td><td>直接停在现场</td></tr><tr><td>时序/协议异常</td><td>逻辑分析仪</td><td>多路同步、零侵入</td></tr><tr><td>信号完整性/纹波</td><td>示波器</td><td>看模拟波形</td></tr><tr><td>耗时统计</td><td>DWT 周期计数</td><td>周期级精度</td></tr><tr><td>状态流与参数</td><td>printf/ITM</td><td>信息量最大</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>用 DWT 测函数耗时</h5><pre><code>void dwt_init(void)
+{
+    CoreDebug-&gt;DEMCR |= CoreDebug_DEMCR_TRCENA_Msk;
+    DWT-&gt;CYCCNT = 0;
+    DWT-&gt;CTRL  |= DWT_CTRL_CYCCNTENA_Msk;
+}
+
+uint32_t dwt_measure(void (*fn)(void))
+{
+    uint32_t t0 = DWT-&gt;CYCCNT;
+    fn();
+    return DWT-&gt;CYCCNT - t0;      /* 单位：CPU 周期，168MHz 下 1 周期≈5.95ns */
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>对同一函数分别用 DWT 与 GPIO 翻转 + 示波器测量，结果应基本一致。</li><li>在中断里插入 printf，用分析仪看中断宽度明显变长，证明侵入性。</li><li>断点停在竞态窗口内，故障消失——记录这一现象作为选错工具的证据。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">工具误用现象</div><table class="reg diag"><thead><tr><th>现象</th><th>真实原因</th><th>处置</th></tr></thead><tbody><tr><td>加打印后故障不复现</td><td>printf 改变了时序</td><td>改用分析仪或 DWT</td></tr><tr><td>测得的延时远大于理论</td><td>printf 自身耗时未扣除</td><td>换周期计数或外部测量</td></tr><tr><td>逻辑分析仪无波形</td><td>引脚未配置为输出/复用</td><td>先确认 MODER 与 AFR</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>接 D06 的 printf（最低层观测）与 D07 的六环节定位，进入 S1 后被中断与通信章节反复使用：凡是「时序类」问题，一律先换零侵入手段。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>为什么加断点后偶发故障消失了？</summary><p>断点让 CPU 停在特定时刻，打断了原本重叠的时间窗口，竞态条件不再成立；这类故障必须用零侵入手段或改设计来复现。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>按时间分辨率选工具：ms 用打印，µs 用分析仪，ns 用示波器。</li><li>侵入性会改变被测对象，断点与打印都可能让故障消失。</li><li>DWT 周期计数是低侵入、周期级精度的中间层。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>用 printf 测中断间隔，得到的数据完全不可用。</li><li>只会在 main 里打打印，从不使用外部观测。</li></ul></div>
+    <div class="quiz"><p class="q">自测：串口丢字节，怀疑发送时序，第一步该做什么？</p><details><summary>看答案</summary><p class="a">用逻辑分析仪抓 TX 引脚，看帧结构与间隔是否符合配置；再回查 BRR 与时钟。</p><p class="why">先取波形证据，再改代码。</p></details></div>
+  </details>
+</article>
+<article class="card" data-day="14" data-pri="A" data-tag="整合" data-text="整合复盘：时钟—引脚—输出的因果链自测 点亮一个引脚=开时钟（rcc_ahb1enr）→配模式（moder/otyper/ospeedr/pupdr）→写电平（bsrr）；四步任一缺失都表现为不亮，且现象几乎一样 能在不看教程的情况下从零点亮任意一个引脚 整合">
+  <div class="head">
+    <div class="dnum">D14</div>
+    <h2>整合复盘：时钟—引脚—输出的因果链自测</h2>
+    <label class="chk"><input type="checkbox" data-day="14" aria-label="标记完成"><span></span></label>
+  </div>
+  <div class="meta"><span class="badge pA">A 类</span><span class="date">11-08 周2</span><span class="tag">整合</span></div>
+  <p class="src">来源：综合：第 8–13 天</p>
+  <div class="block goal"><b>今日目标</b><p>能在不看教程的情况下从零点亮任意一个引脚</p></div>
+  <div class="block kp"><b>关键点</b><p>点亮一个引脚=开时钟（RCC_AHB1ENR）→配模式（MODER/OTYPER/OSPEEDR/PUPDR）→写电平（BSRR）；四步任一缺失都表现为不亮，且现象几乎一样</p></div>
+  <div class="block prac"><b>动手三步</b><ol><li>换一个没用过的引脚从零点亮；</li><li>故意漏开时钟并观察现象；</li><li>写 300 字复盘：四步各自的验证方法</li></ol></div>
+  <details class="deep" data-deep="v2" data-tier="lite"><summary>精讲 · 精简版（约 1539 字）</summary>
+    <p class="anchor">不看教程从零点亮任意一个引脚，是对 S0 唯一的验收标准。</p>
+    <div class="why"><b>为什么要学这个</b><p>前十三天学的是零件，今天要的是装配能力：给定「PA1 上的 LED 要闪」，能独立推出需要改哪几个寄存器、按什么顺序、用什么证据确认每一步生效。这条链走通，后面的外设都是同一套骨架换个名字。</p></div>
+    <div class="sec"><h4>一、因果链只有四环</h4><p>时钟使能 → 引脚模式 → 输出电平 → 时间基准。四环任一缺失都表现为灯不亮或常亮，而现象几乎相同，所以必须按顺序验证，而不是并发猜测。</p></div>
+    <div class="sec"><h4>二、顺序不可交换的原因</h4><p>寄存器写操作需时钟才生效；MODER 未置位时写 ODR 无效；时间基准缺失则灯亮着不动。顺序：时钟、模式、电平、节拍。</p></div>
+    <div class="sec"><h4>三、用读数代替猜测</h4><p>每环都留一个可验证读数：RCC-&gt;AHB1ENR 的 EN 位、MODER 对应两位、ODR 对应位、以及一次翻转周期。四读数齐了，故障必然在硬件侧（LED 极性、限流电阻、焊接）。</p></div>
+    <div class="tblwrap"><div class="tcap">任意引脚点亮四步</div><table class="reg"><thead><tr><th>步骤</th><th>寄存器</th><th>写入值（以 PAn 为例）</th><th>验证</th></tr></thead><tbody><tr><td>1 开时钟</td><td>RCC-&gt;AHB1ENR</td><td>bit n = 1</td><td>读回为 1</td></tr><tr><td>2 设模式</td><td>MODER</td><td>2n+1:2n = 01</td><td>读回 01</td></tr><tr><td>3 设电平</td><td>BSRR</td><td>bit n 置位/复位</td><td>ODR 对应位变化</td></tr><tr><td>4 定节拍</td><td>延时或定时器</td><td>实测 1Hz</td><td>示波器测周期</td></tr></tbody></table></div>
+    <div class="codeblock"><h5>通用引脚驱动（换引脚只改两个宏）</h5><pre><code>#define PORT  GPIOA
+#define PIN   1u
+
+static void pin_out_init(void)
+{
+    RCC-&gt;AHB1ENR |= (1u &lt;&lt; 0);                 /* GPIOA 时钟 */
+    PORT-&gt;MODER &amp;= ~(3u &lt;&lt; (PIN * 2));
+    PORT-&gt;MODER |=  (1u &lt;&lt; (PIN * 2));         /* 通用输出 */
+    PORT-&gt;OTYPER &amp;= ~(1u &lt;&lt; PIN);              /* 推挽 */
+}
+
+int main(void)
+{
+    pin_out_init();
+    for (;;) {
+        PORT-&gt;BSRR = (1u &lt;&lt; PIN);              /* 置高 */
+        for (volatile uint32_t i = 0; i &lt; 800000; i++) { }
+        PORT-&gt;BSRR = (1u &lt;&lt; (PIN + 16));       /* 置低 */
+        for (volatile uint32_t i = 0; i &lt; 800000; i++) { }
+    }
+}</code></pre></div>
+    <div class="lst vf"><h4>怎么验证（做完要看到的现象）</h4><ol><li>换到 PB0、PC13 各做一遍，只改 PORT 与时钟位。</li><li>示波器实测翻转周期，与估算偏差应在容差内。</li></ol></div>
+    <div class="tblwrap"><div class="tcap">自测不过时的排查顺序</div><table class="reg diag"><thead><tr><th>现象</th><th>下一动作</th><th>判据</th></tr></thead><tbody><tr><td>完全无反应</td><td>读 AHB1ENR 与 MODER</td><td>两位都正确才继续</td></tr><tr><td>灯常亮不闪</td><td>查节拍与循环</td><td>ODR 是否在变</td></tr><tr><td>读数都对但灯不亮</td><td>查 LED 极性与限流电阻</td><td>改用万用表测引脚电压</td></tr></tbody></table></div>
+    <div class="link"><b>与前后知识的衔接</b><p>收口 S0。下一阶段 S1 进入中断、串口、定时器时，仍按「时钟—模式—动作—节拍」四环拆解，只是寄存器换成对应外设的。</p></div>
+    <div class="lst drill"><h4>工程追问（能答上来才算懂）</h4><details class="dq"><summary>要求 PA1 上的 LED 以 2Hz 闪烁，你会依次写哪几处？</summary><p>RCC-&gt;AHB1ENR 开 GPIOA；MODER 置 PA1 为 01；循环里用 BSRR 交替置位/复位 bit1 与 bit17；节拍用 250ms 延时或定时器。</p></details><details class="dq"><summary>为什么读回正确但灯不亮也可能是硬件问题？</summary><p>软件侧只能证明寄存器写成功，引脚是否真的输出高低还取决于 LED 极性、限流电阻与焊接；用万用表量引脚电压即可区分。</p></details></div>
+    <div class="lst"><h4>记住这三条</h4><ul><li>时钟—模式—电平—节拍，四环顺序固定不可交换。</li><li>每一环都留一个可读证据，故障自然收敛到最后未验证的一环。</li><li>换引脚只改端口与引脚号，骨架完全复用。</li></ul></div>
+    <div class="lst pit"><h4>易错</h4><ul><li>先写 ODR 再补 MODER，现象与完全没配一样。</li><li>用软件空循环当精确节拍，实测频率随优化等级漂移。</li></ul></div>
+    <div class="quiz"><p class="q">自测：换到 PC13 后灯完全不亮，MODER 读数正常，最可能是什么？</p><details><summary>看答案</summary><p class="a">PC13 属于备份域相关的低驱动引脚，且板子上常接反极性 LED；先量引脚电压与 LED 方向，再考虑驱动能力限制。</p><p class="why">并非所有引脚电气特性一致。</p></details></div>
+  </details>
+</article>
+<div class="empty" id="empty" style="display:none">没有匹配的知识点</div>
+  <footer>
+<p>教材版次核实日 2026-10-26：Yiu 第 3 版、王利涛第 1 版、RM0090 v22.0、PM0214 v11.0</p>
+<p>芯片事实以 RM0090 / PM0214 为准；与教材冲突时以手册为先。每日实践须留下证据（寄存器值、波形、日志），无证据不计完成。</p>
+<p>进度保存在本机浏览器，换设备或清缓存会丢失。</p>
+  </footer>
+</main>
+<button class="totop" id="toTop" aria-label="回到顶部">↑</button>
+<script>
+(function(){
+  var KEY='embed-b1-progress', TKEY='embed-b1-theme';
+  var root=document.documentElement;
+  var saved=localStorage.getItem(TKEY);
+  if(saved){root.setAttribute('data-theme',saved);}
+  else{root.removeAttribute('data-theme');}
+  var btn=document.getElementById('themeBtn');
+  function cur(){
+    var t=root.getAttribute('data-theme');
+    if(t) return t;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';
+  }
+  function paint(){btn.textContent = cur()==='dark' ? '☀' : '☾'; btn.setAttribute('aria-label', cur()==='dark'?'切到浅色':'切到深色');}
+  paint();
+  btn.addEventListener('click',function(){
+    var n=cur()==='dark'?'light':'dark';
+    root.setAttribute('data-theme',n);
+    localStorage.setItem(TKEY,n);
+    paint();
+  });
+
+  var prog={};
+  try{prog=JSON.parse(localStorage.getItem(KEY)||'{}')||{};}catch(e){prog={};}
+  var boxes=[].slice.call(document.querySelectorAll('.chk input'));
+  var total=boxes.length;
+  function refresh(){
+    var done=0;
+    boxes.forEach(function(b){
+      var card=b.closest('.card');
+      if(b.checked){done++;card.classList.add('done');}else{card.classList.remove('done');}
+    });
+    var pct= total? Math.round(done*100/total):0;
+    document.getElementById('barIn').style.width=pct+'%';
+    document.getElementById('progTxt').textContent=pct+'%';
+    document.getElementById('progCnt').textContent='已完成 '+done+' / '+total+' 天';
+    applyFilter();
+  }
+  boxes.forEach(function(b){
+    b.checked=!!prog[b.dataset.day];
+    b.addEventListener('change',function(){
+      prog[b.dataset.day]=b.checked;
+      localStorage.setItem(KEY,JSON.stringify(prog));
+      refresh();
+    });
+  });
+
+  var mode='all', kw='';
+  function applyFilter(){
+    var cards=[].slice.call(document.querySelectorAll('.card'));
+    var shown=0;
+    cards.forEach(function(c){
+      var ok=true;
+      if(mode==='todo' && c.classList.contains('done')) ok=false;
+      if(mode==='A' && c.dataset.pri!=='A') ok=false;
+      if(kw && c.dataset.text.indexOf(kw)<0) ok=false;
+      c.style.display= ok? '':'none';
+      if(ok) shown++;
+    });
+    [].slice.call(document.querySelectorAll('.weekh')).forEach(function(h){
+      var s=h.nextElementSibling, any=false;
+      while(s && !s.classList.contains('weekh')){
+        if(s.classList.contains('card') && s.style.display!=='none') any=true;
+        s=s.nextElementSibling;
+      }
+      h.style.display= any? '':'none';
+    });
+    document.getElementById('empty').style.display = shown? 'none':'block';
+  }
+  [].slice.call(document.querySelectorAll('.chip')).forEach(function(c){
+    c.addEventListener('click',function(){
+      [].slice.call(document.querySelectorAll('.chip')).forEach(function(x){x.setAttribute('aria-pressed','false');});
+      c.setAttribute('aria-pressed','true');
+      mode=c.dataset.mode; applyFilter();
+    });
+  });
+  var si=document.getElementById('searchInput');
+  si.addEventListener('input',function(){kw=si.value.trim().toLowerCase();applyFilter();});
+
+  var tt=document.getElementById('toTop');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>600) tt.classList.add('show'); else tt.classList.remove('show');
+  },{passive:true});
+  tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+  refresh();
+})();
+</script>
+<div id="pvBar" style="position:fixed;bottom:14px;right:12px;z-index:9999;display:flex;flex-direction:column;gap:8px;">
+  <a id="pvHome" href="../index.html" aria-label="返回项目清单" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;text-decoration:none;font-size:16px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8962;</a>
+  <button class="btn sm" id="pvUpd" type="button" aria-label="检查并更新到最新版本" style="width:36px;height:36px;border:none;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8635;</button>
+</div>
+<script>
+/* 「更新」按钮：比对 version.json 的 build，不一致即清缓存+注销 SW+硬重载 */
+(function(){
+  var b=document.getElementById('pvUpd'); if(!b) return;
+  var m=document.querySelector('meta[name="pv-build"]'); var local=m?m.getAttribute('content'):'';
+  var t0=b.textContent;
+  function say(t,ms){ b.textContent=t; setTimeout(function(){ b.textContent=t0; }, ms||1600); }
+  function hard(){
+    try{ if('caches' in window){ caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){}); } }catch(e){}
+    try{ if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){ navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ try{ r.unregister(); }catch(e){} }); }); } }catch(e){}
+    setTimeout(function(){ var u=location.href.split('#')[0]; var sep=u.indexOf('?')>=0?'&':'?'; try{ location.replace(u+sep+'t='+Date.now()); }catch(e){ location.reload(); } },150);
+  }
+  b.addEventListener('click', function(){
+    if(!/^https?:/i.test(location.protocol)){ hard(); return; }
+    var base = location.pathname.indexOf('/tools/') >= 0 ? '../' : '';
+    say('检查中');
+    fetch(base+'version.json?t='+Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+      if(j && j.build && j.build !== local){ say('更新中'); hard(); } else { say('已最新'); }
+    }).catch(function(){ hard(); });
+  });
+})();
+</script>
+
+</body>
+</html>

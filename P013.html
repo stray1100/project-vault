@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="7028264711">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>嵌入式学习助手 B1（第1-8周 S0+S1 分层精讲） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-26 22:38</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P013</span>
+  <h1>嵌入式学习助手 B1（第1-8周 S0+S1 分层精讲）</h1>
+  <p class="summary">嵌入式开发（STM32F407 主线）44 周 / 308 知识点学习系统的第一批 B1：第 1–14 天覆盖硬件最小系统、工具链、启动流程、时钟树、GPIO 与固件体积，按需深度拆成 7 天深版（约 2400–3500 字）+ 7 天精简版（约 1200–1550 字），单文件 HTML 断网可读。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P013</td></tr><tr><td class="k">类型</td><td class="v">学习系统（单文件 Web + 分层精讲文档）</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-26</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML 移动端（内联 CSS/JS、零外链、无 CDN，断网可跑） / 分层精讲 schema v2：why / principle / regs / code / verify / diag / link / drill / refs 九段 / 计划总表 CSV（18 列）为唯一权威源，精讲按天派生 / build_batch.py 批量构建 + embedded_page.html 模板（v1/v2 双 schema、--days 过滤） / localStorage 记录当日阅读与完成状态，无服务器、无账号</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-26</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-26。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">作为档案馆站内工具页托管，HTML 单页 + HTML/MD 双份 zip 下载包同站发布。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>嵌入式开发（STM32F407 主线）44 周 / 308 知识点学习系统的第一批 B1：第 1–14 天覆盖硬件最小系统、工具链、启动流程、时钟树、GPIO 与固件体积，按需深度拆成 7 天深版（约 2400–3500 字）+ 7 天精简版（约 1200–1550 字），单文件 HTML 断网可读。</p>
+    <p class="para">嵌入式入门最容易卡在「板子不亮但不知道从哪查」：原理图看不懂、工具链三段各自干什么不清楚、启动流程是黑盒、时钟配错只表现为串口乱码。这些不是知识量问题，而是缺一条可观测的因果链。</p><p class="para">B1 用 14 天把这条链立起来：第 1 周解决「为什么能跑」——最小系统四要素、交叉编译三段、SWD/JTAG 调试通路、复位向量到 main 的启动流程，再用 D07 复盘压成六个可观测环节；第 2 周解决「跑起来之后怎么控制」——时钟树倍频链、GPIO 输出四种模式、输入上下拉与按键抖动、BSRR 与 ODR 的读改写差异、固件体积与 map 文件读法，D14 用因果链自测收口。</p><p class="para">分层不是缩水：7 天深版给到寄存器位与失效现象的可判读细节（约 2400–3500 字），7 天精简版给到够用的操作口径（约 1200–1550 字），按真实可用时间分配注意力，但两天复盘日不打折。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">D01–D04 硬件与工具链地基（深版）</td><td>最小系统四要素（VDD/VDDA/VCAP/VBAT 五路供电、HSI/HSE/LSE 三套时钟、NRST 与复位源状态机、BOOT0 启动映射）、交叉编译三段产物、SWD 与 JTAG 分工、复位向量到 main 的启动流程。</td></tr><tr><td class="fname">D05–D07 工程骨架与串口（精简版 + 复盘）</td><td>工程骨架与 CMSIS 头文件来历、printf 重定向与半主机区别；D07 把「写代码到板子上跑」拆成六个可观测环节做整合复盘。</td></tr><tr><td class="fname">D08–D11 时钟与 GPIO（深版为主）</td><td>HSE 到 SYSCLK 的 PLL 倍频链与分频树、GPIO 推挽/开漏/速度/上下拉的适用场景、输入抖动与上下拉选型、BSRR 置位复位与 ODR 读改写的原子性差异。</td></tr><tr><td class="fname">D12–D14 体积、调试与收口</td><td>size 输出与 map 文件读法（Flash/RAM 占用从哪来）、printf/断点/逻辑分析仪/示波器四层调试手段的分工；D14 用「时钟—引脚—输出」因果链自测。</td></tr><tr><td class="fname">每日固定三段式</td><td>每天都有「今日目标（可验收）+ 精讲正文 + 动手三步」，末尾附自测与易错点；深度版额外给寄存器表、失效现象对照与排错判读路径。</td></tr><tr><td class="fname">移动端单文件离线</td><td>131KB 单 HTML，内联全部样式与脚本，零外链零请求；390px 宽无横滚，跟随系统深色模式，可加到 iPhone/安卓主屏断网阅读。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>① 打开（手机）：Safari 打开线上地址 https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html → 预期：深色可跟随系统的精讲页，顶部为「B1 第1-8周 S0+S1」，可滚动查看 D01–D14；点「分享 → 添加到主屏幕」后断网点开仍可读。若菜单里没有该选项，说明是 file:// 打开的，换 https 地址重开。</li><li>② 打开（电脑）：双击 downloads 里 embedded-learning-b1.zip 解压，得到同名 .html 与 .md 两份 → 预期：HTML 双击即在浏览器打开，MD 可用任意编辑器或 Typora 阅读；不需要 Python、不需要联网。</li><li>③ 定位今天该学哪一天：页面按 D01→D14 顺序排列，每天开头标明「日期 / 阶段（S0 或 S1）/ 优先级（A/B）/ 标签」；本批固定从 2026-10-26 起算，若你是中途接入，按「第 1 周第 1 天」对齐自己的起始日，不要按现实日历硬套。</li><li>④ 按分层强度读：标题下你会看到「精讲分层：深度版（约 3260 字）」或「精简版（约 1550 字）」——深度版给的是可推导的机制链与寄存器级细节（D01–D04、D08、D09、D11 共 7 天），精简版给的是够用即止的操作口径（D05–D07、D10、D12–D14 共 7 天）。时间紧就只读精简版，但深度版的 7 天不建议跳。</li><li>⑤ 每日闭环四步：先读「今日目标」确认能验收 → 读精讲正文（为什么学 / 原理 / 寄存器或工具链细节）→ 按「动手三步」在板子上做一遍（如万用表量 VDD 与 NRST、拨 BOOT0 观察启动差异）→ 用「自测」与「易错点」核对，答不上来就回到对应小节，不要往下翻。</li><li>⑥ 遇到板子不听话先查诊断段：每天精讲末尾的「排错」列出该主题最常见的失效现象与判读方法（如板子随机重启 → 先读 RCC_CSR 判断复位源，而不是改代码）；按表逐项排除，比盲改代码快。</li><li>⑦ 复盘日（D07、D14）：不学新知识点，只做整合复盘——D07 把「写代码到板子上跑」拆成六个可观测环节，D14 走一遍「时钟→引脚→输出」因果链自测；两天的复盘题必须全对再进入下一周。</li><li>⑧ 取完整套件 / 更新：完整套件（HTML + MD）在 https://stray1100.github.io/project-vault/downloads/embedded-learning-b1.zip ；页面右下角「↻」会比对 version.json，落后则自动清缓存并硬重载，一致提示「已最新」。加在主屏的图标下次打开自动升级，不用删掉重加。</li><li>⑨ 后续批次（B2–B7）尚未生成：本条目只覆盖 B1（第 1–14 天）。B2 起为 S1 第 15–35 天，需要时说「继续生成 B2」，产物会以同结构追加并各自登记。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\B1v2</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\B1v2\嵌入式学习助手-B1-第1-8周S0+S1（分层精讲）.html</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\B1v2\嵌入式学习助手-B1-第1-8周S0+S1（分层精讲）.md</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>仅覆盖 B1（第 1–14 天 / 第 1–2 周，S0+S1），B2–B7 未生成，全程 44 周 / 308 个知识点，本批 14 个不代表全量。</li><li>主线芯片固定为 STM32F407（Cortex-M4F）；换成 F1/L4/G0 等系列时，时钟树参数、复位标志位与寄存器名需按对应参考手册核对，不能直接套用。</li><li>不绑定具体开发板：最小系统按「四要素」通用口径讲，实物引脚以你手上板子的原理图为准。</li><li>精讲为自编，只给官方手册章节坐标（RM0090 等），不含手册原文与截图；需要位级细节时仍要回查原手册。</li><li>页面状态（已读/完成）存在浏览器 localStorage，换浏览器、清站点数据或在无痕窗口打开都会丢失，不做云同步。</li><li>不替代实际动手：全部 14 天的验收都要求上板操作（量电压、拨 BOOT0、看串口波形、读 map 文件），只读不做的收益很有限。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">板子插上调试器却连不上，先查哪？</p><p class="a">按 D01 的四要素顺序查，不要先怀疑代码：①量 VDD 与 VDDA 是否有电、VDDA 是否干净；②NRST 是否被按死或复位电容异常；③BOOT0 是否悬空（悬空会导致上电电平不确定，表现成「有时能连有时不能」）；④SWD 的 SWDIO/SWCLK 是否被复用成普通 IO 或未接 GND。四步都正常再查调试器配置。</p></div><div class="qa"><p class="q">板子每隔几秒自己重启，怎么定位？</p><p class="a">先读 RCC_CSR 的复位标志位，它会告诉你「这次是谁把我复位的」：IWDGRSTF=独立看门狗喂狗超时（任务阻塞或中断长时间屏蔽）、PORRSTF/BORRSTF=供电跌落或纹波过大、PINRSTF=复位线干扰或按键卡死、SFTRSTF=代码主动软复位。读完记得写 RMVF 清标志，否则下次会误判成旧事件。</p></div><div class="qa"><p class="q">串口能打印但全是乱码，是时钟配错吗？</p><p class="a">大概率是时钟源选错后波特率基准跟着偏。检查是否实际跑在 HSI（内部 RC，室温约 ±1%，全温区更差）而不是 HSE；HSE 起振失败时芯片会自动退回 HSI 继续跑，板子看似正常但通信全错帧。用 D08 的倍频链逐级核对 SYSCLK/APB1/APB2 与 USART 时钟，再算 BRR。</p></div><div class="qa"><p class="q">深度版和精简版差别在哪，可以只读精简版吗？</p><p class="a">深度版 7 天（D01–D04、D08、D09、D11）给到寄存器位、失效现象与排错判读路径，是后面所有实验的地基；精简版 7 天（D05–D07、D10、D12–D14）给到够用的操作口径。时间紧可以只读精简版，但深度版那 7 天不建议跳，尤其 D08 时钟树与 D11 BSRR。</p></div><div class="qa"><p class="q">可以在手机上看吗？需要联网吗？</p><p class="a">可以。直接打开线上地址，或把 zip 解压后把 HTML 传到手机；页面零外链、零请求，加主屏后断网可读。已读状态按浏览器保存在本机，换浏览器或清数据会丢。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">线上入口：https://stray1100.github.io/project-vault/tools/embedded-learning-b1.html ；完整套件下载：https://stray1100.github.io/project-vault/downloads/embedded-learning-b1.zip 。内容为自编精讲，仅引用 ST 官方参考手册（RM0090）、数据手册与开发板原理图的章节坐标，不含教材原文，规避版权；页面不含个人信息与本地路径，可直接公开。主线芯片 STM32F407（Cortex-M4F，168MHz），寄存器与固件库两套写法同时给出；不绑定具体开发板型号，最小系统部分以「四要素」通用口径讲，换板只需对照原理图核对引脚。深度版 7 天均值约 3152 字，精简版 7 天均值约 1428 字，均在 skill 红线内（深版 2000–3500、精简版 1100–1550）。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>构建：build_batch.py --days 1-14 生成，产物 131KB HTML / 87.7KB MD，14 天全部落盘，无空天。</li><li>字数红线：深度版 7 天 2374–3491 字（均值 3152），精简版 7 天 1207–1550 字（均值 1428），均在 skill 规定区间内。</li><li>移动端双端实测：WebKit + Chromium × 390/360/412/320 宽 × 亮/暗，共 16 用例全 PASS，0 横向滚动、0 元素越界。</li><li>离线自检：HTML 内 http(s) 链接 0 个、外部 script src 0 个，无需网络即可完整渲染。</li><li>线上：GitHub Pages 部署后待本轮推送完成后复测（HTTP 200 + 页面标题与 build 号比对）。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li class="muted">首版登记</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-26</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 ）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>

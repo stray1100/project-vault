@@ -1,6 +1,6 @@
 {
-  "build": "1691302205",
-  "built_at": "2026-10-26 10:51",
+  "build": "7028264711",
+  "built_at": "2026-10-26 22:39",
   "platform": "GitHub Pages",
   "base_url": "https://stray1100.github.io/project-vault",
   "pages": [
@@ -15,8 +15,10 @@
     "P010.html",
     "P011.html",
     "P012.html",
+    "P013.html",
     "SKILL-GUIDE.html",
     "index.html",
+    "tools/embedded-learning-b1.html",
     "tools/iphone18pm-camera-guide.html",
     "tools/photography-academy-std.html",
     "tools/photography-classic-plus.html",
