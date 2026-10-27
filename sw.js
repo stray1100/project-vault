@@ -1,7 +1,7 @@
 /* 项目档案馆站点 Service Worker：在线取最新，离线读缓存 */
-const CACHE = 'pv-site-7028264711';
+const CACHE = 'pv-site-192949356';
 const PRECACHE = [
-  'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'P012.html', 'P013.html', 'SKILL-GUIDE.html', 'index.html', 'tools/embedded-learning-b1.html', 'tools/iphone18pm-camera-guide.html', 'tools/photography-academy-std.html', 'tools/photography-classic-plus.html', 'tools/photography-lite-practical.html', 'tools/photography-portrait-street.html', 'tools/prompt-forge.html',
+  'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'P012.html', 'P013.html', 'P014.html', 'SKILL-GUIDE.html', 'index.html', 'tools/embedded-learning-b1.html', 'tools/iphone18pm-camera-guide.html', 'tools/photography-academy-std.html', 'tools/photography-classic-plus.html', 'tools/photography-lite-practical.html', 'tools/photography-portrait-street.html', 'tools/prompt-forge.html', 'tools/redflag-a-internal-medicine.html', 'tools/redflag-b-emergency.html', 'tools/redflag-c-primary-care.html',
 
   'manifest.webmanifest',
   'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'

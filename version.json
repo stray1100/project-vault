@@ -1,6 +1,6 @@
 {
-  "build": "7028264711",
-  "built_at": "2026-10-26 22:39",
+  "build": "192949356",
+  "built_at": "2026-10-27 22:18",
   "platform": "GitHub Pages",
   "base_url": "https://stray1100.github.io/project-vault",
   "pages": [
@@ -16,6 +16,7 @@
     "P011.html",
     "P012.html",
     "P013.html",
+    "P014.html",
     "SKILL-GUIDE.html",
     "index.html",
     "tools/embedded-learning-b1.html",
@@ -24,6 +25,9 @@
     "tools/photography-classic-plus.html",
     "tools/photography-lite-practical.html",
     "tools/photography-portrait-street.html",
-    "tools/prompt-forge.html"
+    "tools/prompt-forge.html",
+    "tools/redflag-a-internal-medicine.html",
+    "tools/redflag-b-emergency.html",
+    "tools/redflag-c-primary-care.html"
   ]
 }

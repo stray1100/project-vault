@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="192949356">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>红旗征学习助手（甲·内科规培主线 / 乙·急诊重心 / 丙·基层门诊实用） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-27 22:14</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P014</span>
+  <h1>红旗征学习助手（甲·内科规培主线 / 乙·急诊重心 / 丙·基层门诊实用）</h1>
+  <p class="summary">面向内科住培与门急诊一线的红旗征识别系统：同一套 72 个知识点、12 周 / 84 天节奏（每周 6 个新点 + 1 天复盘，每 4 周 1 次月模考），按教材主线与批注口径拆成甲（诊断学+实用内科学）、乙（急诊与灾难医学）、丙（诊断学+基层指南+NICE NG12）三版；单文件 HTML 完全离线，含日期切换与「回到今天」防误打卡提示条。</p>
+
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P014</td></tr><tr><td class="k">类型</td><td class="v">学习系统（单文件 Web，三版并行）</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-27</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML 移动端（内联 CSS/JS、零外链、零 CDN，断网可跑） / 计划总表 CSV 为唯一权威源（18 列：模块/知识点/教材章节/判别要点/练习任务/D1-D30 复习锚点/优先级） / five-tab 结构：今日 / 计划 / 卡片 / 错题 / 我的，localStorage 分别以 rf:v1:A / rf:v1:B / rf:v1:C 隔离存储 / 日期切换 + 「回到今天」常驻提示条：非当日打卡会明确警示记在第 N 天 / 导出 / 导入 JSON 做进度备份与换版迁移，无服务器、无账号</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-27</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-27。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">作为档案馆站内工具页托管，三套页面 + 一个三版合集 zip 同站发布；主入口为甲版，乙/丙见 notes。</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>面向内科住培与门急诊一线的红旗征识别系统：同一套 72 个知识点、12 周 / 84 天节奏（每周 6 个新点 + 1 天复盘，每 4 周 1 次月模考），按教材主线与批注口径拆成甲（诊断学+实用内科学）、乙（急诊与灾难医学）、丙（诊断学+基层指南+NICE NG12）三版；单文件 HTML 完全离线，含日期切换与「回到今天」防误打卡提示条。</p>
+    <p class="para">红旗征的难点不在背条目，而在「什么时候该停下来排查致命病因」。规培与门急诊场景下要的东西并不一样：查房汇报要完整推理链，夜班首诊要几分钟内的处置顺序，社区门诊要「本院查不了时按什么标准上转」。同一套知识点换三种口径写，比背三本书现实。</p><p class="para">本系统用 72 个知识点覆盖 12 周：第 1–4 周打判别总论与床旁方法（红旗阈值、休克四型、意识与呼吸评估），第 5–8 周进胸痛/呼吸/消化/感染四条主线，第 9–12 周收神经急症、内分泌代谢与肾脏、血液肿瘤风湿与特殊人群；每周 6 个新点 + 1 天复盘，每 4 周一次月模考。</p><p class="para">三版的路由按场景而非水平：甲走诊断学与实用内科学的完整判据与鉴别链；乙把判据压到能立刻改变处置的那几条，给时间轴与「谁先上」；丙在判据之后强制补一句上转阈值与安全网交代。卡片内并列另两版写法，同一张卡就能看到三种口径的差别。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">72 点同源 · 三口径并行</td><td>三版共用同一套 72 个知识点与同一份 84 天排期（2026-11-02 → 2027-01-24，9 个复盘日 + 3 次月模考，A 级 56 / B 级 16），每张卡片标注「本版口径」并并列显示另两版写法，切换成本只是换文件。</td></tr><tr><td class="fname">每日闭环 + 三项打卡</td><td>卡片固定六段（为什么必须记住 / 判据 / 边界 / 动作 / 必背要点 / 最常见的坑），底部 3 题含 1 道陷阱题；精读、练习、口头复述三项全勾才记当天完成，答错点「没答上」自动进错题并记录复习次数与最近日期。</td></tr><tr><td class="fname">日期切换与「回到今天」防误打卡</td><td>今日页支持 ‹ / › 与日期框回看与预习；非当天时底部常驻提示条，明示「正在看第 N 天，今天实际第 M 天，打卡会记在第 N 天」，点「回到今天」立刻归位并隐藏提示条，切页签自动隐藏、回到今日页重新出现。</td></tr><tr><td class="fname">五个页签与全文搜索</td><td>今日（打卡）/ 计划（84 天全表按模块与周查看）/ 卡片（72 张全文 + 搜索 + 收藏）/ 错题（重做与标记已掌握）/ 我的（导出导入与重置）；搜索支持按主诉或征象直接命中。</td></tr><tr><td class="fname">完全离线的单文件</td><td>每版单 HTML 约 283–284KB，内联全部样式与脚本，零外链零请求；360 / 390 / 412px 三档宽度实测无横向滚动、无 JS 报错，可加到手机主屏断网阅读。</td></tr><tr><td class="fname">数据隔离与可迁移</td><td>三版分别用 rf:v1:A / B / C 存储，互不覆盖，可同时安装；进度、错题、收藏、起始日期可导出为 JSON，换文件或换设备后导入继承（不同文件名属不同存储域，必须走导入导出）。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>① 选一版：内科规培在岗、要写病程与查房汇报选甲（诊断学第10版 + 实用内科学第16版，单点精读 25–35 分钟）；急诊/ICU 轮转、夜班首诊选乙（急诊与灾难医学第4版，判据压到「几分钟内先做什么」）；社区/门诊独立出诊选丙（诊断学第10版 + 中华医学会基层指南 + NICE NG12，落到「识别—稳住—上转」）。三版知识点同源，可先跑甲打底，按轮转月切乙或丙。</li><li>② 打开（手机）：Safari 打开 https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html → 预期：深色学习页，顶部显示「第 N 天 / 84」，下方是今日模块与当天那 1 张精读卡片入口；点「分享 → 添加到主屏幕」后断网点开仍可用。菜单里没有该选项说明是 file:// 打开的，换 https 地址重开。</li><li>③ 打开（电脑）：直接打开对应工具页，或下载 https://stray1100.github.io/project-vault/downloads/redflag-aid-3ver.zip 解压 → 预期：三套目录各自含 HTML、使用说明、知识点卡速查、计划总表 CSV，外加一份《三版对照与选择指南》；HTML 双击即在浏览器打开，不需要 Python、不需要联网。</li><li>④ 每日闭环（15–30 分钟）：打开「今日」→ 按「为什么必须记住 → 判据 → 边界 → 动作 → 必背要点 → 最常见的坑」读卡片 → 做底部 3 题（含 1 道陷阱题，先自答再点开答案）→ 勾三项打卡（精读卡片 / 完成练习 / 口头复述或写一句病例）。三项全勾当天才算完成；答错的题点「没答上」自动进错题页。</li><li>⑤ 切换日期与「回到今天」：今日页标题下方有 ‹ / › 与日期框，可回看已过内容或提前预习；翻到非今天时，页面底部常驻一条提示条，写明「正在看第 N 天 · 日期」并提示「今天实际第 M 天，打卡会记在第 N 天」。此时勾选会记在正在看的那一天——预习完或回看完，先点提示条上的「回到今天」再打卡，避免把进度记到别的日子；切到其它页签时提示条自动隐藏，回到今日页若仍在非今天状态会重新出现。</li><li>⑥ 五个页签的分工：今日=每天先看这里打卡；计划=84 天全表按模块/周查看，周日看下一周并提前想好要用的病例；卡片=72 张全文 + 搜索 + 收藏，写病程前或值夜班前扫模块；错题=每次复盘日重做一遍，可标记已掌握；我的=导出/导入与重置。搜索框输主诉或征象（如「胸痛」「意识」「血钙」）可直接命中，比翻模块快。</li><li>⑦ 周复盘与月模考：第 7、14、21…天（周日）是复盘日，不学新点——闭卷写出本周 6 个点的「判据 → 边界 → 动作」，重做本周错题，再用 1 个真实病例把 6 个点串一遍；第 28、56、84 天为月模考，从本月 24 个点里随机抽至多 20 题自评，正确率低于 80% 的模块回卡片页重刷。模考是自评工具，答错不进任何记录。</li><li>⑧ 备份与换版：「我的 → 导出」下载 JSON（勾选、错题、收藏、进度、起始日期）。换文件、换设备、清缓存前先导出，进新文件后在「我的 → 导入」选回。注意不同文件名在部分手机浏览器属不同存储域，直接换文件不会继承旧进度，必须走导出/导入；「重置」清空全部记录且不可撤销。</li><li>⑨ 边界：本工具是学习与复述工具，不是临床决策系统。阈值与路径以所在医院现行制度与最新版指南为准；指南层共用 NICE NG12（2026-04 更新）、SSC 2025（不再推荐 qSOFA 作为单一筛查工具）、NICE NG51 / NG128 / NG59，教材与指南更新后回原文核对。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\红旗征学习助手_甲_内科规培主线.html</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\红旗征学习助手_乙_急诊重心.html</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\红旗征学习助手_丙_基层门诊实用.html</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\红旗征学习助手-甲乙丙三版_20261027.zip</code></li><li><code>%APPDATA%\Tencent\Marvis\User\<用户ID>\workspace\conv_0ed8f3015b7c41ec9a789fbd808e20be\output\红旗征学习助手-三版</code></li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li>仅覆盖 72 个知识点 / 84 天这一套排期，不是全量内科学；儿科、产科（孕产红黄绿分级）等专科口径未纳入。</li><li>三版差异只在教材主线与批注口径，覆盖范围完全一致；不建议三版同时开，单变量推进才有对照。</li><li>教材与指南均按 2026-10 前可核实的版本引用（诊断学第10版、实用内科学第16版、急诊与灾难医学第4版、NICE NG12 2026-04 更新、SSC 2025），更新后需回原文核对。</li><li>页面状态存在浏览器 localStorage，换浏览器、清站点数据或无痕窗口都会丢失，不做云同步；「重置」不可撤销。</li><li>为学习与复述工具，不是临床决策系统，不提供个体化处方剂量；具体病人处置仍以所在医院制度与上级医师判断为准。</li><li>计划从 2026-11-02 起算；中途接入需在「我的」里改起始日期，否则「今日」显示的天号与真实进度不对应。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <div class="qa"><p class="q">甲、乙、丙三版该选哪个？</p><p class="a">按场景选，不按水平：内科规培在岗、要写病程与查房汇报用甲；急诊/ICU 轮转、夜班首诊用乙；社区或门诊独立出诊、检查手段有限用丙。还没定方向就先跑甲打底，轮转月切乙或丙——知识点同源，切换只是换一个 HTML。</p></div><div class="qa"><p class="q">翻到别的日期后打卡，进度记在哪一天？</p><p class="a">记在你正在看的那一天，不是今天。所以翻到非当天时页面底部会出现常驻提示条，写明「正在看第 N 天 · 日期」以及「今天实际第 M 天，打卡会记在第 N 天」。预习或回看结束后，点提示条上的「回到今天」再打卡即可。</p></div><div class="qa"><p class="q">换新文件后进度没了，能找回吗？</p><p class="a">先看是否导出过 JSON。「我的 → 导出」会下载含勾选、错题、收藏、进度与起始日期的备份，进新文件后「我的 → 导入」选回即可。不同文件名在部分手机浏览器属于不同存储域，直接替换文件不会继承旧数据；没导出过则无法恢复。</p></div><div class="qa"><p class="q">三项打卡只勾一项算完成吗？</p><p class="a">不算。精读卡片、完成练习、口头复述或写一句病例三项全勾才记当天完成，这是为了避免「只是翻了一遍」被记成学会。答错的题点「没答上」会进错题页，复盘日集中重做。</p></div><div class="qa"><p class="q">手机上能离线用吗？需要联网吗？</p><p class="a">能。直接打开线上地址，或把 zip 解压后把 HTML 传到手机；页面零外链、零请求，加到主屏后断网可读。三版可同时装，进度各自独立保存。</p></div>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">线上入口（三版）：https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html（甲）、https://stray1100.github.io/project-vault/tools/redflag-b-emergency.html（乙）、https://stray1100.github.io/project-vault/tools/redflag-c-primary-care.html（丙）。完整套件下载：https://stray1100.github.io/project-vault/downloads/redflag-aid-3ver.zip （三套目录各含 HTML + 使用说明 + 知识点卡速查 + 计划总表，附《三版对照与选择指南》，379KB）。三版差异只在教材主线与批注口径，覆盖范围完全一致：72 个知识点、12 周 / 84 天（9 个复盘日 + 3 次月模考）、2026-11-02 起至 2027-01-24，A 级 56 点 / B 级 16 点；甲 8 个模块、乙 8 个模块、丙 9 个模块（每模块 8–12 点）。页面零外链、零请求，不含个人信息与本地路径（C:\Users 命中 0），可直接公开。存储键 rf:v1:A/B/C 三版互不覆盖，可同时安装。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li>计划表核对：三份 CSV 均为 84 行 / 18 列，新知识点 72（甲 8 模块、乙 8 模块、丙 9 模块，每模块 8–12 点）+ 复盘 9 + 模考 3，首日 2026-11-02、末日 2027-01-24，A 级 56 / B 级 16。</li><li>页面体检：三版 HTML 分别 290137 / 290656 / 290989 字节，标题、存储键（rf:v1:A/B/C）、「回到今天」提示条均已就位；外链请求 0，C:\Users 路径命中 0，file:/// 命中 0，可公开发布。</li><li>移动端实测：WebKit + Chromium × 360 / 390 / 412px 宽全部通过，横向溢出 0、元素越界 0、无 JS 报错；「回到今天」提示条在非当天常驻、点击后归位并隐藏。</li><li>下载包核对：redflag-aid-3ver.zip 387917 字节，含三套目录共 12 个文件（每套 HTML + 使用说明 + 知识点卡速查 + 计划总表）与《三版对照与选择指南》。</li><li>线上复测：工具页三份、zip 与 P014 条目页 HTTP 200，INDEX 收录 P014，正文含关键字段与「回到今天」小节。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li class="muted">首版登记</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-27</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 ）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>
