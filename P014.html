@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="192949356">
+<meta name="pv-build" content="7990208263">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>红旗征学习助手（甲·内科规培主线 / 乙·急诊重心 / 丙·基层门诊实用） · 使用说明</title>
 <style>
-  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;--soft:#eef2f8;}
   *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
   body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
        font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
@@ -28,6 +28,25 @@
   .muted{color:#9aa3b2;}
   .t{color:var(--sub);font-size:13px;margin-right:6px;}
   footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  /* 首屏版本选择区（仅在项目配置 entrances 时输出） */
+  .ents{margin:0 0 14px;}
+  .ents .ehint{color:var(--sub);font-size:15px;line-height:1.6;margin:0 0 12px;}
+  .ent{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+       border-radius:14px;padding:14px 16px;margin:0 0 10px;}
+  .ent.pri{border-color:var(--accent);box-shadow:0 2px 6px rgba(26,115,232,.14);}
+  .ent .top{display:flex;align-items:center;gap:9px;margin:0 0 8px;}
+  .ent .no{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:var(--accent);color:#fff;
+           font-size:15px;line-height:28px;text-align:center;font-weight:600;}
+  .ent .nm{font-size:17px;font-weight:600;}
+  .ent .pill{font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px;line-height:18px;}
+  .ent .ds{font-size:16px;line-height:1.62;margin:0 0 6px;}
+  .ent .ft{font-size:14px;line-height:1.55;color:var(--sub);margin:0;}
+  .ent .go{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin-top:12px;
+           padding:0 14px;border-radius:11px;background:var(--accent);color:#fff;font-size:16px;font-weight:500;}
+  .ent:not(.pri) .go{background:var(--soft);color:var(--accent);}
+  .ent .go .ar{font-size:16px;opacity:.9;}
+  .ezip{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:4px;padding:0 12px;
+        border:1px dashed var(--line);border-radius:11px;color:var(--sub);font-size:15px;text-decoration:none;}
   .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
       margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
       background:rgba(255,255,255,.94);border:1px solid var(--line);
@@ -60,7 +79,7 @@
     .site .live,.live{background:#132a21;color:#5fd3a0;}
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;--soft:#1e2634;}
     code{background:#1e2634;} .notes{background:#2a1f13;}
   }
 </style>
@@ -73,7 +92,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-27 22:14</span>
+  <span class="ver" id="mvVer">构建于 2026-10-27 23:09</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -82,8 +101,8 @@
 
   <span class="badge">P014</span>
   <h1>红旗征学习助手（甲·内科规培主线 / 乙·急诊重心 / 丙·基层门诊实用）</h1>
-  <p class="summary">面向内科住培与门急诊一线的红旗征识别系统：同一套 72 个知识点、12 周 / 84 天节奏（每周 6 个新点 + 1 天复盘，每 4 周 1 次月模考），按教材主线与批注口径拆成甲（诊断学+实用内科学）、乙（急诊与灾难医学）、丙（诊断学+基层指南+NICE NG12）三版；单文件 HTML 完全离线，含日期切换与「回到今天」防误打卡提示条。</p>
-
+<section class="ents" aria-label="先选版本，再开始"><p class="ehint">三版同源：都是 72 个知识点 / 12 周 84 天（每周 6 个新点 + 1 天复盘，每 4 周 1 次月模考）。差别只在教材主线与批注口径，按你的主战场选一版即可，三版可同时安装、进度互不覆盖。</p><a class="ent pri" href="tools/redflag-a-internal-medicine.html"><div class="top"><span class="no">甲</span><span class="nm">内科规培主线</span><span class="pill">推荐</span></div><p class="ds">诊断学 10 章 + 实用内科学 16 章，按内科住培轮转顺序排列；体征、鉴别诊断与检查选择的口径贴合出科考与结业考。</p><p class="ft">适合：内科住培、规培结业复习、查房前速查</p><div class="go"><span>打开甲版</span><span class="ar">&#8250;</span></div></a><a class="ent" href="tools/redflag-b-emergency.html"><div class="top"><span class="no">乙</span><span class="nm">急诊重心</span></div><p class="ds">急诊与灾难医学 4 章 + 诊断学 10 章，按「先救命、后辨病」组织，突出时间窗、危险分层与首诊 30 分钟的处置顺序。</p><p class="ft">适合：急诊与发热门诊值班、夜班首诊、危重识别训练</p><div class="go"><span>打开乙版</span><span class="ar">&#8250;</span></div></a><a class="ent" href="tools/redflag-c-primary-care.html"><div class="top"><span class="no">丙</span><span class="nm">基层门诊实用</span></div><p class="ds">诊断学 10 章 + 基层诊疗指南 + NICE NG12，围绕转诊阈值与可及检查组织；没有 CT、血气、D-二聚体时也能做出安全的判断。</p><p class="ft">适合：社区卫生服务中心门诊、转诊判断、慢病随访</p><div class="go"><span>打开丙版</span><span class="ar">&#8250;</span></div></a><a class="ezip" href="downloads/redflag-aid-3ver.zip" download>三版合集下载 · zip 387 KB（三套页面 + 使用说明 + 知识点卡速查 + 计划总表 + 三版对照指南）</a></section>
+  <p class="summary" style="margin-top:10px;">面向内科住培与门急诊一线的红旗征识别系统：同一套 72 个知识点、12 周 / 84 天节奏（每周 6 个新点 + 1 天复盘，每 4 周 1 次月模考），按教材主线与批注口径拆成甲（诊断学+实用内科学）、乙（急诊与灾难医学）、丙（诊断学+基层指南+NICE NG12）三版；单文件 HTML 完全离线，含日期切换与「回到今天」防误打卡提示条。</p>
   <div class="card">
     <h2>基本信息</h2>
     <table><tr><td class="k">项目编号</td><td class="v">P014</td></tr><tr><td class="k">类型</td><td class="v">学习系统（单文件 Web，三版并行）</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-27</td></tr><tr><td class="k">技术栈</td><td class="v">单文件 HTML 移动端（内联 CSS/JS、零外链、零 CDN，断网可跑） / 计划总表 CSV 为唯一权威源（18 列：模块/知识点/教材章节/判别要点/练习任务/D1-D30 复习锚点/优先级） / five-tab 结构：今日 / 计划 / 卡片 / 错题 / 我的，localStorage 分别以 rf:v1:A / rf:v1:B / rf:v1:C 隔离存储 / 日期切换 + 「回到今天」常驻提示条：非当日打卡会明确警示记在第 N 天 / 导出 / 导入 JSON 做进度备份与换版迁移，无服务器、无账号</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-27</td></tr></table>
