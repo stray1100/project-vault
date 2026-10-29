@@ -1,7 +1,7 @@
 /* 项目档案馆站点 Service Worker：在线取最新，离线读缓存 */
-const CACHE = 'pv-site-7990208263';
+const CACHE = 'pv-site-6285795874';
 const PRECACHE = [
-  'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'P012.html', 'P013.html', 'P014.html', 'SKILL-GUIDE.html', 'index.html', 'tools/embedded-learning-b1.html', 'tools/iphone18pm-camera-guide.html', 'tools/photography-academy-std.html', 'tools/photography-classic-plus.html', 'tools/photography-lite-practical.html', 'tools/photography-portrait-street.html', 'tools/prompt-forge.html', 'tools/redflag-a-internal-medicine.html', 'tools/redflag-b-emergency.html', 'tools/redflag-c-primary-care.html',
+  'P001.html', 'P002.html', 'P003.html', 'P004.html', 'P006.html', 'P007.html', 'P008.html', 'P009.html', 'P010.html', 'P011.html', 'P012.html', 'P013.html', 'P014.html', 'P015.html', 'P016.html', 'SKILL-GUIDE.html', 'index.html', 'tools/embedded-learning-b1.html', 'tools/iphone18pm-camera-guide.html', 'tools/photography-academy-std.html', 'tools/photography-classic-plus.html', 'tools/photography-lite-practical.html', 'tools/photography-portrait-street.html', 'tools/prompt-forge.html', 'tools/redflag-a-internal-medicine.html', 'tools/redflag-b-emergency.html', 'tools/redflag-c-primary-care.html', 'tools/us-learning-assistant.html', 'tools/us-study-nav.html',
 
   'manifest.webmanifest',
   'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'

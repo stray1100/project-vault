@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="6285795874">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>超声学习台（POCUS 12 周路线与入口） · 使用说明</title>
+<style>
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;--soft:#eef2f8;}
+  *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
+  body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
+       font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
+  .wrap{max-width:760px;margin:0 auto;}
+  .badge{display:inline-block;font-size:12px;color:#fff;background:var(--accent);border-radius:999px;padding:2px 10px;letter-spacing:.5px;}
+  h1{font-size:22px;line-height:1.35;margin:10px 0 6px;}
+  .summary{color:var(--sub);font-size:14px;margin:0 0 16px;}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 16px;margin:0 0 14px;}
+  h2{font-size:15px;margin:0 0 10px;padding-left:9px;border-left:3px solid var(--accent);line-height:1.2;}
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  td{padding:6px 0;vertical-align:top;border-bottom:1px dashed var(--line);}
+  tr:last-child td{border-bottom:none;}
+  td.k{width:88px;color:var(--sub);white-space:nowrap;}
+  ol,ul{margin:0;padding-left:20px;}
+  li{margin:5px 0;word-break:break-all;}
+  code{background:#eef2f8;border-radius:5px;padding:1px 5px;font-size:13px;
+       font-family:ui-monospace,SFMono-Regular,Consolas,monospace;word-break:break-all;}
+  .notes{background:var(--warnbg);border-left:3px solid var(--warn);margin:0;padding:9px 12px;border-radius:0 8px 8px 0;font-size:14px;}
+  .muted{color:#9aa3b2;}
+  .t{color:var(--sub);font-size:13px;margin-right:6px;}
+  footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  /* 首屏版本选择区（仅在项目配置 entrances 时输出） */
+  .ents{margin:0 0 14px;}
+  .ents .ehint{color:var(--sub);font-size:15px;line-height:1.6;margin:0 0 12px;}
+  .ent{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+       border-radius:14px;padding:14px 16px;margin:0 0 10px;}
+  .ent.pri{border-color:var(--accent);box-shadow:0 2px 6px rgba(26,115,232,.14);}
+  .ent .top{display:flex;align-items:center;gap:9px;margin:0 0 8px;}
+  .ent .no{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:var(--accent);color:#fff;
+           font-size:15px;line-height:28px;text-align:center;font-weight:600;}
+  .ent .nm{font-size:17px;font-weight:600;}
+  .ent .pill{font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px;line-height:18px;}
+  .ent .ds{font-size:16px;line-height:1.62;margin:0 0 6px;}
+  .ent .ft{font-size:14px;line-height:1.55;color:var(--sub);margin:0;}
+  .ent .go{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin-top:12px;
+           padding:0 14px;border-radius:11px;background:var(--accent);color:#fff;font-size:16px;font-weight:500;}
+  .ent:not(.pri) .go{background:var(--soft);color:var(--accent);}
+  .ent .go .ar{font-size:16px;opacity:.9;}
+  .ezip{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:4px;padding:0 12px;
+        border:1px dashed var(--line);border-radius:11px;color:var(--sub);font-size:15px;text-decoration:none;}
+  .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
+      margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
+      background:rgba(255,255,255,.94);border:1px solid var(--line);
+      box-shadow:0 1px 2px rgba(16,24,40,.05);font-size:12.5px;color:var(--sub);}
+  .rbar .ver{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .back{flex:0 0 auto;display:inline-flex;align-items:center;gap:3px;text-decoration:none;
+      border:1px solid var(--line);background:#fff;color:var(--ink);
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 11px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;}
+  .back svg{width:13px;height:13px;display:block;}
+  .back:active{opacity:.85;}
+  .site{display:flex;flex-wrap:wrap;align-items:center;gap:8px;}
+  .site a{color:var(--accent);font-weight:600;text-decoration:none;word-break:break-all;}
+  .site .live{font-size:11.5px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 9px;}
+  .live{display:inline-block;font-size:11px;font-weight:600;color:#0f7b4f;background:#e9f7ef;
+      border-radius:999px;padding:2px 8px;margin-left:6px;vertical-align:1px;}
+  .rf{flex:0 0 auto;display:inline-flex;align-items:center;gap:5px;
+      border:1px solid var(--line);background:var(--accent);color:#fff;
+      font-size:12.5px;font-weight:600;line-height:1;padding:8px 13px;border-radius:999px;
+      -webkit-tap-highlight-color:transparent;cursor:pointer;}
+  .rf svg{width:13px;height:13px;display:block;}
+  .rf:active{opacity:.85;}
+  .rf.busy{opacity:.7;}
+  .rf.done{background:#0f7b4f;border-color:#0f7b4f;}
+  @media (prefers-color-scheme:dark){
+    .rbar{background:rgba(22,27,36,.94);}
+    .rf{border-color:#2b3546;}
+    .back{background:#1b2230;color:var(--ink,#e8ecf3);border-color:#2b3546;}
+    .site .live,.live{background:#132a21;color:#5fd3a0;}
+  }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;--soft:#1e2634;}
+    code{background:#1e2634;} .notes{background:#2a1f13;}
+  }
+</style>
+</head>
+<body>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<div class="wrap">
+<div class="rbar" id="mvBar">
+  <a class="back" id="mvBack" href="INDEX.html" aria-label="返回项目清单">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
+    <span>目录</span>
+  </a>
+  <span class="ver" id="mvVer">构建于 2026-10-30 00:29</span>
+  <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
+    <span>更新</span>
+  </button>
+</div>
+
+  <span class="badge">P015</span>
+  <h1>超声学习台（POCUS 12 周路线与入口）</h1>
+
+  <p class="summary" style="margin-top:10px;">46 步 12 周 POCUS 路线，串起 B 超助手、红旗征三版、权威站点与公开数据集，一页直达。</p>
+  <div class="card">
+    <h2>基本信息</h2>
+    <table><tr><td class="k">项目编号</td><td class="v">P015</td></tr><tr><td class="k">类型</td><td class="v">超声学习</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-30</td></tr><tr><td class="k">技术栈</td><td class="v">HTML / CSS / 原生 JS</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/us-study-nav.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/us-study-nav.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-30 00:29</td></tr></table>
+  </div>
+  <div class="card">
+    <h2>线上访问</h2>
+    <div class="site">
+      <span class="live">已上线</span>
+      <a href="https://stray1100.github.io/project-vault/tools/us-study-nav.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/tools/us-study-nav.html</a>
+    </div>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-30。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">项目档案馆 tools/ 目录，与 B 超助手同目录互链</p>
+    <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
+  </div>
+
+
+  <div class="card">
+    <h2>用途与定位</h2>
+    <p>46 步 12 周 POCUS 路线，串起 B 超助手、红旗征三版、权威站点与公开数据集，一页直达。</p>
+    <p class="para">面向内科规培医师的床旁超声（POCUS）自学入口页：不做知识灌输，只解决「先学什么、按什么节奏练、去哪找真图和病例」。</p><p class="para">把 12 周拆成 46 个可执行步骤，按探头参数 → 基础切面 → 系统评估（肺、心、腹、血管、神经）→ 整合判读（BLUE 等）→ 出报告的顺序推进。</p><p class="para">聚合 4 个自建学习助手入口 + 10 个权威站点 + 公开数据集索引，全部外链已于 2026-10-29 逐条实测 HTTP 200。</p><p class="para">同时给出「怎么搭配着学」：轮转到哪个系统就把对应阶段整体提前，周节奏不变。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
+  </div>
+
+  <div class="card">
+    <h2>功能模块</h2>
+    <table class="ft"><tr><td class="fname">46 步路线</td><td>12 周、5 阶段，每步含切面名、关键参数、练习动作与验收标准，阶段步骤数合计校验为 46。</td></tr><tr><td class="fname">怎么搭配着学</td><td>按轮转科室重排阶段的规则，以及每页笔记只记五行的模板。</td></tr><tr><td class="fname">助手入口</td><td>B 超学习助手 v2.0 与红旗征甲乙丙三版，已在项目档案馆上线，手机电脑均可直接打开。</td></tr><tr><td class="fname">权威站点</td><td>CORE Ultrasound、POCUS Atlas、ultrasoundcases.info、Radiology Assistant、Radiology Masterclass、POCUS Basics、中国大学 MOOC、人卫慕课、EFSUMB、AIUM。</td></tr><tr><td class="fname">公开数据集</td><td>open-medical-ultrasound-datasets 索引仓库，用于找带标注的真实超声图练读片。</td></tr></table>
+  </div>
+
+  <div class="card">
+    <h2>使用方式</h2>
+    <ol><li>在线打开：浏览器访问 https://stray1100.github.io/project-vault/tools/us-study-nav.html （手机可直接加主屏幕，页面右下圆钮可一键检查更新）。</li><li>本机打开：双击「项目档案馆」目录下的 assets\us-study-nav.html，或从本机 output 目录打开 US-Study-Nav_v1.0_20261029.html。</li><li>第一步先读页首「使用边界」：本页为自学路线索引，不替代规范培训与带教，图像判读须在上级医师指导下完成。</li><li>进入「学习路线」，按当前周次看本周阶段；每完成一步，把切面名、关键参数、我看到的、拿不准的、下次怎么验证记成五行笔记。</li><li>轮转科室变化时，用「怎么搭配着学」把对应阶段整体提前，其余顺延，不要打乱周节奏。</li><li>点「学习助手入口」的 B 超学习助手，先做 12 切面读片交互，再回 www.thepocusatlas.com 对照真实图校正。</li><li>遇到危重场景相关图像拿不准时，打开红旗征助手（甲内科 / 乙急诊 / 丙基层）按主诉与时间窗逐条核对，形成自己的红旗征清单。</li><li>每周至少用公开数据集里的真实图练 30 分钟读片，把判读错误记在同一份五行笔记里，月末回看错题分布。</li><li>排错：页面样式错乱或仍是旧版，点右下角圆钮「更新」；图标版未更新则删除主屏幕图标后重新添加。</li><li>若某外部站点打不开，先换同阶段另一个站点（CORE / POCUS Atlas 互为替代），并记录失效域名以便下次修订本页。</li></ol>
+  </div>
+
+  <div class="card">
+    <h2>关键路径与产物</h2>
+    <ul><li class="muted">暂无已落盘产物</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>边界与限制</h2>
+    <ul><li class="muted">暂无记录。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>常见问题</h2>
+    <p class="muted">暂无记录。</p>
+  </div>
+
+  <div class="card">
+    <h2>注意事项</h2>
+    <p class="notes">外部站点为第三方内容，连通性随网络环境变化；本页只做索引与路线编排，不含诊疗决策建议。</p>
+  </div>
+
+  <div class="card">
+    <h2>验证状态</h2>
+    <ul><li class="muted">尚未实测。</li></ul>
+  </div>
+
+  <div class="card">
+    <h2>版本记录</h2>
+    <ul><li><span class="t">2026-10-30</span> 登记入库并部署上线</li></ul>
+  </div>
+
+  <footer>项目档案馆 · 2026-10-30 00:29</footer>
+</div>
+<script>
+(function(){
+  /* 返回按钮：线上站点返回 index.html，本地文件返回 INDEX.html；当前页即清单页时隐藏 */
+  var bk = document.getElementById('mvBack');
+  if(bk){
+    var f = (location.pathname.split('/').pop() || '').toLowerCase();
+    if(f === '' || f === 'index.html'){
+      bk.style.display = 'none';
+    }else if(location.protocol.indexOf('http') === 0){
+      bk.setAttribute('href', 'index.html');
+    }else{
+      bk.setAttribute('href', 'INDEX.html');
+    }
+  }
+
+  var btn = document.getElementById('mvUpdate');
+  if(!btn) return;
+  var label = btn.querySelector('span');
+  var ver = document.getElementById('mvVer');
+  var busy = false;
+
+  function setVer(t){ if(ver) ver.textContent = t; }
+
+  // 清空缓存与 Service Worker 注册，保证下一次请求一定走网络
+  function bust(){
+    try{
+      if(window.caches && caches.keys){
+        caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){});
+      }
+    }catch(e){}
+    try{
+      if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){
+        navigator.serviceWorker.getRegistrations().then(function(rs){
+          rs.forEach(function(r){ r.unregister(); });
+        }).catch(function(){});
+      }
+    }catch(e){}
+  }
+
+  // 带时间戳硬重载，绕过 iOS 主屏 WebView 的页面缓存
+  function hardReload(){
+    var u = location.href.split('#')[0];
+    var sep = u.indexOf('?') >= 0 ? '&' : '?';
+    try{ location.replace(u + sep + 't=' + Date.now()); }
+    catch(e){ try{ location.reload(); }catch(e2){ location.href = u; } }
+  }
+
+  // 读取构建标识（由部署脚本注入到 ）
+  function currentBuild(){
+    var m = document.querySelector('meta[name="pv-build"]');
+    return m ? (m.getAttribute('content') || '') : '';
+  }
+
+  function online(){ return /^https?:/i.test(location.protocol); }
+
+  /* 检查更新：比对线上 version.json 的 build 与本页构建标识
+     - 版本不同 → 清缓存 + 重载拿新版
+     - 版本一致 → 仅提示已是最新
+     - 无 version.json / 离线 → 退化为强制重载（等同硬刷新） */
+  function checkUpdate(isAuto){
+    var cur = currentBuild();
+    if(!online()){
+      if(!isAuto){ setVer('本地文件 · 已重载'); hardReload(); }
+      return;
+    }
+    if(!isAuto){ busy = true; btn.classList.add('busy'); label.textContent = '检查中'; }
+    var ctl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function(){ if(ctl) ctl.abort(); }, 4000);
+    fetch('version.json?t=' + Date.now(), {cache:'no-store', signal: ctl ? ctl.signal : undefined})
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(v){
+        clearTimeout(timer);
+        if(!v || !v.build){ throw new Error('no-version'); }
+        if(cur && v.build === cur){
+          if(!isAuto){ setVer('已是最新 · ' + (v.built_at || '')); btn.classList.remove('busy'); label.textContent = '更新'; busy = false; }
+          return;
+        }
+        if(isAuto){
+          var key = 'pv-auto-' + v.build;
+          try{
+            if(sessionStorage.getItem(key)) return;   // 本次会话已尝试过，避免循环刷新
+            sessionStorage.setItem(key, '1');
+          }catch(e){}
+        }
+        setVer(isAuto ? '发现新版本 · 正在更新' : '更新中');
+        bust();
+        setTimeout(hardReload, 160);
+      })
+      .catch(function(){
+        clearTimeout(timer);
+        if(isAuto){ return; }              // 自动检查失败静默，不打扰阅读
+        setVer('已重新载入');
+        bust();
+        setTimeout(hardReload, 120);
+      });
+  }
+
+  btn.addEventListener('click', function(){
+    if(busy) return;
+    checkUpdate(false);
+  });
+
+  // 主屏 App / 浏览器打开时自动检查一次，落后就静默升级
+  if(online()){
+    window.addEventListener('load', function(){
+      setTimeout(function(){ checkUpdate(true); }, 1200);
+    });
+  }
+})();
+</script>
+</body>
+</html>

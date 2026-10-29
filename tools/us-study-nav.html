@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<!-- mode: Operate -->
+<html lang="zh-CN">
+<head>
+<meta name="pv-build" content="6285795874">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBFBFC" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0F1115" media="(prefers-color-scheme: dark)">
+<meta name="description" content="超声与床旁 POCUS 学习导航台：12 周 46 步路线、学习助手入口、权威免费站点与公开数据集。单文件离线可用。">
+<title>超声学习台 · 12 周路线与入口</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230B6C7D'/%3E%3Cpath d='M5 20h5l3-9 4 14 3-7h7' fill='none' stroke='%23fff' stroke-width='2.2' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<style>
+:root{
+  --c-bg:#FBFBFC; --c-surface:#FFFFFF; --c-surface-2:#F4F5F7;
+  --c-border:#E3E5E9; --c-border-input:#868C96;
+  --c-text:#16181D; --c-text2:#545A63; --c-text3:#6B7280;
+  --c-accent:#0B6C7D; --c-accent-weak:#E3F1F3; --c-accent-text:#085461;
+  --btn-fg:#FFFFFF;
+  --c-ok:#116B4E; --c-ok-mark:#FFFFFF; --c-ok-weak:#E4F2EC;
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  --r-sm:8px; --r-md:12px; --r-lg:14px; --r-pill:999px;
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  color-scheme:light;
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --c-bg:#0F1115; --c-surface:#16191F; --c-surface-2:#1C2027;
+  --c-border:#2A2F38; --c-border-input:#5E656E;
+  --c-text:#E8EAED; --c-text2:#A8B0BB; --c-text3:#8A9099;
+  --c-accent:#6FD9EA; --c-accent-weak:#12262C; --c-accent-text:#8FE2F0;
+  --btn-fg:#0F1115;
+  --c-ok:#4FB893; --c-ok-mark:#0F1115; --c-ok-weak:#14291F;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --c-bg:#0F1115; --c-surface:#16191F; --c-surface-2:#1C2027;
+    --c-border:#2A2F38; --c-border-input:#5E656E;
+    --c-text:#E8EAED; --c-text2:#A8B0BB; --c-text3:#8A9099;
+    --c-accent:#6FD9EA; --c-accent-weak:#12262C; --c-accent-text:#8FE2F0;
+    --btn-fg:#0F1115;
+    --c-ok:#4FB893; --c-ok-mark:#0F1115; --c-ok-weak:#14291F;
+  }
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  margin:0;min-height:100dvh;background:var(--c-bg);color:var(--c-text);
+  font:400 16.5px/1.65 var(--font-sans);
+  overflow-x:hidden;-webkit-font-smoothing:antialiased;
+  touch-action:manipulation;
+}
+::selection{background:var(--c-accent-weak);color:var(--c-text)}
+a{color:var(--c-accent-text)}
+:focus-visible{outline:2px solid var(--c-accent);outline-offset:2px;border-radius:3px}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+/* ---------- header ---------- */
+.hdr{
+  position:sticky;top:0;z-index:20;
+  background:color-mix(in srgb,var(--c-bg) 90%,transparent);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--c-border);
+  padding-top:env(safe-area-inset-top);
+}
+.hdr-in{max-width:720px;margin:0 auto;padding:10px 16px 9px;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:2px 10px}
+.hdr h1{margin:0;font-size:17px;font-weight:650;letter-spacing:-.01em;line-height:1.3}
+.hdr-sub{margin:0;font-size:13px;color:var(--c-text3);line-height:1.35}
+.icon-btn{
+  width:44px;height:44px;display:grid;place-items:center;flex:0 0 auto;
+  border:1px solid var(--c-border);border-radius:var(--r-md);
+  background:var(--c-surface);color:var(--c-text2);cursor:pointer;
+  transition:background-color 120ms var(--ease-out),border-color 120ms var(--ease-out),color 120ms var(--ease-out);
+}
+.icon-btn:hover{background:var(--c-surface-2);color:var(--c-text)}
+.icon-btn svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.prog{grid-column:1/-1;display:flex;align-items:center;gap:10px;margin-top:6px}
+.track{flex:1;height:3px;border-radius:2px;background:var(--c-border);overflow:hidden}
+.fill{height:100%;width:0;background:var(--c-accent);border-radius:2px;transition:width 240ms var(--ease-out)}
+.pnum{font:600 13px/1 var(--font-mono);color:var(--c-text2);font-variant-numeric:tabular-nums;letter-spacing:.02em}
+
+/* ---------- layout ---------- */
+main{max-width:720px;margin:0 auto;padding:0 16px calc(44px + env(safe-area-inset-bottom))}
+.hero{padding:22px 0 4px}
+.wave{display:block;width:100%;height:52px;margin:2px 0 10px}
+.wave path{fill:none;stroke:var(--c-accent);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:100;stroke-dashoffset:100;animation:draw 1.35s var(--ease-out) .1s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.hero h2{margin:0;font-size:22px;font-weight:650;line-height:1.4;letter-spacing:-.01em;text-wrap:balance}
+.hero p{margin:8px 0 0;color:var(--c-text2);max-width:34em;text-wrap:pretty}
+
+/* ---------- next ---------- */
+.next{
+  display:block;margin-top:20px;padding:16px 16px 14px;border-radius:var(--r-lg);
+  background:var(--c-accent-weak);text-decoration:none;color:var(--c-text);
+  transition:background-color 140ms var(--ease-out);
+}
+.next:hover{background:color-mix(in srgb,var(--c-accent-weak) 78%,var(--c-accent) 6%)}
+.n-title{margin:0;font-size:17.5px;font-weight:650;line-height:1.45;letter-spacing:-.005em}
+.n-note{margin:5px 0 0;font-size:16px;line-height:1.6;color:var(--c-text2)}
+.n-meta{margin:10px 0 0;font-size:13.5px;color:var(--c-accent-text);font-weight:600}
+
+/* ---------- sections ---------- */
+.sec{margin-top:32px;padding-top:26px;border-top:1px solid var(--c-border)}
+.sec h2{margin:0 0 4px;font-size:20px;font-weight:650;letter-spacing:-.01em;line-height:1.35}
+.sec > .lead{margin:0 0 14px;font-size:16px;color:var(--c-text3);line-height:1.55}
+.lead.mt{margin-top:16px}
+.group-h{margin:22px 0 2px;font-size:16px;font-weight:650;color:var(--c-text2);letter-spacing:.01em}
+
+/* ---------- roadmap ---------- */
+.stage{border-bottom:1px solid var(--c-border)}
+.stage:first-of-type{border-top:1px solid var(--c-border)}
+.stage summary{
+  display:flex;align-items:center;gap:10px;min-height:56px;padding:6px 0;
+  cursor:pointer;list-style:none;
+}
+.stage summary::-webkit-details-marker{display:none}
+.wk{font:600 12.5px/1 var(--font-mono);color:var(--c-accent-text);background:var(--c-accent-weak);
+  padding:6px 7px;border-radius:6px;letter-spacing:.02em;flex:0 0 auto;font-variant-numeric:tabular-nums}
+.s-name{flex:1;min-width:0;font-size:16.5px;font-weight:600;letter-spacing:-.005em}
+.cnt{font:13px/1 var(--font-mono);color:var(--c-text3);font-variant-numeric:tabular-nums;flex:0 0 auto}
+.stage.done .cnt{color:var(--c-ok);font-weight:600}
+.chev{width:9px;height:9px;border-right:1.6px solid var(--c-text3);border-bottom:1.6px solid var(--c-text3);
+  transform:rotate(45deg);transition:transform 200ms var(--ease-out);flex:0 0 auto;margin:0 3px 3px 2px}
+.stage[open] .chev{transform:rotate(-135deg);margin-bottom:-3px}
+.steps{position:relative;padding-bottom:10px}
+.steps::before{content:"";position:absolute;left:12px;top:12px;bottom:26px;width:1px;background:var(--c-border)}
+.step{
+  position:relative;display:flex;gap:13px;align-items:flex-start;
+  padding:11px 0;cursor:pointer;
+}
+.st-check{
+  appearance:none;-webkit-appearance:none;margin:0;flex:0 0 24px;width:24px;height:24px;
+  border:1.5px solid var(--c-border-input);border-radius:7px;background:var(--c-surface);
+  cursor:pointer;position:relative;
+  transition:background-color 120ms var(--ease-out),border-color 120ms var(--ease-out);
+}
+.st-check:checked{background:var(--c-ok);border-color:var(--c-ok)}
+.st-check:checked::after{content:"";position:absolute;left:7px;top:2px;width:6px;height:12px;
+  border-right:2.2px solid var(--c-ok-mark);border-bottom:2.2px solid var(--c-ok-mark);transform:rotate(42deg)}
+.st-text{display:block;font-size:16.5px;line-height:1.5;font-weight:500;letter-spacing:-.003em;scroll-margin-top:96px}
+.st-note{display:block;margin-top:3px;font-size:16px;line-height:1.6;color:var(--c-text2)}
+.step input:checked ~ .st-body .st-text{color:var(--c-text3)}
+.step input:checked ~ .st-body .st-note{color:var(--c-text3)}
+.st-body{min-width:0}
+
+/* ---------- howto ---------- */
+.flowlist{list-style:none;margin:0;padding:0}
+.flowlist li{padding:13px 0;border-bottom:1px solid var(--c-border)}
+.flowlist li:first-child{border-top:1px solid var(--c-border)}
+.fl-h{display:block;font-size:16.5px;font-weight:600;line-height:1.45;letter-spacing:-.003em}
+.fl-chain{display:block;margin-top:4px;font-size:16px;line-height:1.65;color:var(--c-text2)}
+.arw{color:var(--c-accent-text);padding:0 5px;font-weight:600}
+.tbl.wk-tbl td:first-child{width:5.4em;font:600 16px/1.55 var(--font-sans);overflow-wrap:anywhere}
+.tbl.wk-tbl th:nth-child(3),.tbl.wk-tbl td:nth-child(3){text-align:right;width:58px;white-space:nowrap;color:var(--c-text2)}
+.tbl.wk-tbl td:nth-child(2){color:var(--c-text2)}
+.badlist{margin:4px 0 0;padding-left:1.1em}
+.badlist li{font-size:16px;line-height:1.65;color:var(--c-text2)}
+.badlist li + li{margin-top:6px}
+.badlist strong{color:var(--c-text)}
+
+/* ---------- tools ---------- */
+.tools{list-style:none;margin:0;padding:0}
+.tool{
+  display:grid;grid-template-columns:1fr;gap:10px;
+  padding:14px 0;border-bottom:1px solid var(--c-border);
+}
+.tool:first-child{border-top:1px solid var(--c-border)}
+.tool-name{display:block;font-size:16.5px;font-weight:600;line-height:1.45;letter-spacing:-.003em}
+.tool-desc{display:block;margin-top:3px;font-size:16px;line-height:1.55;color:var(--c-text2)}
+.tool-act{display:flex;gap:8px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:6px;
+  min-height:44px;padding:0 16px;border-radius:var(--r-md);
+  font-size:15.5px;font-weight:600;text-decoration:none;line-height:1;
+  border:1px solid transparent;cursor:pointer;
+  transition:background-color 120ms var(--ease-out),border-color 120ms var(--ease-out),color 120ms var(--ease-out);
+}
+.btn-solid{background:var(--c-accent);color:var(--btn-fg)}
+.btn-solid:hover{background:color-mix(in srgb,var(--c-accent) 86%,var(--c-bg))}
+.btn-ghost{background:transparent;color:var(--c-text);border-color:var(--c-border-input)}
+.btn-ghost:hover{background:var(--c-surface-2)}
+.btn svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+/* ---------- links ---------- */
+.r-body{min-width:0}
+.rows{list-style:none;margin:0;padding:0}
+.rows li + li{border-top:1px solid var(--c-border)}
+.rows li:first-child{border-top:1px solid var(--c-border)}
+.row{
+  display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;
+  min-height:60px;padding:12px 4px;text-decoration:none;color:var(--c-text);
+  transition:background-color 120ms var(--ease-out);
+}
+.row:hover{background:var(--c-surface-2)}
+.r-name{display:block;font-size:16.5px;font-weight:600;line-height:1.4;letter-spacing:-.003em}
+.r-host{display:block;font:12.5px/1.4 var(--font-mono);color:var(--c-text3);margin-top:2px;overflow-wrap:anywhere}
+.r-desc{display:block;margin-top:4px;font-size:16px;line-height:1.55;color:var(--c-text2)}
+.tag{
+  font:600 12px/1 var(--font-sans);letter-spacing:.02em;
+  padding:5px 8px;border-radius:var(--r-pill);
+  background:var(--c-surface-2);color:var(--c-text2);border:1px solid var(--c-border);
+  white-space:nowrap;
+}
+.tag.free{background:var(--c-ok-weak);color:var(--c-ok);border-color:transparent}
+
+/* ---------- table ---------- */
+.tbl{width:100%;border-collapse:collapse;margin-top:6px;font-size:16px}
+.tbl caption{text-align:left;font-size:14px;color:var(--c-text3);padding-bottom:8px}
+.tbl th,.tbl td{text-align:left;vertical-align:top;padding:11px 8px;border-bottom:1px solid var(--c-border);line-height:1.55}
+.tbl th{font-size:13.5px;font-weight:650;color:var(--c-text2);letter-spacing:.01em}
+.tbl th:first-child,.tbl td:first-child{padding-left:2px}
+.tbl td:first-child{font:500 15px/1.5 var(--font-mono);overflow-wrap:anywhere;width:38%}
+.tbl td:last-child{color:var(--c-text2)}
+
+/* ---------- note / footer ---------- */
+.note{margin-top:18px;padding:14px 16px;border-radius:var(--r-lg);background:var(--c-surface-2)}
+.note p{margin:0;font-size:16px;line-height:1.65;color:var(--c-text2)}
+.note p + p{margin-top:8px}
+.note strong{color:var(--c-text)}
+footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--c-border);font-size:13.5px;line-height:1.7;color:var(--c-text3)}
+footer code{font:12.5px var(--font-mono)}
+
+@media (min-width:560px){
+  .tool{grid-template-columns:1fr auto;align-items:center;gap:16px}
+  .hdr h1{font-size:18px}
+}
+@media (hover:none){
+  .row:hover{background:transparent}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;scroll-behavior:auto !important}
+  .wave path{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="hdr-in">
+    <div>
+      <h1>超声学习台</h1>
+      <p class="hdr-sub">W1–W12 · 46 步 · 5 个入口</p>
+    </div>
+    <button class="icon-btn" id="themeBtn" type="button" aria-label="切换深色或浅色外观">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.6v2.2M12 19.2v2.2M2.6 12h2.2M19.2 12h2.2M5.4 5.4l1.6 1.6M17 17l1.6 1.6M18.6 5.4L17 7M7 17l-1.6 1.6"/></svg>
+    </button>
+    <div class="prog">
+      <div class="track" role="progressbar" aria-label="学习步骤完成进度" aria-valuemin="0" aria-valuemax="46" aria-valuenow="0" id="track">
+        <div class="fill" id="fill"></div>
+      </div>
+      <span class="pnum" id="pnum">0/46</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <svg class="wave" viewBox="0 0 340 52" preserveAspectRatio="none" aria-hidden="true">
+      <path pathLength="100" d="M0 26h34l7-13 8 26 8-20 9 15 6-8h38l5-11 7 22 6-16 5 9h40l6-12 7 24 7-18 6 11h42l5-9 6 18 5-13 5 7h33l4-6 5 12 4-9 3 3h34"/>
+    </svg>
+    <h2>从探头参数走到 BLUE 判读，按周推进，练到能出报告</h2>
+    <p>路线按「设备与安全 → 物理与伪像 → 切面解剖 → 系统判读 → 床旁整合」五段排布，46 步可逐条打卡，进度只存本机。</p>
+  </section>
+
+  <a class="next" href="#s-a1" id="nextCard">
+    <p class="n-title" id="nTitle">下一步：认识探头与频率</p>
+    <p class="n-note" id="nNote">凸阵 2–5 MHz 打腹部和肺，线阵 5–12 MHz 看浅表和血管，相控阵 1–5 MHz 看心脏。</p>
+    <p class="n-meta" id="nMeta">阶段 A · 设备与安全基线 · W1 · 点此定位</p>
+  </a>
+
+  <section class="sec" id="roadmap">
+    <h2>学习路线</h2>
+    <p class="lead">点阶段标题展开，勾选即存档；全部完成前，页面顶部一直给出下一步。</p>
+
+    <details class="stage" open data-stage="A">
+      <summary>
+        <span class="wk">W1</span>
+        <span class="s-name">设备与安全基线</span>
+        <span class="cnt">0/7</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="steps">
+        <label class="step"><input class="st-check" type="checkbox" data-k="a1">
+          <span class="st-body"><span class="st-text" id="s-a1">探头与频率匹配</span>
+          <span class="st-note">凸阵 2–5 MHz 用于腹部与肺，线阵 5–12 MHz 用于浅表与血管，相控阵 1–5 MHz 用于心脏。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a2">
+          <span class="st-body"><span class="st-text" id="s-a2">面板六个键摸成肌肉记忆</span>
+          <span class="st-note">增益、TGC、深度、聚焦、频率、动态范围，先调深度聚焦再调增益，顺序反了会反复返工。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a3">
+          <span class="st-body"><span class="st-text" id="s-a3">ALARA 与 MI/TI 读数</span>
+          <span class="st-note">依据 AIUM/WFUMB 声输出与安全声明，常规成像 MI ≤ 1.9，眼与胎儿取更低值，扫查时间能短则短。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a4">
+          <span class="st-body"><span class="st-text" id="s-a4">方向标记与屏幕对应</span>
+          <span class="st-note">探头标记点朝患者右侧或头侧，与屏幕左上角图标一致；横切纵切各有固定约定，先统一个人手法。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a5">
+          <span class="st-body"><span class="st-text" id="s-a5">图像优化四步法</span>
+          <span class="st-note">深度够用即可、聚焦放在目标深度、增益到中等回声、TGC 拉平近远场，最后才动频率与动态范围。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a6">
+          <span class="st-body"><span class="st-text" id="s-a6">探头消毒分级</span>
+          <span class="st-note">接触完整皮肤用低水平消毒；接触黏膜或无菌区须高水平消毒或加无菌套，消毒剂与探头材质要匹配。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="a7">
+          <span class="st-body"><span class="st-text" id="s-a7">建立个人图像库</span>
+          <span class="st-note">每个部位固定留横切、纵切、测量三张，按「部位-日期-切面」命名，供后期与上级图像逐张对照。</span></span></label>
+      </div>
+    </details>
+
+    <details class="stage" data-stage="B">
+      <summary>
+        <span class="wk">W2</span>
+        <span class="s-name">物理与伪像</span>
+        <span class="cnt">0/8</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="steps">
+        <label class="step"><input class="st-check" type="checkbox" data-k="b1">
+          <span class="st-body"><span class="st-text" id="s-b1">声波与组织的四种交互</span>
+          <span class="st-note">反射、散射、折射、衰减；软组织衰减约 0.5 dB/cm/MHz，所以深部结构必须降频率换穿透。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b2">
+          <span class="st-body"><span class="st-text" id="s-b2">三种分辨率各自的来源</span>
+          <span class="st-note">轴向靠频率，横向靠聚焦与孔径，切片厚度靠 1.5D 阵列；哪一维糊了，调哪个参数就有数。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b3">
+          <span class="st-body"><span class="st-text" id="s-b3">六类常见伪像认全</span>
+          <span class="st-note">声影、后方回声增强、混响、镜像、彗星尾、边缘声影；每类各存一张典型图并写一句成因。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b4">
+          <span class="st-body"><span class="st-text" id="s-b4">肺超声四征即诊断</span>
+          <span class="st-note">蝙蝠征、A 线、B 线、肺点；肺是唯一靠伪像下结论的器官，按 BLUE 方案固定点位扫查。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b5">
+          <span class="st-body"><span class="st-text" id="s-b5">多普勒三条硬约束</span>
+          <span class="st-note">声束与血流夹角 ≤ 60°、Nyquist 极限决定量程、PRF 与探测深度互为代价，混叠先调量程再加基线。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b6">
+          <span class="st-body"><span class="st-text" id="s-b6">彩色与能量多普勒怎么选</span>
+          <span class="st-note">能量多普勒灵敏度高但无方向信息；结石、气体后的闪烁伪像会伪装成血流，换角度可甄别。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b7">
+          <span class="st-body"><span class="st-text" id="s-b7">弹性成像与造影的边界</span>
+          <span class="st-note">只记适用场景与局限：剪切波受深度与呼吸影响，造影需专用通道与培训资质，不涉定量判读。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="b8">
+          <span class="st-body"><span class="st-text" id="s-b8">伪像识别训练</span>
+          <span class="st-note">在真实图库里为六类伪像各找 3 例，标注成因与正确读法，存进图像库作为自查题。</span></span></label>
+      </div>
+    </details>
+
+    <details class="stage" data-stage="C">
+      <summary>
+        <span class="wk">W3–4</span>
+        <span class="s-name">切面与解剖</span>
+        <span class="cnt">0/10</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="steps">
+        <label class="step"><input class="st-check" type="checkbox" data-k="c1">
+          <span class="st-body"><span class="st-text" id="s-c1">腹部分区与体位配合</span>
+          <span class="st-note">仰卧为主，侧卧补脾肾，坐位看胆囊低位结石；探头压力与呼吸时相配合，能省一半扫查时间。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c2">
+          <span class="st-body"><span class="st-text" id="s-c2">肝胆标准切面</span>
+          <span class="st-note">门静脉「米老鼠」征定位肝门，右肋间扫右叶，剑下横扫左叶，肝静脉汇入下腔静脉处收尾。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c3">
+          <span class="st-body"><span class="st-text" id="s-c3">胆囊与胆道</span>
+          <span class="st-note">壁厚 ≤ 3 mm 为正常，结石伴声影，WES 征提示颈部嵌顿；餐后胆囊会假性壁厚，先问进食时间。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c4">
+          <span class="st-body"><span class="st-text" id="s-c4">胰腺与脾静脉地标</span>
+          <span class="st-note">以脾静脉为地标找胰体尾，胃内气体多时加压、半坐位或饮水后扫，胰头需沿肠系膜上静脉追踪。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c5">
+          <span class="st-body"><span class="st-text" id="s-c5">脾与双肾</span>
+          <span class="st-note">脾长径、肾长径与皮质厚度常规测量，积水按肾盂分离程度分轻中重，同时看输尿管上段是否扩张。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c6">
+          <span class="st-body"><span class="st-text" id="s-c6">膀胱与残余尿</span>
+          <span class="st-note">横径×纵径×前后径×0.52 估体积；排尿后即刻复测才叫残余尿，憋尿过度会高估。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c7">
+          <span class="st-body"><span class="st-text" id="s-c7">腹主动脉筛查切面</span>
+          <span class="st-note">剑下横切测前后径，正常 < 3 cm；> 3 cm 为动脉瘤，注意附壁血栓造成的假性小径测量。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c8">
+          <span class="st-body"><span class="st-text" id="s-c8">心脏四个基础视图</span>
+          <span class="st-note">胸骨旁长轴、胸骨旁短轴、心尖四腔、剑下四腔；先求结构认全，再谈功能评估。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c9">
+          <span class="st-body"><span class="st-text" id="s-c9">肺与胸膜的 BLUE 点位</span>
+          <span class="st-note">上蓝点、下蓝点、膈肌点、PLAPS 点，每点纵切扫查；点位固定才能前后对比、也才能复现结论。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="c10">
+          <span class="st-body"><span class="st-text" id="s-c10">下肢静脉双点加压</span>
+          <span class="st-note">股总静脉与腘静脉逐段加压，能压瘪即基本排除；压不瘪且管腔见实性回声，按血栓处理并改查其他节段。</span></span></label>
+      </div>
+    </details>
+
+    <details class="stage" data-stage="D">
+      <summary>
+        <span class="wk">W5–8</span>
+        <span class="s-name">系统判读与分级</span>
+        <span class="cnt">0/12</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="steps">
+        <label class="step"><input class="st-check" type="checkbox" data-k="d1">
+          <span class="st-body"><span class="st-text" id="s-d1">甲状腺 C-TIRADS 计分</span>
+          <span class="st-note">按 2021 年中华超声影像学杂志指南逐项计分，≥ 5 分考虑细针穿刺；先记描述词，再记阈值。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d2">
+          <span class="st-body"><span class="st-text" id="s-d2">乳腺 BI-RADS 词典</span>
+          <span class="st-note">形态、方位、边缘、回声、后方特征五项描述词逐条套；分类是描述词的产物，不是感觉的产物。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d3">
+          <span class="st-body"><span class="st-text" id="s-d3">肝脏病变的描述分层</span>
+          <span class="st-note">弥漫性（回声、肝表面、门脉内径）与局灶性（边界、内部回声、血流）分开写，别混成一句「肝实质不均」。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d4">
+          <span class="st-body"><span class="st-text" id="s-d4">急性胆囊炎三主征</span>
+          <span class="st-note">壁增厚、结石、超声墨菲征阳性；超声墨菲征要靠探头持续加压复现压痛，不能靠患者自述。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d5">
+          <span class="st-body"><span class="st-text" id="s-d5">肾与尿路病变</span>
+          <span class="st-note">结石、积水、囊性病变三线并行；Bosniak 分级以增强 CT/MRI 为准，超声只做初筛与随访。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d6">
+          <span class="st-body"><span class="st-text" id="s-d6">阑尾加压法与继发征象</span>
+          <span class="st-note">外径 > 6 mm、探头加压不可压瘪、周围脂肪回声增强为继发征象；找到盲端比找到管状结构更可靠。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d7">
+          <span class="st-body"><span class="st-text" id="s-d7">肠道靶环征与肠壁分层</span>
+          <span class="st-note">正常肠壁五层结构清晰；分层消失伴增厚提示炎症加重或缺血，配合彩色血流看灌注。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d8">
+          <span class="st-body"><span class="st-text" id="s-d8">妇产基础三件</span>
+          <span class="st-note">子宫形态与内膜、卵巢大小与卵泡、早孕时宫内孕囊与假孕囊鉴别（双蜕膜征、卵黄囊是关键）。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d9">
+          <span class="st-body"><span class="st-text" id="s-d9">心脏功能与容量粗评</span>
+          <span class="st-note">目测 EF 分级、心包积液半定量、下腔静脉内径与塌陷率估容量反应性；三项合看，别单指标下结论。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d10">
+          <span class="st-body"><span class="st-text" id="s-d10">BLUE 流程判读</span>
+          <span class="st-note">按 A 剖面、B 剖面、B′ 剖面、C 剖面、PLAPS 逐层排除，最终落到肺水肿、气胸、肺炎、肺栓塞四类。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d11">
+          <span class="st-body"><span class="st-text" id="s-d11">DVT 诊断与常见陷阱</span>
+          <span class="st-note">加压法为主，注意股静脉重复畸形、孤立小腿静脉血栓、以及加压过猛压瘪动脉造成误判。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="d12">
+          <span class="st-body"><span class="st-text" id="s-d12">结构化报告模板</span>
+          <span class="st-note">固定六段：部位与切面、测量值、阳性征象、阴性所见、结论、建议复查间隔；模板化才可比较与质控。</span></span></label>
+      </div>
+    </details>
+
+    <details class="stage" data-stage="E">
+      <summary>
+        <span class="wk">W9–12</span>
+        <span class="s-name">床旁整合与考核</span>
+        <span class="cnt">0/9</span>
+        <span class="chev" aria-hidden="true"></span>
+      </summary>
+      <div class="steps">
+        <label class="step"><input class="st-check" type="checkbox" data-k="e1">
+          <span class="st-body"><span class="st-text" id="s-e1">休克分型的床旁组合</span>
+          <span class="st-note">心脏、肺、下腔静脉、腹腔四个窗口组合（RUSH 思路），先分辨心源、分布、低容量，再谈补液。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e2">
+          <span class="st-body"><span class="st-text" id="s-e2">呼吸困难鉴别流程</span>
+          <span class="st-note">BLUE 方案加心脏视图，把肺水肿、气胸、肺炎、肺栓塞按 B 线分布与前胸膜滑动逐项排掉。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e3">
+          <span class="st-body"><span class="st-text" id="s-e3">FAST 与 eFAST</span>
+          <span class="st-note">肝肾隐窝、脾肾隐窝、盆腔、心包四腔加双侧胸腔；游离液体最先聚在依赖部位，体位要配合。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e4">
+          <span class="st-body"><span class="st-text" id="s-e4">操作引导四场景</span>
+          <span class="st-note">中心静脉、胸腔穿刺、腹腔穿刺、膀胱穿刺；先在模型上练到稳定进针，再上真人并由上级带教。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e5">
+          <span class="st-body"><span class="st-text" id="s-e5">针道显影技巧</span>
+          <span class="st-note">平面内进针看全针走行，平面外进针只能看针尖与靶点关系；进针前先把靶点放到屏幕中线。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e6">
+          <span class="st-body"><span class="st-text" id="s-e6">图像质量自查五项</span>
+          <span class="st-note">增益、深度、聚焦、体位、耦合逐条打勾；五项不过关就重扫，别在糊图上下诊断。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e7">
+          <span class="st-body"><span class="st-text" id="s-e7">真实病例回放 20 例</span>
+          <span class="st-note">用 CORE Ultrasound 与 POCUS Atlas 的病例，先盲判写结论，再看答案比对，记录判错的原因。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e8">
+          <span class="st-body"><span class="st-text" id="s-e8">与上级图像逐张对照</span>
+          <span class="st-note">同一患者同一切面，记录 10 处差异并归因到参数、体位或手法，而不是笼统说「经验不足」。</span></span></label>
+        <label class="step"><input class="st-check" type="checkbox" data-k="e9">
+          <span class="st-body"><span class="st-text" id="s-e9">出科盲测</span>
+          <span class="st-note">3 个随机切面加 1 份结构化报告，按预设评分表自评并请带教复核，留档作为后续复训基线。</span></span></label>
+      </div>
+    </details>
+  </section>
+
+  <section class="sec" id="howto">
+    <h2>怎么搭配着学</h2>
+    <p class="lead">四个模块分工不同：路线管排期，B 超助手管「认得出结构」，真实图库管「识得真图像」，教材与红旗征管「说得准、判得对」。下面是把它们缝在一起的固定打法。</p>
+
+    <table class="tbl wk-tbl">
+      <caption>一周节奏：把零散时间固定下来，比周末突击有效</caption>
+      <thead><tr><th scope="col">时间</th><th scope="col">做什么</th><th scope="col">用时</th></tr></thead>
+      <tbody>
+        <tr><td>周一至周四</td><td>每天路线上 1 步，随后在 B 超助手把当天切面复练三遍：横切、纵切、加测量</td><td>15 分</td></tr>
+        <tr><td>周五</td><td>真实图库盲判 5 例，先写完结论再翻答案，判错记下是因为征象还是因为参数</td><td>20 分</td></tr>
+        <tr><td>周六</td><td>翻教材查本周卡住的那一两个点，把术语与阈值抄进笔记，别通读</td><td>30 分</td></tr>
+        <tr><td>周日</td><td>复盘：补齐打卡、整理图片库、只定下下周主攻的一个切面</td><td>15 分</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="group-h">四种配对打法</h3>
+    <ul class="flowlist">
+      <li>
+        <span class="fl-h">学新切面</span>
+        <span class="fl-chain">路线步骤<span class="arw" aria-hidden="true">→</span>B 超助手认结构与毗邻关系（可反复、无风险）<span class="arw" aria-hidden="true">→</span>真实图库找同一部位看真实质感<span class="arw" aria-hidden="true">→</span>教材核对术语与正常值</span>
+      </li>
+      <li>
+        <span class="fl-h">判读拿不准</span>
+        <span class="fl-chain">B 超助手复现征象<span class="arw" aria-hidden="true">→</span>真实图库盲判 3 例<span class="arw" aria-hidden="true">→</span>若卡在「算不算危险」转红旗征助手对应条目<span class="arw" aria-hidden="true">→</span>回教材找阈值</span>
+      </li>
+      <li>
+        <span class="fl-h">上机前热身</span>
+        <span class="fl-chain">B 超助手连扫三个切面练手感<span class="arw" aria-hidden="true">→</span>纸上写死本次要调的四个参数<span class="arw" aria-hidden="true">→</span>真机按清单操作<span class="arw" aria-hidden="true">→</span>扫完回看图像是否达标</span>
+      </li>
+      <li>
+        <span class="fl-h">出科与科研</span>
+        <span class="fl-chain">路线末段整套盲测<span class="arw" aria-hidden="true">→</span>数据集只看标注口径与样本构成<span class="arw" aria-hidden="true">→</span>别拿数据集当学习图，那是给算法看的，不是给人读的</span>
+      </li>
+    </ul>
+
+    <h3 class="group-h">按手上时间选</h3>
+    <table class="tbl wk-tbl">
+      <thead><tr><th scope="col">能挤出的时间</th><th scope="col">当次就做这三件事</th><th scope="col">时长</th></tr></thead>
+      <tbody>
+        <tr><td>排队、通勤</td><td>1 步路线加 1 个切面复练，手机上够用</td><td>10 分</td></tr>
+        <tr><td>午休</td><td>1 步，加盲判 3 例，加三行笔记</td><td>30 分</td></tr>
+        <tr><td>值完夜班白天</td><td>一整段路线，加教材查漏，加图片库整理</td><td>60 分</td></tr>
+      </tbody>
+    </table>
+
+    <h3 class="group-h">别这么用</h3>
+    <div class="note">
+      <ul class="badlist">
+        <li><strong>只看合成图。</strong>合成图能教结构位置与参数作用，教不了组织变异与真实伪像，离开真实图库就退化。</li>
+        <li><strong>把打卡当水平。</strong>路线只是排期表，勾满 46 步不等于能独立扫查，上机时数与盲判例数才是硬指标。</li>
+        <li><strong>背分级不写报告。</strong>分级是描述词的产物，不写六段式报告，考场上照样卡壳。</li>
+        <li><strong>三本教材一起开。</strong>先跟第 4 版走主线，卡住再查第 7 版，住培教材只用来对齐考核口径。</li>
+      </ul>
+    </div>
+
+    <h3 class="group-h">和轮转挂钩</h3>
+    <p class="lead mt">轮转到哪个系统，就把对应阶段整体提前，其余顺延；顺序可变，周节奏不变。每页笔记只记五行：切面名、关键参数、我看到的、拿不准的、下次怎么验证。</p>
+  </section>
+
+  <section class="sec" id="tools">
+    <h2>学习助手入口</h2>
+    <p class="lead">全部入口均已上线，手机与电脑均直接可用；2.0 MB 单文件首次加载偏慢，建议添加到主屏幕后离线使用。</p>
+    <ul class="tools">
+      <li class="tool">
+        <div class="tool-main">
+          <span class="tool-name">B 超学习助手 v2.0</span>
+          <span class="tool-desc">12 切面物理合成 · 读片交互 · 2.0 MB 单文件，完全离线</span>
+        </div>
+        <div class="tool-act">
+          <a class="btn btn-solid" href="us-learning-assistant.html">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6.5h16M4 12h16M4 17.5h10"/></svg>打开助手</a>
+        </div>
+      </li>
+      <li class="tool">
+        <div class="tool-main">
+          <span class="tool-name">红旗征学习助手 · 甲｜内科规培主线</span>
+          <span class="tool-desc">按系统组织的危重信号识别，贴规培轮转节奏</span>
+        </div>
+        <div class="tool-act">
+          <a class="btn btn-ghost" href="https://stray1100.github.io/project-vault/tools/redflag-a-internal-medicine.html" target="_blank" rel="noopener">在线打开</a>
+        </div>
+      </li>
+      <li class="tool">
+        <div class="tool-main">
+          <span class="tool-name">红旗征学习助手 · 乙｜急诊重心</span>
+          <span class="tool-desc">按主诉与时间窗切分，面向急诊与夜班场景</span>
+        </div>
+        <div class="tool-act">
+          <a class="btn btn-ghost" href="https://stray1100.github.io/project-vault/tools/redflag-b-emergency.html" target="_blank" rel="noopener">在线打开</a>
+        </div>
+      </li>
+      <li class="tool">
+        <div class="tool-main">
+          <span class="tool-name">红旗征学习助手 · 丙｜基层门诊实用</span>
+          <span class="tool-desc">社区卫生服务中心可做的判断与转诊阈值</span>
+        </div>
+        <div class="tool-act">
+          <a class="btn btn-ghost" href="https://stray1100.github.io/project-vault/tools/redflag-c-primary-care.html" target="_blank" rel="noopener">在线打开</a>
+        </div>
+      </li>
+      <li class="tool">
+        <div class="tool-main">
+          <span class="tool-name">项目档案馆</span>
+          <span class="tool-desc">全部单文件工具与说明文档的在线索引</span>
+        </div>
+        <div class="tool-act">
+          <a class="btn btn-ghost" href="https://stray1100.github.io/project-vault/" target="_blank" rel="noopener">在线打开</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="sec" id="sites">
+    <h2>权威站点</h2>
+    <p class="lead">全部实测可直连（2026-10-29 校验 HTTP 200）。</p>
+
+    <h3 class="group-h">真实图与病例</h3>
+    <ul class="rows">
+      <li><a class="row" href="https://www.coreultrasound.com/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">CORE Ultrasound</span><span class="r-host">coreultrasound.com</span>
+        <span class="r-desc">按系统分章的 POCUS 教材与操作视频，从探头体位讲到判读</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://www.thepocusatlas.com/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">The POCUS Atlas</span><span class="r-host">thepocusatlas.com</span>
+        <span class="r-desc">真实病例图库，含 Evidence Atlas 循证条目，可直接对照文献</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://www.ultrasoundcases.info/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">Ultrasound Cases</span><span class="r-host">ultrasoundcases.info</span>
+        <span class="r-desc">万级培训病例库，按器官与征象检索，荷兰超声培训体系维护</span></div>
+        <span class="tag">注册免费</span></a></li>
+      <li><a class="row" href="https://radiologyassistant.nl/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">Radiology Assistant</span><span class="r-host">radiologyassistant.nl</span>
+        <span class="r-desc">按疾病组织的结构化影像综述，流程图与分级标准清楚</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://radiologymasterclass.co.uk/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">Radiology Masterclass</span><span class="r-host">radiologymasterclass.co.uk</span>
+        <span class="r-desc">基础影像课程，解剖与阅片打底模块免费，适合补影像思维</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://pocusbasics.org/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">POCUS Basics</span><span class="r-host">pocusbasics.org</span>
+        <span class="r-desc">入门操作短视频，按探头摆位与切面获取逐步演示</span></div>
+        <span class="tag free">免费</span></a></li>
+    </ul>
+
+    <h3 class="group-h">中文系统课</h3>
+    <ul class="rows">
+      <li><a class="row" href="https://www.icourse163.org/search.htm?search=%E8%B6%85%E5%A3%B0%E8%AF%8A%E6%96%AD%E5%AD%A6" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">中国大学 MOOC</span><span class="r-host">icourse163.org</span>
+        <span class="r-desc">站内搜「超声诊断学」，多校课程可免费旁听，含示教录像</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://www.pmphmooc.com/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">人卫慕课</span><span class="r-host">pmphmooc.com</span>
+        <span class="r-desc">人民卫生出版社官方课程平台，与统编教材配套</span></div>
+        <span class="tag">部分免费</span></a></li>
+    </ul>
+
+    <h3 class="group-h">指南与安全</h3>
+    <ul class="rows">
+      <li><a class="row" href="https://efsumb.org/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">EFSUMB</span><span class="r-host">efsumb.org</span>
+        <span class="r-desc">欧洲超声医学与生物学联合会，各系统超声指南与教学课程</span></div>
+        <span class="tag free">免费</span></a></li>
+      <li><a class="row" href="https://www.aium.org/" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">AIUM</span><span class="r-host">aium.org</span>
+        <span class="r-desc">美国超声医学会，声输出与安全声明、MI/TI 参考口径</span></div>
+        <span class="tag">部分免费</span></a></li>
+      <li><a class="row" href="https://doi.org/10.3760/cma.j.cn131148-20210205-00092" target="_blank" rel="noopener">
+        <div class="r-body"><span class="r-name">C-TIRADS（2021）</span><span class="r-host">DOI 10.3760/cma.j.cn131148-20210205-00092</span>
+        <span class="r-desc">中华超声影像学杂志 2021;30(3):185-200，计分项与穿刺阈值的原始出处</span></div>
+        <span class="tag">原文</span></a></li>
+    </ul>
+
+    <h3 class="group-h">教材主线</h3>
+    <div class="note">
+      <p><strong>任卫东、常才《超声诊断学》第 4 版</strong>（人卫，2022-11）打诊断主干；<strong>唐杰、郭万学《超声医学》第 7 版</strong>（科学社，2024-03）查细节与少见病；<strong>姜玉新、何文《超声医学》第 2 版</strong>（人卫，2022-12）是住培指定教材，按它对齐规培考核口径。</p>
+    </div>
+  </section>
+
+  <section class="sec" id="data">
+    <h2>公开数据集</h2>
+    <p class="lead">做科研或训练模型时用，许可各异，商用前逐项核对。</p>
+    <table class="tbl">
+      <caption>均为公开可申请或可直下的超声影像数据集</caption>
+      <thead><tr><th scope="col">数据集</th><th scope="col">内容与用途</th></tr></thead>
+      <tbody>
+        <tr><td>BUSI</td><td>乳腺超声，良恶性分类与病灶分割的常用基准</td></tr>
+        <tr><td>DDTI</td><td>甲状腺结节超声，附专家标注，适合结节检测</td></tr>
+        <tr><td>TN3K</td><td>甲状腺结节分割数据集，标注粒度细</td></tr>
+        <tr><td>CAMUS</td><td>心脏超声，左室与左房分割及射血分数任务</td></tr>
+        <tr><td>EchoNet-Dynamic</td><td>心尖四腔动态视频，用于 EF 回归与视频理解</td></tr>
+        <tr><td>open-medical-ultrasound-datasets</td><td>上述与更多数据集的汇总索引，含许可与获取方式</td></tr>
+      </tbody>
+    </table>
+    <p class="lead mt">索引仓库：<a href="https://github.com/TIanCat/open-medical-ultrasound-datasets" target="_blank" rel="noopener">github.com/TIanCat/open-medical-ultrasound-datasets</a></p>
+  </section>
+
+  <section class="sec" id="notice">
+    <h2>使用边界</h2>
+    <div class="note">
+      <p><strong>图像只作自学对照。</strong>各站点真实病例图的版权归原作者，可在线看、可做笔记，不批量下载、不内嵌进任何产出的工具或讲义，也不得二次分发。</p>
+      <p><strong>判读结论以现场与上级为准。</strong>本页路线是学习顺序，不构成诊断标准；床旁结论须结合病史、体征与正式报告，危急情况按机构流程处理。</p>
+      <p><strong>进度只存本机。</strong>勾选记录写在浏览器 localStorage，换设备或清缓存会丢，重要节点另存图片库与笔记。</p>
+    </div>
+  </section>
+
+  <footer>
+    US-Study-Nav v1.0 · 2026-10-29 · 单文件自包含，无外部依赖，可离线双击打开<br>
+    站点连通性于 2026-10-29 逐条校验；本页已上线至项目档案馆，在线版即最新版。
+  </footer>
+</main>
+
+<span class="sr" aria-live="polite" id="live"></span>
+<script>
+(function(){
+  "use strict";
+  var KEY = "usnav.progress.v1";
+  var boxes = Array.prototype.slice.call(document.querySelectorAll("input.st-check"));
+  var saved = {};
+  try { saved = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { saved = {}; }
+
+  var fill = document.getElementById("fill");
+  var pnum = document.getElementById("pnum");
+  var track = document.getElementById("track");
+  var nTitle = document.getElementById("nTitle");
+  var nNote = document.getElementById("nNote");
+  var nMeta = document.getElementById("nMeta");
+  var nextCard = document.getElementById("nextCard");
+  var live = document.getElementById("live");
+  var TOTAL = boxes.length;
+  var current = null;
+
+  boxes.forEach(function(b){
+    if (saved[b.dataset.k]) { b.checked = true; }
+    b.addEventListener("change", function(){
+      saved[b.dataset.k] = b.checked;
+      try { localStorage.setItem(KEY, JSON.stringify(saved)); } catch (e) {}
+      render(b);
+    });
+  });
+
+  function stageDims(){
+    Array.prototype.forEach.call(document.querySelectorAll(".stage"), function(st){
+      var bs = st.querySelectorAll("input.st-check");
+      var done = 0;
+      Array.prototype.forEach.call(bs, function(b){ if (b.checked) done++; });
+      st.querySelector(".cnt").textContent = done + "/" + bs.length;
+      st.classList.toggle("done", done === bs.length);
+    });
+  }
+
+  function render(changed){
+    var done = 0;
+    boxes.forEach(function(b){ if (b.checked) done++; });
+    fill.style.width = (done / TOTAL * 100) + "%";
+    pnum.textContent = done + "/" + TOTAL;
+    track.setAttribute("aria-valuenow", String(done));
+    stageDims();
+
+    var next = null;
+    for (var i = 0; i < boxes.length; i++) {
+      if (!boxes[i].checked) { next = boxes[i]; break; }
+    }
+    current = next;
+
+    if (!next) {
+      nTitle.textContent = "46 步已全部走完";
+      nNote.textContent = "回第 1 步做一轮快复，再去真实图库盲判 20 例病例，把结论与答案的偏差写成清单。";
+      nMeta.textContent = "复习轮 · 点此回到路线开头";
+      nextCard.setAttribute("href", "#s-a1");
+    } else {
+      var label = next.closest(".step");
+      var st = next.closest("details.stage");
+      var stageName = st.querySelector(".s-name").textContent;
+      var wk = st.querySelector(".wk").textContent;
+      nTitle.textContent = "下一步：" + label.querySelector(".st-text").textContent;
+      nNote.textContent = label.querySelector(".st-note").textContent;
+      nMeta.textContent = "阶段 " + st.dataset.stage + " · " + stageName + " · " + wk + " · 点此定位";
+      nextCard.setAttribute("href", "#s-" + next.dataset.k);
+    }
+
+    if (changed) {
+      live.textContent = "已完成 " + done + " / " + TOTAL + " 步";
+    }
+  }
+
+  nextCard.addEventListener("click", function(ev){
+    if (!current) return;
+    ev.preventDefault();
+    var st = current.closest("details.stage");
+    if (st && !st.open) { st.open = true; }
+    var target = document.getElementById("s-" + current.dataset.k);
+    if (target) { target.scrollIntoView({ block: "center", behavior: "smooth" }); }
+  });
+
+  // 主题切换
+  var THEME_KEY = "usnav.theme.v1";
+  var btn = document.getElementById("themeBtn");
+  var stored = null;
+  try { stored = localStorage.getItem(THEME_KEY); } catch (e) {}
+  if (stored === "dark" || stored === "light") { document.documentElement.dataset.theme = stored; }
+  btn.addEventListener("click", function(){
+    var isDark = document.documentElement.dataset.theme
+      ? document.documentElement.dataset.theme === "dark"
+      : window.matchMedia("(prefers-color-scheme: dark)").matches;
+    var nextTheme = isDark ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    try { localStorage.setItem(THEME_KEY, nextTheme); } catch (e) {}
+  });
+
+  render(null);
+})();
+</script>
+<style>
+/* 工具页自带底部常驻提示条（#bktoday）时，浮动按钮组上移避让，避免遮住「回到今天」 */
+#pvBar{transition:bottom .18s ease}
+#bktoday:not([hidden])~#pvBar{bottom:calc(132px + env(safe-area-inset-bottom))!important}
+</style>
+<div id="pvBar" style="position:fixed;bottom:14px;right:12px;z-index:9999;display:flex;flex-direction:column;gap:8px;">
+  <a id="pvHome" href="../index.html" aria-label="返回项目清单" style="display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;text-decoration:none;font-size:16px;line-height:1;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8962;</a>
+  <button class="btn sm" id="pvUpd" type="button" aria-label="检查并更新到最新版本" style="width:36px;height:36px;border:none;border-radius:50%;background:rgba(120,120,128,.28);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);color:#fff;font-size:15px;line-height:1;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,.22);">&#8635;</button>
+</div>
+<script>
+/* 「更新」按钮：比对 version.json 的 build，不一致即清缓存+注销 SW+硬重载 */
+(function(){
+  var b=document.getElementById('pvUpd'); if(!b) return;
+  var m=document.querySelector('meta[name="pv-build"]'); var local=m?m.getAttribute('content'):'';
+  var t0=b.textContent;
+  function say(t,ms){ b.textContent=t; setTimeout(function(){ b.textContent=t0; }, ms||1600); }
+  function hard(){
+    try{ if('caches' in window){ caches.keys().then(function(ks){ ks.forEach(function(k){ caches.delete(k); }); }).catch(function(){}); } }catch(e){}
+    try{ if(navigator.serviceWorker && navigator.serviceWorker.getRegistrations){ navigator.serviceWorker.getRegistrations().then(function(rs){ rs.forEach(function(r){ try{ r.unregister(); }catch(e){} }); }); } }catch(e){}
+    setTimeout(function(){ var u=location.href.split('#')[0]; var sep=u.indexOf('?')>=0?'&':'?'; try{ location.replace(u+sep+'t='+Date.now()); }catch(e){ location.reload(); } },150);
+  }
+  b.addEventListener('click', function(){
+    if(!/^https?:/i.test(location.protocol)){ hard(); return; }
+    var base = location.pathname.indexOf('/tools/') >= 0 ? '../' : '';
+    say('检查中');
+    fetch(base+'version.json?t='+Date.now(), {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(j){
+      if(j && j.build && j.build !== local){ say('更新中'); hard(); } else { say('已最新'); }
+    }).catch(function(){ hard(); });
+  });
+})();
+</script>
+
+</body>
+</html>

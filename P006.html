@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="7990208263">
+<meta name="pv-build" content="6285795874">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>产出与交付规范（7 条） · 使用说明</title>
 <style>
-  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;}
+  :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;--soft:#eef2f8;}
   *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
   body{margin:0;padding:16px 14px calc(40px + env(safe-area-inset-bottom));background:var(--bg);color:var(--ink);
        font:15px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;}
@@ -28,6 +28,25 @@
   .muted{color:#9aa3b2;}
   .t{color:var(--sub);font-size:13px;margin-right:6px;}
   footer{color:#9aa3b2;font-size:12px;text-align:center;margin-top:18px;}
+  /* 首屏版本选择区（仅在项目配置 entrances 时输出） */
+  .ents{margin:0 0 14px;}
+  .ents .ehint{color:var(--sub);font-size:15px;line-height:1.6;margin:0 0 12px;}
+  .ent{display:block;text-decoration:none;color:inherit;background:var(--card);border:1px solid var(--line);
+       border-radius:14px;padding:14px 16px;margin:0 0 10px;}
+  .ent.pri{border-color:var(--accent);box-shadow:0 2px 6px rgba(26,115,232,.14);}
+  .ent .top{display:flex;align-items:center;gap:9px;margin:0 0 8px;}
+  .ent .no{flex:0 0 auto;width:28px;height:28px;border-radius:9px;background:var(--accent);color:#fff;
+           font-size:15px;line-height:28px;text-align:center;font-weight:600;}
+  .ent .nm{font-size:17px;font-weight:600;}
+  .ent .pill{font-size:13px;color:var(--accent);border:1px solid var(--accent);border-radius:999px;padding:1px 9px;line-height:18px;}
+  .ent .ds{font-size:16px;line-height:1.62;margin:0 0 6px;}
+  .ent .ft{font-size:14px;line-height:1.55;color:var(--sub);margin:0;}
+  .ent .go{display:flex;align-items:center;justify-content:space-between;min-height:44px;margin-top:12px;
+           padding:0 14px;border-radius:11px;background:var(--accent);color:#fff;font-size:16px;font-weight:500;}
+  .ent:not(.pri) .go{background:var(--soft);color:var(--accent);}
+  .ent .go .ar{font-size:16px;opacity:.9;}
+  .ezip{display:flex;align-items:center;justify-content:center;min-height:44px;margin-top:4px;padding:0 12px;
+        border:1px dashed var(--line);border-radius:11px;color:var(--sub);font-size:15px;text-decoration:none;}
   .rbar{position:sticky;top:0;z-index:90;display:flex;align-items:center;gap:8px;
       margin:0 0 12px;padding:8px 10px 8px 10px;border-radius:12px;
       background:rgba(255,255,255,.94);border:1px solid var(--line);
@@ -60,7 +79,7 @@
     .site .live,.live{background:#132a21;color:#5fd3a0;}
   }
   @media (prefers-color-scheme:dark){
-    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;}
+    :root{--bg:#0e1117;--card:#161b24;--ink:#e8ecf3;--sub:#9aa5b6;--line:#242b37;--soft:#1e2634;}
     code{background:#1e2634;} .notes{background:#2a1f13;}
   }
 </style>
@@ -73,7 +92,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-27 22:14</span>
+  <span class="ver" id="mvVer">构建于 2026-10-30 00:29</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -82,8 +101,8 @@
 
   <span class="badge">P006</span>
   <h1>产出与交付规范（7 条）</h1>
-  <p class="summary">对交付物的形态与质量标准约定：MD 与 HTML 双份、手机优先、离线可用、必须附实测数据。</p>
 
+  <p class="summary" style="margin-top:10px;">对交付物的形态与质量标准约定：MD 与 HTML 双份、手机优先、离线可用、必须附实测数据。</p>
   <div class="card">
     <h2>基本信息</h2>
     <table><tr><td class="k">项目编号</td><td class="v">P006</td></tr><tr><td class="k">类型</td><td class="v">文档</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-18</td></tr><tr><td class="k">技术栈</td><td class="v">Markdown / 单文件 HTML</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://guifan.netlify.app" target="_blank" rel="noopener" style="color:var(--accent)">https://guifan.netlify.app</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-18 20:34</td></tr></table>

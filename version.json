@@ -1,6 +1,6 @@
 {
-  "build": "7990208263",
-  "built_at": "2026-10-27 23:10",
+  "build": "6285795874",
+  "built_at": "2026-10-30 00:29",
   "platform": "GitHub Pages",
   "base_url": "https://stray1100.github.io/project-vault",
   "pages": [
@@ -17,6 +17,8 @@
     "P012.html",
     "P013.html",
     "P014.html",
+    "P015.html",
+    "P016.html",
     "SKILL-GUIDE.html",
     "index.html",
     "tools/embedded-learning-b1.html",
@@ -28,6 +30,8 @@
     "tools/prompt-forge.html",
     "tools/redflag-a-internal-medicine.html",
     "tools/redflag-b-emergency.html",
-    "tools/redflag-c-primary-care.html"
+    "tools/redflag-c-primary-care.html",
+    "tools/us-learning-assistant.html",
+    "tools/us-study-nav.html"
   ]
 }
