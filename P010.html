@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta name="pv-build" content="6063559822">
+<meta name="pv-build" content="1350690547">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>关键词工程助手（prompt-forge v7） · 使用说明</title>
+<title>关键词工程助手（prompt-forge v7.3 规格工程版） · 使用说明</title>
 <style>
   :root{--bg:#f6f7fb;--card:#fff;--ink:#12161f;--sub:#5d6675;--line:#e3e7ef;--accent:#1a73e8;--warn:#b45309;--warnbg:#fff7ed;--soft:#eef2f8;}
   *{box-sizing:border-box;-webkit-text-size-adjust:100%;}
@@ -92,7 +92,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5 8 12l7 7"/></svg>
     <span>目录</span>
   </a>
-  <span class="ver" id="mvVer">构建于 2026-10-30 00:29</span>
+  <span class="ver" id="mvVer">构建于 2026-10-30 03:51</span>
   <button class="rf" id="mvUpdate" type="button" aria-label="检查并更新到最新版本">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 11.2a8.5 8.5 0 1 0-2.4 5.9"/><path d="M20.5 4.6V11.2h-6.6"/></svg>
     <span>更新</span>
@@ -100,12 +100,12 @@
 </div>
 
   <span class="badge">P010</span>
-  <h1>关键词工程助手（prompt-forge v7）</h1>
+  <h1>关键词工程助手（prompt-forge v7.3 规格工程版）</h1>
 
   <p class="summary" style="margin-top:10px;">单文件离线网页工具，写一句话自动判断领域/意图/深度，首屏三问补齐要素，输出通俗版、专业版与 JSON 三种提示词</p>
   <div class="card">
     <h2>基本信息</h2>
-    <table><tr><td class="k">项目编号</td><td class="v">P010</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-22</td></tr><tr><td class="k">技术栈</td><td class="v">HTML/CSS/JS 单文件 / 无框架无外链 / 本地词表识别引擎</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/prompt-forge.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-22 19:36</td></tr></table>
+    <table><tr><td class="k">项目编号</td><td class="v">P010</td></tr><tr><td class="k">类型</td><td class="v">Web 应用</td></tr><tr><td class="k">创建日期</td><td class="v">2026-10-22</td></tr><tr><td class="k">技术栈</td><td class="v">HTML/CSS/JS 单文件 / 无框架无外链 / 本地词表识别引擎</td></tr><tr><td class="k">线上地址</td><td class="v"><a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io/project-vault/tools/prompt-forge.html</a></td></tr><tr><td class="k">最后更新</td><td class="v">2026-10-30 04:10</td></tr></table>
   </div>
   <div class="card">
     <h2>线上访问</h2>
@@ -114,7 +114,7 @@
       <a href="https://stray1100.github.io/project-vault/tools/prompt-forge.html" target="_blank" rel="noopener">https://stray1100.github.io/project-vault/tools/prompt-forge.html</a>
     </div>
     <p class="muted" style="font-size:13px;margin:8px 0 0;">GitHub Pages · 部署于 2026-10-22。手机浏览器打开该网址即为最新版本，可「添加到主屏幕」当 App 使用。</p>
-    <p class="muted" style="font-size:13px;margin:8px 0 0;">作为档案馆站点子页面发布，手机浏览器可直接打开使用；离线版仍以本地 artifact 文件为准，两者内容一致（MD5 ae1741fb…）。</p>
+    <p class="muted" style="font-size:13px;margin:8px 0 0;">作为档案馆站点子页面发布，手机浏览器可直接打开使用；离线版仍以本地 artifact 文件为准，两者内容一致（MD5 ae1741fb…）。 2026-10-30 已推送 v7.3（含 H06 疾病知识卡，41 套模板）上线，线上与本地 dist 同源。</p>
     <p class="muted" style="font-size:13px;margin:6px 0 0;">站点首页（全部项目索引）：<a href="https://stray1100.github.io" target="_blank" rel="noopener" style="color:var(--accent)">https://stray1100.github.io</a></p>
   </div>
 
@@ -122,13 +122,13 @@
   <div class="card">
     <h2>用途与定位</h2>
     <p>单文件离线网页工具，写一句话自动判断领域/意图/深度，首屏三问补齐要素，输出通俗版、专业版与 JSON 三种提示词</p>
-    <p class="para">这是一个把「随口一句话」变成「可交给 AI 直接执行的高质量提示词」的离线网页工具。它解决的是普通人写提示词的两大痛点：不知道该说哪些要素，以及说了一堆却没有重点。</p><p class="para">工具内置领域识别引擎：输入一句话后自动判断所属领域、意图类型与应给的信息深度，再按该领域的固定要素清单（如医学要写人群/证据等级、编程要写运行环境/验收方式）出题补全，最后生成三种可复制的结果形态。</p><p class="para">全部逻辑写在一个 HTML 文件里，无服务器、无外链、无 CDN，断网可用，输入内容不出本机。当前版本 v7，共 40 套领域模板（A–H 八组）。</p>
+    <p class="para">这是一个把「随口一句话」变成「可交给 AI 直接执行的高质量提示词」的离线网页工具。它解决的是普通人写提示词的两大痛点：不知道该说哪些要素，以及说了一堆却没有重点。</p><p class="para">工具内置领域识别引擎：输入一句话后自动判断所属领域、意图类型与应给的信息深度，再按该领域的固定要素清单（如医学要写人群/证据等级、编程要写运行环境/验收方式）出题补全，最后生成三种可复制的结果形态。</p><p class="para">全部逻辑写在一个 HTML 文件里，无服务器、无外链、无 CDN，断网可用，输入内容不出本机。当前版本 v7.3（41 套领域模板，A–H 八组，H 类新增 H06 疾病知识卡），线上 GitHub Pages 已同步该版本。</p>
     <p class="muted" style="font-size:13px;margin:8px 0 0;">本说明由项目档案馆统一维护，更新项目信息后本页会同步重建。</p>
   </div>
 
   <div class="card">
     <h2>功能模块</h2>
-    <table class="ft"><tr><td class="fname">领域/意图/深度自动判定</td><td>输入中文任务描述后实时判定，界面显示三枚胶囊与置信度圆点，并给出命中的判定词；低置信度时列出候选领域供一键锁定</td></tr><tr><td class="fname">首屏三问</td><td>只把最关键的 3 个要素推到首屏（大按钮作答），其余要素折叠隐藏，避免一次面对十几道题</td></tr><tr><td class="fname">三视图输出</td><td>通俗版（一句话说人话＋术语释义，含术语表）、专业版（八段式结构化正文）、JSON（LangGPT 风格七字段，可直接被程序读取）</td></tr><tr><td class="fname">要素清单按领域定制</td><td>40 套模板各配 6 道要素题，前 3 题标为核心题，题目语言随领域变化，不套用通用空话</td></tr><tr><td class="fname">简单模式（不受影响）</td><td>顶部可切换回简单模式，八宫格点选生成话术，适合完全不想思考方向的场景；v7 的改动不影响该模式</td></tr><tr><td class="fname">本地持久与迁移</td><td>填写内容与历史记录保存在浏览器本地存储，换设备可通过导出/导入迁移</td></tr></table>
+    <table class="ft"><tr><td class="fname">领域/意图/深度自动判定</td><td>输入中文任务描述后实时判定，界面显示三枚胶囊与置信度圆点，并给出命中的判定词；低置信度时列出候选领域供一键锁定</td></tr><tr><td class="fname">首屏三问</td><td>只把最关键的 3 个要素推到首屏（大按钮作答），其余要素折叠隐藏，避免一次面对十几道题</td></tr><tr><td class="fname">三视图输出</td><td>通俗版（一句话说人话＋术语释义，含术语表）、专业版（八段式结构化正文）、JSON（LangGPT 风格七字段，可直接被程序读取）</td></tr><tr><td class="fname">要素清单按领域定制</td><td>41 套模板各配 6 道要素题，前 3 题标为核心题，题目语言随领域变化，不套用通用空话</td></tr><tr><td class="fname">简单模式（不受影响）</td><td>顶部可切换回简单模式，八宫格点选生成话术，适合完全不想思考方向的场景；v7 的改动不影响该模式</td></tr><tr><td class="fname">本地持久与迁移</td><td>填写内容与历史记录保存在浏览器本地存储，换设备可通过导出/导入迁移</td></tr></table>
   </div>
 
   <div class="card">
@@ -153,20 +153,20 @@
 
   <div class="card">
     <h2>注意事项</h2>
-    <p class="notes">识别全在本地词表完成，不联网、不上传输入内容；判定依据是关键词命中，行业黑话或超长描述可能判不准，此时用「改」手动指定。版本快照保留 v2–v7，v7 为当前版。 归档时间 2026-10-22，v7 为当前稳定版；v2–v6 快照同目录保留以便回退。</p>
+    <p class="notes">识别全在本地词表完成，不联网、不上传输入内容；判定依据是关键词命中，行业黑话或超长描述可能判不准，此时用「改」手动指定。版本快照保留 v2–v7，v7 为当前版。 归档时间 2026-10-22，v7 为当前稳定版；v2–v6 快照同目录保留以便回退。 2026-10-30：提示词数据层按 prompt-spec 规格工程重构（v7.1），页面结构/交互/识别引擎未改动；改造前快照 dist/tools/prompt-forge.html.bak-20261030-013018 可回退。 2026-10-30 v7.2：轻量型取消 300 字硬上限（只压结构不压内容），意图分类表补「说成/讲成/能听懂/听得懂/白话/外行」等词到 S2 说人话，示例按钮追问后改为逗号衔接（joinTask）；回退用同一份 .bak-20261030-013018 快照。 2026-10-30 v7.3：追问示例按钮改为按钮文案整体替换原话（原话仅作 hint 补领域/受众）；H 类新增 H06 疾病知识卡，TPL 40→41 条，文案同步「四十一条」。</p>
   </div>
 
   <div class="card">
     <h2>验证状态</h2>
-    <ul><li>v7 交付版：368 KB 单文件，零 error、零外链（脚本扫描确认）</li><li>识别引擎实测：H05（医疗/病历）、B01（写作）、F03（数据分析）三类样例判定正确，置信度与判定词均正常输出</li><li>验收 8 项全部通过，简单模式行为与 v6 一致（未受影响）</li><li>存档副本 prompt-forge-v7-1022.html 与主文件 MD5 一致（ae1741fb…）</li><li>v7 规格书与引擎数据文件已留档：spec-v7.md、engine_data.json（35 模板 210 题 + 词表）</li><li>在线版与存档版同源：站点 tools/prompt-forge.html 由 output/prompt-forge-v7-1022.html 直接复制，MD5 均为 ae1741fb1adfeb2f07a6b3dd41e34625</li></ul>
+    <ul><li>v7 交付版：368 KB 单文件，零 error、零外链（脚本扫描确认）</li><li>识别引擎实测：H05（医疗/病历）、B01（写作）、F03（数据分析）三类样例判定正确，置信度与判定词均正常输出</li><li>验收 8 项全部通过，简单模式行为与 v6 一致（未受影响）</li><li>存档副本 prompt-forge-v7-1022.html 与主文件 MD5 一致（ae1741fb…）</li><li>v7 规格书与引擎数据文件已留档：spec-v7.md、engine_data.json（35 模板 210 题 + 词表）</li><li>在线版与存档版同源：站点 tools/prompt-forge.html 由 output/prompt-forge-v7-1022.html 直接复制，MD5 均为 ae1741fb1adfeb2f07a6b3dd41e34625</li><li>v7.1 规格工程版：node --check 通过；40 套模板八段序异常 0、缺失段 0、约束条数均≥4、正文 1014–1739 字</li><li>v7.1 生成器单测：专业型 8 段、轻量型 6 段（含验收，≤300 字）、小助手 8 段/精简 6 段，旧标签残留 0</li><li>v7.1 浏览器三轮回归：小助手无段落嵌套、示例段以「一、主旨」起头；上下文段作者备注已清除；轻量型 6 段 227 字、角色段保留模板名</li><li>v7.2 取消轻量型 300 字硬上限：轻量型改为只压结构（6 段）不压内容，目标句不截断、输出不硬截断，档位文案/状态条/预算条同步改为「精简结构，不限字数」；实测长任务 552 字全文输出、目标完整</li><li>v7.2 小助手意图分类表补词：「说成/讲成/能听懂/听得懂/白话/外行」等归入 S2 说人话，关键词引擎改写润色同步补词；追问后点示例按钮改为逗号衔接（joinTask）、目标段经 composeGoal 归一；实测「把这份检查结果说成家属能听懂的话」直接出卡（ask=0）</li><li>v7.3 浏览器回归：L1/L2 判定、问答装配、套用到生成器全链路零 pageerror；点示例按钮后目标句为按钮文案，原话未混入目标句</li><li>H06 入库实测：模板库显示「共 41 条做法，分 8 个分类」、H 类 6 条；H06 问答装配占位符替换正常（截图已存档）</li></ul>
   </div>
 
   <div class="card">
     <h2>版本记录</h2>
-    <ul><li><span class="t">2026-10-22</span> 登记入库</li><li><span class="t">2026-10-22</span> 上线 GitHub Pages 子路径 tools/prompt-forge.html，手机可直接打开；说明书同步更新线上地址与使用方式</li></ul>
+    <ul><li><span class="t">2026-10-22</span> 登记入库</li><li><span class="t">2026-10-22</span> 上线 GitHub Pages 子路径 tools/prompt-forge.html，手机可直接打开；说明书同步更新线上地址与使用方式</li><li><span class="t">2026-10-30</span> 按提示词规格工程重构：40 套 TPL 与 SIMPLE 全量改为八段式（角色/目标/输入/上下文/约束/示例/输出格式/验收），专业型·轻量型·小助手三路生成器统一由 GATE_SPEC/GATE_LIGHT 门禁驱动；删除同义替换 syn() 与「硬约束+复述」双段重复，补齐拒答出口、外部内容隔离、示例（含应拒答）、验收清单；清理 14 处软化措辞为可执行条件</li><li><span class="t">2026-10-30</span> v7.2：取消轻量型 300 字硬上限——轻量型改为只压结构（6 段）不压内容，目标句不截断、输出不硬截断，档位文案/状态条/预算条同步改为「精简结构，不限字数」；修剪意图分类表与关键词词表（说成/讲成/能听懂/听得懂/白话/外行归入 S2 说人话），追问后点示例按钮改用逗号衔接（新增 joinTask），目标段经 composeGoal 归一，消除空格硬拼的生硬语序</li><li><span class="t">2026-10-30</span> v7.3：追问后的示例按钮改为「按钮文案整体替换原话」——点按钮后目标句即按钮文案，被替换掉的原话只作领域/受众线索（hint）保留，不再混入目标句，消除按钮话术与用户原话拼接的语序冲突</li><li><span class="t">2026-10-30</span> H 类新增 H06 疾病知识卡（12 模块：定义与流行病学 / 病因与机制 / 临床表现 / 检查与诊断 / 鉴别诊断 / 治疗原则 / 用药要点 / 监测随访 / 患者教育 / 红旗征 / 证据等级 / 常见误区），模板库 40 条→41 条，分类导航与库内文案同步为「四十一条」</li></ul>
   </div>
 
-  <footer>项目档案馆 · 2026-10-22 19:36</footer>
+  <footer>项目档案馆 · 2026-10-30 04:10</footer>
 </div>
 <script>
 (function(){
